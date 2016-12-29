@@ -39,6 +39,7 @@ class Menu extends PreprocessBase implements PreprocessInterface {
         $item['below'] = $this->alterChildren($item['below']);
       }
     }
+    return $items;
   }
 
 }
