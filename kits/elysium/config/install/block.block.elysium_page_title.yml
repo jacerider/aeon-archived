@@ -1,0 +1,20 @@
+uuid: fa7f8927-3a14-4062-81f5-ab62f9c1035a
+langcode: en
+status: true
+dependencies:
+  theme:
+    - elysium
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: elysium_page_title
+theme: elysium
+region: content
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

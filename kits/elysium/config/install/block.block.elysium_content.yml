@@ -1,0 +1,22 @@
+uuid: 80f2ca55-8aa5-48e3-ac70-198d9850ca1a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - elysium
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: elysium_content
+theme: elysium
+region: content
+weight: -2
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

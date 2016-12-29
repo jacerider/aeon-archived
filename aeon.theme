@@ -1,0 +1,118 @@
+<?php
+/**
+ * @file
+ * The primary PHP file for the Drupal Aeon base theme.
+ *
+ * This file should only contain light helper functions and point to stubs in
+ * other files containing more complex functions.
+ *
+ * The stubs should point to files within the `./includes` directory named after
+ * the function itself minus the theme prefix. If the stub contains a group of
+ * functions, then please organize them so they are related in some way and name
+ * the file appropriately to at least hint at what it contains.
+ *
+ * All [pre]process functions, theme functions and template files lives inside
+ * the `./templates` directory. This is a highly automated and complex system
+ * designed to only load the necessary files when a given theme hook is invoked.
+ *
+ * @see aeon_theme()
+ * @see \Drupal\aeon\Registry
+ */
+
+use Drupal\aeon\Aeon;
+
+/**
+ * Initialize the active theme.
+ */
+Aeon::initialize();
+
+/**
+ * {@inheritdoc}
+ *
+ * @see \Drupal\aeon\Plugin\Alter\ElementInfo::alter()
+ */
+function aeon_element_info_alter(&$data, &$context1 = NULL, &$context2 = NULL) {
+  Aeon::alter(__FUNCTION__, $data, $context1, $context2);
+}
+
+/**
+ * {@inheritdoc}
+ *
+ * @see \Drupal\aeon\Theme::alter()
+ */
+function aeon_form_alter(&$data, &$context1 = NULL, &$context2 = NULL) {
+  Aeon::alter(__FUNCTION__, $data, $context1, $context2);
+}
+
+/**
+ * {@inheritdoc}
+ *
+ * @see \Drupal\aeon\Plugin\Form\SystemThemeSettings::alterForm()
+ */
+function aeon_form_system_theme_settings_alter(&$data, &$context1 = NULL, &$context2 = NULL) {
+  Aeon::alter(__FUNCTION__, $data, $context1, $context2);
+}
+
+/**
+ * {@inheritdoc}
+ */
+function aeon_js_settings_alter(&$data, &$context1 = NULL, &$context2 = NULL) {
+  Aeon::alter(__FUNCTION__, $data, $context1, $context2);
+}
+
+/**
+ * {@inheritdoc}
+ *
+ * @see \Drupal\aeon\Plugin\Alter\LibraryInfo::alter()
+ */
+function aeon_library_info_alter(&$data, &$context1 = NULL, &$context2 = NULL) {
+  Aeon::alter(__FUNCTION__, $data, $context1, $context2);
+}
+
+/**
+ * {@inheritdoc}
+ *
+ * @see \Drupal\aeon\Plugin\Alter\PageAttachments::alter()
+ */
+function aeon_page_attachments_alter(&$data, &$context1 = NULL, &$context2 = NULL) {
+  Aeon::alter(__FUNCTION__, $data, $context1, $context2);
+}
+
+/**
+ * {@inheritdoc}
+ *
+ * @see \Drupal\aeon\Aeon::preprocess()
+ */
+function aeon_preprocess(&$variables, $hook, $info) {
+  Aeon::preprocess($variables, $hook, $info);
+}
+
+/**
+ * {@inheritdoc}
+ *
+ * @see \Drupal\aeon\Aeon::getInfo()
+ */
+function aeon_theme() {
+  return Aeon::getThemeHooks();
+}
+
+/**
+ * {@inheritdoc}
+ *
+ * @see \Drupal\aeon\Plugin\Alter\ThemeRegistry::alter()
+ *
+ * @todo Remove once a proper replacement for the theme.registry service can be
+ * created in a aeon_core sub-module.
+ */
+function aeon_theme_registry_alter(&$data, &$context1 = NULL, &$context2 = NULL) {
+  Aeon::alter(__FUNCTION__, $data, $context1, $context2);
+}
+
+/**
+ * {@inheritdoc}
+ *
+ * @see \Drupal\aeon\Plugin\Alter\ThemeSuggestions::alter()
+ */
+function aeon_theme_suggestions_alter(&$data, &$context1 = NULL, &$context2 = NULL) {
+  Aeon::alter(__FUNCTION__, $data, $context1, $context2);
+}

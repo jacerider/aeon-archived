@@ -1,0 +1,20 @@
+////////////////////////////////////////////////////////////////////////////////
+// VARIABLES
+// -----------------------------------------------------------------------------
+
+$global-width: 100%;
+$grid-row-width: $global-width;
+$foundation-palette: (
+  primary: #2199e8,
+  secondary: #777,
+  success: #86c13d,
+  warning: #f1ba2e,
+  alert: #e54040,
+);
+$body-background: $white;
+$body-font-color: $black;
+$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+
+body {
+  // display: none;
+}

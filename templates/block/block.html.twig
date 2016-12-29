@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{%
+  set classes = [
+    'block',
+    id|replace({'-': ' '}),
+  ]
+%}
+<{{ tag }}{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</{{ tag }}>

@@ -1,0 +1,62 @@
+{#
+/**
+* @file
+* Default theme implementation to display a node.
+*
+* @see template_preprocess()
+* @see template_preprocess_node()
+* @see template_process()
+*/
+#}
+{%
+ set classes = [
+   'node',
+   node.bundle|clean_class,
+   view_mode|clean_class
+ ]
+%}
+<{{ tag }} id="node-{{ node.id }}"{{ attributes.addClass(classes) }}>
+  {% if not page %}
+    {{ title_prefix }}
+    {% if content_tag %}
+      <{{ title_tag }}{{ title_attributes }}>
+    {% endif %}
+    {% if link_title %}
+      <a href="{{ url }}" rel="bookmark">
+    {% endif %}
+    {{ label }}
+    {% if link_title %}
+      </a>
+    {% endif %}
+    {% if content_tag %}
+      </{{ title_tag }}>
+    {% endif %}
+    {{ title_suffix }}
+  {% endif %}
+
+  {% if content_tag %}
+    <{{ content_tag}}{{ content_attributes }}>
+  {% endif %}
+
+  {% if display_submitted %}
+  <div class="posted">
+    {% if user_picture %}
+      {{ user_picture }}
+    {% endif %}
+    {{ submitted }}
+  </div>
+  {% endif %}
+
+  {{ content|without('comment', 'links') }}
+
+  {% if content.field_tags|length and not is_front %}
+    {{ content.field_tags }}
+  {% endif %}
+
+  {{ content.links }}
+  {{ content.comments }}
+
+  {% if content_tag %}
+    </{{ content_tag}}>
+  {% endif %}
+</{{ tag }}>

@@ -1,0 +1,24 @@
+elysium.small:
+  label: small
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+elysium.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 40em)'
+  weight: 1
+  multipliers:
+    - 1x
+elysium.large:
+  label: large
+  mediaQuery: 'all and (min-width: 64em)'
+  weight: 2
+  multipliers:
+    - 1x
+elysium.xlarge:
+  label: xlarge
+  mediaQuery: 'all and (min-width: 120em)'
+  weight: 3
+  multipliers:
+    - 1x

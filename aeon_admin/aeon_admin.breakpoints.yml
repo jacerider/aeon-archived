@@ -1,0 +1,24 @@
+aeon_admin.small:
+  label: small
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+aeon_admin.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 40em)'
+  weight: 1
+  multipliers:
+    - 1x
+aeon_admin.large:
+  label: large
+  mediaQuery: 'all and (min-width: 64em)'
+  weight: 2
+  multipliers:
+    - 1x
+aeon_admin.xlarge:
+  label: xlarge
+  mediaQuery: 'all and (min-width: 120em)'
+  weight: 3
+  multipliers:
+    - 1x

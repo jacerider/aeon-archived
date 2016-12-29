@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+set classes = [
+  'paragraph',
+  paragraph.bundle|clean_class,
+  view_mode|clean_class,
+]
+%}
+<{{ tag }}{{ attributes.addClass(classes) }}>
+  {% if content_tag %}
+    <{{ content_tag}}{{ content_attributes }}>
+  {% endif %}
+
+  {{ content }}
+
+  {% if content_tag %}
+    </{{ content_tag}}>
+  {% endif %}
+</{{ tag }}>

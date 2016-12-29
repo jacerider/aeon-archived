@@ -1,0 +1,44 @@
+{
+  "name": "Aeon Admin",
+  "description": "Responsive base admin theme for Drupal.",
+  "bowerDir": "./bower_components",
+  "browserSync": {
+    "enabled" : true,
+    "proxy" : "http://localhost",
+    "port" : 3000,
+    "openAutomatically" : false,
+    "notify" : false
+  },
+  "css": {
+    "file" : "aeon_admin.scss",
+    "dest": "../assets/css",
+    "src": [
+      "scss/**/*.scss"
+    ],
+    "includePaths": [
+      "./bower_components/foundation-sites/scss",
+      "../aeon/scss"
+    ]
+  },
+  "js": {
+    "dest": "../assets/js",
+    "src": [
+      "js/**/*.js"
+    ],
+    "vendorDest": "../assets/js/vendor",
+    "vendorPaths": [
+      "./bower_components/foundation-sites/js/*.js"
+    ]
+  },
+  "templates": {
+    "src": [
+      "../templates/**/*.twig"
+    ]
+  },
+  "images": {
+    "src": [
+      "../assets/images/**/*"
+    ],
+    "dest": "../assets/images/"
+  }
+}

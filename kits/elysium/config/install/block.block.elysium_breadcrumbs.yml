@@ -1,0 +1,22 @@
+uuid: 65d8d8f9-ebf2-446d-b676-1f2b80d8f766
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - elysium
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: elysium_breadcrumbs
+theme: elysium
+region: breadcrumb
+weight: -5
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

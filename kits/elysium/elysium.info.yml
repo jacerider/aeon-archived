@@ -1,0 +1,24 @@
+core: 8.x
+type: theme
+base theme: aeon
+
+name: ELYSIUM_NAME
+description: ELYSIUM_DESCRIPTION
+package: 'Aeon'
+screenshot: screenshot.png
+version: VERSION
+hidden: false
+
+regions:
+  header: Header
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  breadcrumb: Breadcrumb
+  status: Status Messages
+  content: Content
+  footer: Footer
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+
+libraries:
+  - elysium/base

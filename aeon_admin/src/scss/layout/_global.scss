@@ -1,0 +1,21 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  // background: url('../images/bg.png') no-repeat center center;
+  // background-size: cover;
+  background: linear-gradient(160deg, #426e61 0%,#d6ca99 28%,#4b4042 51%,#262e3a 76%,#2b4f5e 100%);
+  padding: $global-padding * 2;
+}
+
+.section.page {
+  @include grid-row;
+  background: rgba($white, 0.5);
+  // border: 20px solid rgba($white, 0.2);
+
+  > * {
+    @include grid-column;
+  }
+}

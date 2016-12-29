@@ -1,0 +1,13 @@
+name: Aeon Admin
+type: theme
+description: Responsive base admin theme for Drupal.
+screenshot: screenshot.png
+core: 8.x
+version: VERSION
+base theme: aeon
+libraries:
+  - aeon_admin/base
+regions:
+   page_top: 'Page top'
+   page_bottom: 'Page bottom'
+   content: Content

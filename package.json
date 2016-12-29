@@ -1,0 +1,19 @@
+{
+  "name": "Aeon",
+  "description": "Responsive base theme for Drupal.",
+  "private": true,
+  "repository": "jacerider/aeon",
+  "homepage": "https://github.com/jacerider/aeon#readme",
+  "author": {
+    "name": "Cyle Carlson",
+    "email": "jacerider@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jacerider/aeon/issues"
+  },
+  "scripts": {
+    "setup": "npm install && bower install",
+    "postinstall": "find node_modules/ -name '*.info' -type f -delete"
+  },
+  "dependencies": {}
+}
