@@ -5,10 +5,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Vendor
 // -----------------------------------------------------------------------------
-// Here we load vendor utilities. Bourbon and Foundation 6 are core. You can
-// selectively load foundation components but by default everything is loaded.
-// We load our variables and custom foundation (found in utils/) before we
-// load in the Foundation componenets so we can override them.
+// Here we load vendor utilities. Foundation 6 mixins and base Aeon styling is
+// included by default. Inidividual Foundation components can be included via
+// the base/foundation-components.scss file.
 
 @import 'foundation';
 @import 'aeon';
@@ -38,9 +37,7 @@
 // so on). It also contains the _grid file which is the grid system used to
 // build the regions.
 
-@import 'regions/global';
-@import 'regions/header';
-@import 'regions/footer';
+@import 'regions/*.scss';
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -52,12 +49,7 @@
 // or anything along those lines. There are usually a lot of files in
 // components/ since your site should be mostly composed of tiny modules.
 
-@import 'components/user_auth';
-@import 'components/status_messages';
-@import 'components/navigation';
-@import 'components/block-branding';
-@import 'components/block-breadcrumb';
-@import 'components/block-local_tasks';
+@import 'components/*.scss';
 
 
 
@@ -69,4 +61,4 @@
 // have very specific styles for the home page, so you’d have a _home.scss file
 // in pages/ dealing with this.
 
-@import 'pages/home';
+@import 'pages/*.scss';
