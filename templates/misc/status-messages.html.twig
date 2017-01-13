@@ -20,13 +20,13 @@
         <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
       {% endif %}
       {% if messages|length > 1 %}
-        <ul class="messages__list">
+        <ul class="messages-list">
           {% for message in messages %}
-            <li class="messages__item">{{ message }}</li>
+            <li class="message">{{ message }}</li>
           {% endfor %}
         </ul>
       {% else %}
-        {{ messages|first }}
+        <div class="message">{{ messages|first }}</div>
       {% endif %}
     {% if type == 'error' %}
       </div>

@@ -1,30 +1,36 @@
 .messages {
   padding: $global-padding;
-  color: foreground(map-get($foundation-palette, success));
-  background: map-get($foundation-palette, success);
-  text-shadow: 0 1px 1px smart-scale(map-get($foundation-palette, success), 20%);
+  color: $white;
+  background: linear-gradient(smart-scale(map-get($foundation-palette, success), 20%), map-get($foundation-palette, success));
+  text-shadow: 0 0 4px smart-scale(map-get($foundation-palette, success), 30%);
+
+  .message {
+    max-width: $global-width;
+    margin: 0 auto;
+  }
 
   a {
-    color: $white;
     font-weight: bold;
+    color: $white;
+    text-decoration: underline;
   }
 
   &.warning {
     color: foreground(map-get($foundation-palette, warning));
-    background: map-get($foundation-palette, warning);
-    text-shadow: 0 1px 1px smart-scale(map-get($foundation-palette, warning), 20%);
+    background: linear-gradient(smart-scale(map-get($foundation-palette, warning), 20%), map-get($foundation-palette, warning));
+    text-shadow: 0 0 4px smart-scale(map-get($foundation-palette, warning), 30%);
   }
 
   &.error {
     color: foreground(map-get($foundation-palette, alert));
-    background: map-get($foundation-palette, alert);
-    text-shadow: 0 1px 1px smart-scale(map-get($foundation-palette, alert), 20%);
+    background: linear-gradient(smart-scale(map-get($foundation-palette, alert), 20%), map-get($foundation-palette, alert));
+    text-shadow: 0 0 4px smart-scale(map-get($foundation-palette, alert), 30%);
   }
 
   &.info {
     color: foreground(map-get($foundation-palette, primary));
-    background: map-get($foundation-palette, primary);
-    text-shadow: 0 1px 1px smart-scale(map-get($foundation-palette, primary), 20%);
+    background: linear-gradient(smart-scale(map-get($foundation-palette, primary), 20%), map-get($foundation-palette, primary));
+    text-shadow: 0 0 4px smart-scale(map-get($foundation-palette, primary), 30%);
   }
 
   &.small {
