@@ -50,15 +50,3 @@
 // components/ since your site should be mostly composed of tiny modules.
 
 @import 'components/*.scss';
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-// PAGES
-// -----------------------------------------------------------------------------
-// If you have page-specific styles, it is ideal to put them in a pages/
-// folder and in a file named after the page. For example, it’s not uncommon to
-// have very specific styles for the home page, so you’d have a _home.scss file
-// in pages/ dealing with this.
-
-@import 'pages/*.scss';
