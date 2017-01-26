@@ -18,7 +18,7 @@
 <{{ tag }} id="node-{{ node.id }}"{{ attributes.addClass(classes) }}>
   {% if not page %}
     {{ title_prefix }}
-    {% if content_tag %}
+    {% if title_tag %}
       <{{ title_tag }}{{ title_attributes }}>
     {% endif %}
     {% if link_title %}
@@ -28,7 +28,7 @@
     {% if link_title %}
       </a>
     {% endif %}
-    {% if content_tag %}
+    {% if title_tag %}
       </{{ title_tag }}>
     {% endif %}
     {{ title_suffix }}
