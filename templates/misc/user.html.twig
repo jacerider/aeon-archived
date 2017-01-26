@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override to present all user data.
+ *
+ * @see template_preprocess_user()
+ */
+#}
+{%
+set classes = [
+  'user',
+  view_mode|clean_class,
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  {% if content_tag %}
+    <{{ content_tag}}{{ content_attributes }}>
+  {% endif %}
+
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+
+  {% if content_tag %}
+    </{{ content_tag}}>
+  {% endif %}
+</article>
