@@ -9,7 +9,7 @@
 
   Drupal.behaviors.foundationInit = {
     attach: function (context) {
-      $(document).once('foundation-init').foundation();
+      $(context).once('foundation-init').foundation();
     }
   };
 
