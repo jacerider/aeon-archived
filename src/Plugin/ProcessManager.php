@@ -94,9 +94,9 @@ class ProcessManager extends PluginManager {
     // Show throbber AJAX requests in an input button group.
     if (!$element->isType('hidden') && (!isset($ajax['progress']['type']) || $ajax['progress']['type'] === 'throbber')) {
       // Use an icon for autocomplete "throbber".
-      $icon = Aeon::glyphicon('refresh');
-      $element->appendProperty('field_suffix', Element::create($icon)->addClass(['ajax-progress', 'ajax-progress-throbber']));
-      $element->setProperty('input_group', TRUE);
+      // $icon = Aeon::glyphicon('refresh');
+      // $element->appendProperty('field_suffix', Element::create($icon)->addClass(['ajax-progress', 'ajax-progress-throbber']));
+      // $element->setProperty('input_group', TRUE);
     }
   }
 

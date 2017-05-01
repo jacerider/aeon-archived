@@ -22,7 +22,9 @@
 
 {% if label_hidden %}
   {% if multiple %}
+    {% if tag %}
     <{{ tag }}{{ attributes.addClass(classes) }}>
+    {% endif %}
       {% for item in items %}
         {% if content_tag %}
           <{{ content_tag}}{{ item.attributes }}>
@@ -32,16 +34,24 @@
           </{{ content_tag}}>
         {% endif %}
       {% endfor %}
+    {% if tag %}
     </{{ tag }}>
-  {% else %}
+    {% endif %}
+  {% else %}{{ content_tag }}
     {% for item in items %}
+      {% if tag %}
       <{{ tag }}{{ attributes.addClass(classes) }}>
+      {% endif %}
         {{ item.content }}
+      {% if tag %}
       </{{ tag }}>
+      {% endif %}
     {% endfor %}
   {% endif %}
 {% else %}
+  {% if tag %}
   <{{ tag }}{{ attributes.addClass(classes) }}>
+  {% endif %}
     <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
     {% if label_display != 'visually_hidden' %}
       <div class="field-content">
@@ -58,5 +68,7 @@
     {% if label_display != 'visually_hidden' %}
       </div>
     {% endif %}
+  {% if tag %}
   </{{ tag }}>
+  {% endif %}
 {% endif %}

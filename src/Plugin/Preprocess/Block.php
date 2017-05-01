@@ -11,7 +11,7 @@ use Drupal\aeon\Utility\Variables;
  *
  * @AeonPreprocess("block")
  */
-class Block extends PreprocessBase implements PreprocessInterface {
+class Block extends PreprocessBase {
 
   /**
    * {@inheritdoc}

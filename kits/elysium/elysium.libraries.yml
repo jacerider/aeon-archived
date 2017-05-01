@@ -9,3 +9,84 @@ base:
     - core/jquery
     - core/jquery.once
     - core/drupal
+
+# ------------------------------------------------------------------------------
+# Foundation
+# ------------------------------------------------------------------------------
+
+foundation.core:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.core.js: { minified: true }
+    assets/js/vendor/foundation.util.mediaQuery.js: { minified: true }
+    assets/js/foundation.init.js: { minified: true }
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+
+foundation.accordion:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.accordion.js: { minified: true }
+  dependencies:
+    - tcm/foundation.core
+    - tcm/foundation.util.motion
+    - tcm/foundation.util.keyboard
+
+foundation.equalizer:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.equalizer.js: { minified: true }
+  dependencies:
+    - tcm/foundation.core
+    - tcm/foundation.util.timerAndImageLoader
+
+foundation.toggler:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.toggler.js: { minified: true }
+  dependencies:
+    - tcm/foundation.core
+    - tcm/foundation.util.motion
+    - tcm/foundation.util.triggers
+
+# ------------------------------------------------------------------------------
+# Foundation Utilities
+# ------------------------------------------------------------------------------
+
+foundation.util.box:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.util.box.js: { minified: true }
+
+foundation.util.keyboard:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.util.keyboard.js: { minified: true }
+
+foundation.util.motion:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.util.motion.js: { minified: true }
+
+foundation.util.nest:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.util.nest.js: { minified: true }
+
+foundation.util.timerAndImageLoader:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.util.timerAndImageLoader.js: { minified: true }
+
+foundation.util.touch:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.util.touch.js: { minified: true }
+
+foundation.util.triggers:
+  version: VERSION
+  js:
+    assets/js/vendor/foundation.util.triggers.js: { minified: true }
+

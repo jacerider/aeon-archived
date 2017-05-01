@@ -11,7 +11,7 @@ use Drupal\aeon\Utility\Variables;
  *
  * @AeonPreprocess("user")
  */
-class User extends PreprocessBase implements PreprocessInterface {
+class User extends PreprocessBase {
 
   /**
    * {@inheritdoc}

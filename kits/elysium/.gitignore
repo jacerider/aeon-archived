@@ -3,5 +3,6 @@
 .DS_Store
 *.codekit
 .idea
-node_modules
+dev/node_modules
+dev/bower_components
 dev/config/config.local.json

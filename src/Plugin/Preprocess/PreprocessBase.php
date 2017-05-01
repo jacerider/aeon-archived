@@ -110,4 +110,40 @@ class PreprocessBase extends PluginBase implements PreprocessInterface {
    */
   protected function preprocessVariables(Variables $variables) {}
 
+  /**
+   * Set the element tag.
+   */
+  protected function setTag($tag = 'div', $attributes = []) {
+    $this->variables['tag'] = $tag;
+
+    if (!empty($attributes)) {
+      $this->variables->setAttributes($attributes);
+    }
+  }
+
+  /**
+   * Set the content tag.
+   */
+  protected function setTitleTag($tag = 'div') {
+    $this->variables['title_tag'] = $tag;
+  }
+
+  /**
+   * Set the content tag.
+   */
+  protected function setContentTag($tag = 'div', $attributes = []) {
+    $this->variables['content_tag'] = $tag;
+
+    if (!empty($attributes)) {
+      $this->setContentAttributes($attributes);
+    }
+  }
+
+  /**
+   * Set the content attributes.
+   */
+  protected function setContentAttributes($attributes = []) {
+    $this->variables->setAttributes($attributes, 'content_attributes');
+  }
+
 }

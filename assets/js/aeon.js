@@ -8,15 +8,11 @@
   'use strict';
 
   Drupal.behaviors.aeonSidebars = {
-    originalClasses: '',
     attach: function (context) {
       var self = this;
       var $body = $('body');
-      $body.once().each(function () {
-        self.originalClasses = $body.attr('class');
-      });
       // Reset body classes to original values.
-      $body.attr('class', self.originalClasses);
+      $body.removeClass('sidebar-first sidebar-second');
       var $sidebars = $('.region.sidebar');
       if ($sidebars.length) {
         var $first = $sidebars.filter('.first');

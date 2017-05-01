@@ -12,15 +12,12 @@
     has_parent ? 'form-wrapper',
   ]
 %}
-{%
-  set showWrapper = attributes.toArray|length
-%}
-{% if showWrapper %}
+{% if show_wrapper %}
   <div{{ attributes.addClass(classes) }}>
 {% endif %}
 
   {{ children }}
 
-{% if showWrapper %}
+{% if show_wrapper %}
   </div>
 {% endif %}

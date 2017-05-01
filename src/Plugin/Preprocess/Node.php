@@ -11,14 +11,56 @@ use Drupal\aeon\Utility\Variables;
  *
  * @AeonPreprocess("node")
  */
-class Node extends PreprocessBase implements PreprocessInterface {
+class Node extends PreprocessBase {
 
   /**
    * {@inheritdoc}
    */
   public function preprocessVariables(Variables $variables) {
     // Should the node title be linked.
-    $variables['link_title'] = TRUE;
+    $this->variables['title_as_link'] = TRUE;
+    // Should the node title be shown.
+    $this->variables['title_hide'] = FALSE;
+    // Should the node title show up after the content.
+    $this->variables['title_after'] = FALSE;
+  }
+
+  /**
+   * Set element as link to title.
+   */
+  protected function setAsLink() {
+    $this->variables['title_as_link'] = FALSE;
+    $this->variables['tag'] = 'a';
+    $this->variables['attributes']['href'] = $this->variables['url'];
+    $this->variables['attributes']['rel'] = 'bookmark';
+  }
+
+  /**
+   * Show the node title.
+   */
+  protected function showTitle() {
+    $this->variables['title_show'] = FALSE;
+  }
+
+  /**
+   * Hide the node title.
+   */
+  protected function hideTitle() {
+    $this->variables['title_hide'] = TRUE;
+  }
+
+  /**
+   * Show the title after the content.
+   */
+  protected function showTitleBefore() {
+    $this->variables['title_after'] = FALSE;
+  }
+
+  /**
+   * Show the title after the content.
+   */
+  protected function showTitleAfter() {
+    $this->variables['title_after'] = TRUE;
   }
 
 }

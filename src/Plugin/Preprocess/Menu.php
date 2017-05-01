@@ -12,7 +12,7 @@ use Drupal\Core\Template\Attribute;
  *
  * @AeonPreprocess("menu")
  */
-class Menu extends PreprocessBase implements PreprocessInterface {
+class Menu extends PreprocessBase {
 
   /**
    * {@inheritdoc}
@@ -31,15 +31,23 @@ class Menu extends PreprocessBase implements PreprocessInterface {
    */
   protected function alterChildren(&$items) {
     foreach ($items as &$item) {
-      $options = $item['url']->getOptions();
-      $options['attributes']['class'][] = 'item';
-      $item['url']->setOptions($options);
-      $item['link_attributes'] = new Attribute($options['attributes']);
+      $item = $this->alterChild($item);
       if (!empty($item['below'])) {
         $item['below'] = $this->alterChildren($item['below']);
       }
     }
     return $items;
+  }
+
+  /**
+   * Alter individual menu item children.
+   */
+  protected function alterChild($item) {
+    $options = $item['url']->getOptions();
+    $options['attributes']['class'][] = 'item';
+    $item['url']->setOptions($options);
+    $item['link_attributes'] = new Attribute($options['attributes']);
+    return $item;
   }
 
 }

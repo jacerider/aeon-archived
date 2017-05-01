@@ -10,7 +10,6 @@
     "notify" : false
   },
   "css": {
-    "file" : "elysium.scss",
     "dest": "../assets/css",
     "src": [
       "scss/**/*.scss"

@@ -10,12 +10,14 @@
   set showWrapper = attributes.toArray|length
 %}
 {% if showWrapper %}
-  <div{{ attributes }}>
+  <{{ tag }}{{ attributes }}>
 {% endif %}
 
-  {{ title_prefix }}
-  {{ title }}
-  {{ title_suffix }}
+  {% if title %}
+    {{ title_prefix }}
+    <{{ title_tag }} class="view-title">{{ title }}</{{ title_tag }}>
+    {{ title_suffix }}
+  {% endif %}
 
   {% if header %}
     <header>
@@ -42,5 +44,5 @@
   {{ feed_icons }}
 
 {% if showWrapper %}
-  </div>
+  </{{ tag }}>
 {% endif %}

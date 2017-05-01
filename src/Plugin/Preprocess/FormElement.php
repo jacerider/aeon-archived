@@ -12,7 +12,7 @@ use Drupal\aeon\Utility\Variables;
  *
  * @AeonPreprocess("form_element")
  */
-class FormElement extends PreprocessBase implements PreprocessInterface {
+class FormElement extends PreprocessBase {
 
   /**
    * {@inheritdoc}

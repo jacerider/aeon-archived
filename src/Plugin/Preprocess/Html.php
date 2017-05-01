@@ -11,7 +11,7 @@ use Drupal\aeon\Utility\Variables;
  *
  * @AeonPreprocess("html")
  */
-class Html extends PreprocessBase implements PreprocessInterface {
+class Html extends PreprocessBase {
 
   /**
    * {@inheritdoc}

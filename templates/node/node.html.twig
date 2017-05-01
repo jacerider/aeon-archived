@@ -15,27 +15,14 @@
    view_mode|clean_class
  ]
 %}
-<{{ tag }} id="node-{{ node.id }}"{{ attributes.addClass(classes) }}>
-  {% if not page %}
-    {{ title_prefix }}
-    {% if title_tag %}
-      <{{ title_tag }}{{ title_attributes }}>
-    {% endif %}
-    {% if link_title %}
-      <a href="{{ url }}" rel="bookmark">
-    {% endif %}
-    {{ label }}
-    {% if link_title %}
-      </a>
-    {% endif %}
-    {% if title_tag %}
-      </{{ title_tag }}>
-    {% endif %}
-    {{ title_suffix }}
-  {% endif %}
 
+<{{ tag }} id="node-{{ node.id }}"{{ attributes.addClass(classes) }}>
   {% if content_tag %}
     <{{ content_tag}}{{ content_attributes }}>
+  {% endif %}
+
+  {% if not page and not title_hide and not title_after %}
+    {{ _self.node_title(label, title_tag, title_attributes, url, title_as_link, title_prefix, title_suffix) }}
   {% endif %}
 
   {% if display_submitted %}
@@ -56,7 +43,34 @@
   {{ content.links }}
   {{ content.comments }}
 
+  {% if not page and not title_hide and title_after %}
+    {{ _self.node_title(label, title_tag, title_attributes, url, title_as_link, title_prefix, title_suffix) }}
+  {% endif %}
+
   {% if content_tag %}
     </{{ content_tag}}>
   {% endif %}
 </{{ tag }}>
+
+{#
+/**
+ * The node title.
+ */
+#}
+{% macro node_title(title, tag, attributes, url, as_link, prefix, suffix) %}
+  {{ prefix }}
+  {% if tag %}
+    <{{ tag }}{{ attributes }}>
+  {% endif %}
+  {% if as_link %}
+    <a href="{{ url }}" rel="bookmark">
+  {% endif %}
+  {{ title }}
+  {% if as_link %}
+    </a>
+  {% endif %}
+  {% if tag %}
+    </{{ tag }}>
+  {% endif %}
+  {{ suffix }}
+{% endmacro %}

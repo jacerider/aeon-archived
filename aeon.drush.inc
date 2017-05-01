@@ -135,7 +135,7 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
   }
 
   // Batch rename all config files.
-  $includes_path = $subtheme_path . '/config/install/*.yml';
+  $includes_path = $subtheme_path . '/config/optional/*.yml';
   foreach (glob($includes_path) as $file_to_rename_path) {
     $file_new_path = str_replace($kit, $machine_name, $file_to_rename_path);
     drush_op('rename', drush_normalize_path($file_to_rename_path), drush_normalize_path($file_new_path));
@@ -178,6 +178,7 @@ function aeon_file_str_replace($file_path, $find, $replace) {
  */
 function aeon_get_files_to_make_replacements($kit = 'elysium') {
   return array(
+    'config/install/' . $kit . '.settings.yml',
     'config/schema/' . $kit . '.schema.yml',
     'dev/scss/' . $kit . '.scss',
     'dev/js/' . $kit . '.js',
@@ -185,18 +186,6 @@ function aeon_get_files_to_make_replacements($kit = 'elysium') {
     'dev/gulpfile.js',
     'dev/package.json',
     'dev/config/config.json',
-    'includes/block.inc',
-    'includes/comment.inc',
-    'includes/field.inc',
-    'includes/form.inc',
-    'includes/menu.inc',
-    'includes/nav.inc',
-    'includes/node.inc',
-    'includes/page.inc',
-    'includes/structure.inc',
-    'includes/theme.inc',
-    'includes/user.inc',
-    'includes/view.inc',
     $kit . '.info.yml',
     $kit . '.libraries.yml',
     $kit . '.breakpoints.yml',

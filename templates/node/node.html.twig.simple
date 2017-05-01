@@ -1,0 +1,24 @@
+{#
+/**
+* @file
+* Default theme implementation to display a node.
+*
+* @see template_preprocess()
+* @see template_preprocess_node()
+* @see template_process()
+*/
+#}
+{%
+ set classes = [
+   'node',
+   node.bundle|clean_class,
+   view_mode|clean_class
+ ]
+%}
+
+<{{ tag }} id="node-{{ node.id }}"{{ attributes.addClass(classes) }}>
+
+  {{ label }}
+  {{ content }}
+
+</{{ tag }}>

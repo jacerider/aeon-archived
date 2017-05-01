@@ -11,7 +11,7 @@ use Drupal\aeon\Utility\Variables;
  *
  * @AeonPreprocess("region")
  */
-class Region extends PreprocessBase implements PreprocessInterface {
+class Region extends PreprocessBase {
 
   /**
    * {@inheritdoc}

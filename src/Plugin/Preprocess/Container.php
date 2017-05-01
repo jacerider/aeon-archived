@@ -11,7 +11,7 @@ use Drupal\aeon\Utility\Variables;
  *
  * @AeonPreprocess("container")
  */
-class Container extends PreprocessBase implements PreprocessInterface {
+class Container extends PreprocessBase {
 
   /**
    * {@inheritdoc}
@@ -21,9 +21,7 @@ class Container extends PreprocessBase implements PreprocessInterface {
     // it. We don't want this div so we check for the class and remove it
     // allowing the container.html.twig template to skip the wrapper.
     $variables->removeClass('views-element-container');
-    if (empty($variables->getClasses())) {
-      $variables->removeAttribute('class');
-    }
+    $variables['show_wrapper'] = !empty($variables->getClasses());
   }
 
 }
