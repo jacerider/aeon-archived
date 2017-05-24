@@ -17,6 +17,7 @@ class Page extends PreprocessBase {
    * {@inheritdoc}
    */
   public function preprocessVariables(Variables $variables) {
+
     $variables['logo'] = [
       '#theme' => 'image',
       '#uri' => $variables['base_path'] . $variables['directory'] . '/logo.svg',
@@ -26,6 +27,14 @@ class Page extends PreprocessBase {
         ],
       ],
     ];
+
+    $route_name = $this->getRouteMatch()->getRouteName();
+    switch ($route_name) {
+      case 'search.view_node_search':
+      case 'search.view_user_search':
+        $variables->addClass('search-results');
+        break;
+    }
   }
 
 }

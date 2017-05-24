@@ -37,7 +37,7 @@
     {% if tag %}
     </{{ tag }}>
     {% endif %}
-  {% else %}{{ content_tag }}
+  {% else %}
     {% for item in items %}
       {% if tag %}
       <{{ tag }}{{ attributes.addClass(classes) }}>

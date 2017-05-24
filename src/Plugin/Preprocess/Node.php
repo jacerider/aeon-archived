@@ -29,7 +29,7 @@ class Node extends PreprocessBase {
    * Set element as link to title.
    */
   protected function setAsLink() {
-    $this->variables['title_as_link'] = FALSE;
+    $this->unlinkTitle();
     $this->variables['tag'] = 'a';
     $this->variables['attributes']['href'] = $this->variables['url'];
     $this->variables['attributes']['rel'] = 'bookmark';
@@ -47,6 +47,20 @@ class Node extends PreprocessBase {
    */
   protected function hideTitle() {
     $this->variables['title_hide'] = TRUE;
+  }
+
+  /**
+   * Link node title.
+   */
+  protected function linkTitle() {
+    $this->variables['title_as_link'] = TRUE;
+  }
+
+  /**
+   * Unlink node title.
+   */
+  protected function unlinkTitle() {
+    $this->variables['title_as_link'] = FALSE;
   }
 
   /**

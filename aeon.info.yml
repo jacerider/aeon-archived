@@ -11,11 +11,16 @@ stylesheets-remove:
   - system.theme.css
   - system.menus.css
   - system.admin.css
+
 libraries:
   - aeon/base
 
+libraries-extend:
+  views/views.ajax:
+    - aeon/views.ajax
+
 libraries-override:
-  seven/global-styling: false
+  system/admin: false
 
 regions:
    page_top: 'Page top'

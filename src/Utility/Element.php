@@ -7,6 +7,7 @@ use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Component\Render\MarkupInterface;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element as DrupalElement;
 
 /**
  * Provides helper methods for Drupal render elements.
@@ -67,7 +68,7 @@ class Element extends DrupalAttributes {
    *   Throws this error when the name is a property (key starting with #).
    */
   public function &__get($key) {
-    if (\Drupal\Core\Render\Element::property($key)) {
+    if (DrupalElement::property($key)) {
       throw new \InvalidArgumentException('Cannot dynamically retrieve element property. Please use \Drupal\aeon\Utility\Element::getProperty instead.');
     }
     $instance = new self($this->offsetGet($key, []));
@@ -88,7 +89,7 @@ class Element extends DrupalAttributes {
    *   Throws this error when the name is a property (key starting with #).
    */
   public function __set($key, $value) {
-    if (\Drupal\Core\Render\Element::property($key)) {
+    if (DrupalElement::property($key)) {
       throw new \InvalidArgumentException('Cannot dynamically retrieve element property. Use \Drupal\aeon\Utility\Element::setProperty instead.');
     }
     $this->offsetSet($key, ($value instanceof Element ? $value->getArray() : $value));
@@ -109,7 +110,7 @@ class Element extends DrupalAttributes {
    *   Throws this error when the name is a property (key starting with #).
    */
   public function __isset($name) {
-    if (\Drupal\Core\Render\Element::property($name)) {
+    if (DrupalElement::property($name)) {
       throw new \InvalidArgumentException('Cannot dynamically check if an element has a property. Use \Drupal\aeon\Utility\Element::unsetProperty instead.');
     }
     return parent::__isset($name);
@@ -127,7 +128,7 @@ class Element extends DrupalAttributes {
    *   Throws this error when the name is a property (key starting with #).
    */
   public function __unset($name) {
-    if (\Drupal\Core\Render\Element::property($name)) {
+    if (DrupalElement::property($name)) {
       throw new \InvalidArgumentException('Cannot dynamically unset an element property. Use \Drupal\aeon\Utility\Element::hasProperty instead.');
     }
     parent::__unset($name);
@@ -176,7 +177,7 @@ class Element extends DrupalAttributes {
    *   The array keys of the element's children.
    */
   public function childKeys($sort = FALSE) {
-    return \Drupal\Core\Render\Element::children($this->array, $sort);
+    return DrupalElement::children($this->array, $sort);
   }
 
   /**
@@ -197,55 +198,6 @@ class Element extends DrupalAttributes {
       $children[$child] = new self($this->array[$child]);
     }
     return $children;
-  }
-
-  /**
-   * Adds a specific Aeon class to color a button based on its text value.
-   *
-   * @return $this
-   */
-  public function colorize() {
-    $button = $this->isButton();
-
-    // @todo refactor this more so it's not just "button" specific.
-    $prefix = $button ? 'btn' : 'has';
-
-    // List of classes, based on the prefix.
-    $classes = [
-      "$prefix-primary", "$prefix-success", "$prefix-info",
-      "$prefix-warning", "$prefix-danger", "$prefix-link",
-      // Default should be last.
-      "$prefix-default"
-    ];
-
-    // Set the class to "btn-default" if it shouldn't be colorized.
-    $class = $button && !Aeon::getTheme()->getSetting('button_colorize') ? 'btn-default' : FALSE;
-
-    // Search for an existing class.
-    if (!$class) {
-      foreach ($classes as $value) {
-        if ($this->hasClass($value)) {
-          $class = $value;
-          break;
-        }
-      }
-    }
-
-    // Find a class based on the value of "value", "title" or "button_type".
-    if (!$class) {
-      $value = $this->getProperty('value', $this->getProperty('title', ''));
-      $class = "$prefix-" . Aeon::cssClassFromString($value, $button ? $this->getProperty('button_type', 'default') : 'default');
-    }
-
-    // Remove any existing classes and add the specified class.
-    if ($class) {
-      $this->removeClass($classes)->addClass($class);
-      if ($button && $this->getProperty('split')) {
-        $this->removeClass($classes, $this::SPLIT_BUTTON)->addClass($class, $this::SPLIT_BUTTON);
-      }
-    }
-
-    return $this;
   }
 
   /**
@@ -312,7 +264,7 @@ class Element extends DrupalAttributes {
    * @param mixed $default
    *   Optional. The default value to use if the context $name isn't set.
    *
-   * @return mixed|NULL
+   * @return mixed|null
    *   The context value or the $default value if not set.
    */
   public function &getContext($name, $default = NULL) {
@@ -365,7 +317,7 @@ class Element extends DrupalAttributes {
    *   The array keys of the element's visible children.
    */
   public function getVisibleChildren() {
-    return \Drupal\Core\Render\Element::getVisibleChildren($this->array);
+    return DrupalElement::getVisibleChildren($this->array);
   }
 
   /**
@@ -397,7 +349,12 @@ class Element extends DrupalAttributes {
    *   TRUE or FALSE.
    */
   public function isButton() {
-    return !empty($this->array['#is_button']) || $this->isType(['button', 'submit', 'reset', 'image_button']) || $this->hasClass('btn');
+    return !empty($this->array['#is_button']) || $this->isType([
+      'button',
+      'submit',
+      'reset',
+      'image_button',
+    ]) || $this->hasClass('btn');
   }
 
   /**
@@ -410,7 +367,7 @@ class Element extends DrupalAttributes {
    *   Whether the given element is empty.
    */
   public function isEmpty() {
-    return \Drupal\Core\Render\Element::isEmpty($this->array);
+    return DrupalElement::isEmpty($this->array);
   }
 
   /**
@@ -465,7 +422,7 @@ class Element extends DrupalAttributes {
    *   TRUE if the element is visible, otherwise FALSE.
    */
   public function isVisible() {
-    return \Drupal\Core\Render\Element::isVisibleElement($this->array);
+    return DrupalElement::isVisibleElement($this->array);
   }
 
   /**
@@ -481,7 +438,7 @@ class Element extends DrupalAttributes {
    * @return $this
    */
   public function map(array $map) {
-    \Drupal\Core\Render\Element::setAttributes($this->array, $map);
+    DrupalElement::setAttributes($this->array, $map);
     return $this;
   }
 
@@ -522,7 +479,7 @@ class Element extends DrupalAttributes {
    *   An array of property keys for the element.
    */
   public function properties() {
-    return \Drupal\Core\Render\Element::properties($this->array);
+    return DrupalElement::properties($this->array);
   }
 
   /**
@@ -564,56 +521,6 @@ class Element extends DrupalAttributes {
   }
 
   /**
-   * Adds Aeon button size class to the element.
-   *
-   * @param string $class
-   *   The full button size class to add. If none is provided, it will default
-   *   to any set theme setting.
-   *
-   * @return $this
-   */
-  public function setButtonSize($class = NULL) {
-    // Immediately return if element is not a button.
-    if (!$this->isButton()) {
-      return $this;
-    }
-
-    // Retrieve the button size classes from the specific setting's options.
-    static $classes;
-    if (!isset($classes)) {
-      $classes = [];
-      if ($button_size = Aeon::getTheme()->getSettingPlugin('button_size')) {
-        $classes = array_keys($button_size->getOptions());
-      }
-    }
-
-    // Search for an existing class.
-    if (!$class) {
-      foreach ($classes as $value) {
-        if ($this->hasClass($value)) {
-          $class = $value;
-          break;
-        }
-      }
-    }
-
-    // Attempt to get the default button size, if set.
-    if (!$class) {
-      $class = Aeon::getTheme()->getSetting('button_size');
-    }
-
-    // Remove any existing classes and add the specified class.
-    if ($class) {
-      $this->removeClass($classes)->addClass($class);
-      if ($this->getProperty('split')) {
-        $this->removeClass($classes, $this::SPLIT_BUTTON)->addClass($class, $this::SPLIT_BUTTON);
-      }
-    }
-
-    return $this;
-  }
-
-  /**
    * Flags an element as having an error.
    *
    * @param string $message
@@ -636,20 +543,31 @@ class Element extends DrupalAttributes {
   /**
    * Adds an icon to button element based on its text value.
    *
-   * @param array $icon
-   *   An icon render array.
+   * @param string $icon
+   *   The Micon icon id to set as the icon.
+   * @param bool $icon_only
+   *   Set as icon only.
+   * @param string $icon_position
+   *   Set icon position. Either before or after.
    *
    * @return $this
-   *
-   * @see \Drupal\aeon\Aeon::glyphicon()
    */
-  public function setIcon(array $icon = NULL) {
-    if ($this->isButton() && !Aeon::getTheme()->getSetting('button_iconize')) {
+  public function setIcon($icon = '', $icon_only = NULL, $icon_position = 'before') {
+    if ($this->isButton() && !Aeon::hasIcons()) {
       return $this;
     }
     if ($value = $this->getProperty('value', $this->getProperty('title'))) {
-      $icon = isset($icon) ? $icon : Aeon::glyphiconFromString($value);
-      $this->setProperty('icon', $icon);
+      $icon_handler = Aeon::iconize($value);
+      if ($icon) {
+        $icon_handler->setIcon($icon);
+      }
+      if ($icon_only) {
+        $icon_handler->setIconOnly();
+      }
+      if ($icon_position == 'after') {
+        $icon_handler->setIconAfter();
+      }
+      $this->setProperty('value', $icon_handler);
     }
     return $this;
   }
@@ -672,7 +590,7 @@ class Element extends DrupalAttributes {
   /**
    * Converts an element description into a tooltip based on certain criteria.
    *
-   * @param array|\Drupal\aeon\Utility\Element|NULL $target_element
+   * @param array|\Drupal\aeon\Utility\Element|null $target_element
    *   The target element render array the tooltip is to be attached to, passed
    *   by reference or an existing Element object. If not set, it will default
    *   this Element instance.

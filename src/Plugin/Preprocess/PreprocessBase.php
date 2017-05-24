@@ -36,6 +36,13 @@ class PreprocessBase extends PluginBase implements PreprocessInterface {
   protected $variables;
 
   /**
+   * The route match.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
+   */
+  protected $routeMatch;
+
+  /**
    * {@inheritdoc}
    */
   public function preprocess(array &$variables, $hook, array $info) {
@@ -111,6 +118,19 @@ class PreprocessBase extends PluginBase implements PreprocessInterface {
   protected function preprocessVariables(Variables $variables) {}
 
   /**
+   * Gets the route match.
+   *
+   * @return \Drupal\Core\Routing\RouteMatchInterface
+   *   The route match object.
+   */
+  protected function getRouteMatch() {
+    if (!$this->routeMatch) {
+      $this->routeMatch = \Drupal::routeMatch();
+    }
+    return $this->routeMatch;
+  }
+
+  /**
    * Set the element tag.
    */
   protected function setTag($tag = 'div', $attributes = []) {
@@ -126,6 +146,13 @@ class PreprocessBase extends PluginBase implements PreprocessInterface {
    */
   protected function setTitleTag($tag = 'div') {
     $this->variables['title_tag'] = $tag;
+  }
+
+  /**
+   * Set the title attributes.
+   */
+  protected function setTitleAttributes($attributes = []) {
+    $this->variables->setAttributes($attributes, 'title_attributes');
   }
 
   /**

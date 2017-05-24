@@ -72,6 +72,35 @@ class Aeon {
   }
 
   /**
+   * Check if this theme supports icons.
+   *
+   * @return bool
+   *   Returns true if theme has icon support.
+   */
+  public static function hasIcons() {
+    return \Drupal::service('module_handler')->moduleExists('micon');
+  }
+
+  /**
+   * Iconizes a string using the iconify module.
+   *
+   * @param string $name
+   *   The icon name, minus the "iconize-" prefix.
+   * @param array $default
+   *   (Optional) The default render array to use if $name is not available.
+   *
+   * @return array
+   *   The render containing the icon defined by $name, $default value if
+   *   icon does not exist or returns NULL if no icon could be rendered.
+   */
+  public static function iconize($text, $icon = NULL) {
+    if (self::hasIcons()) {
+      $text = micon($text);
+    }
+    return $text;
+  }
+
+  /**
    * Provides additional variables to be used in elements and templates.
    *
    * @return array
@@ -85,6 +114,11 @@ class Aeon {
 
       // @see https://drupal.org/node/2035055
       'context' => [],
+
+      // @see https://drupal.org/node/2219965
+      'icon' => NULL,
+      'icon_position' => 'before',
+      'icon_only' => FALSE,
     ];
   }
 
