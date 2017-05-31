@@ -18,7 +18,7 @@ trait PreprocessEntityTrait {
    *   The weight of the render array.
    */
   protected function addGroup(array $attributes = [], $weight = 0) {
-    return new PreprocessEntityGroup($this->variables, $attributes);
+    return new PreprocessEntityGroup($this->variables, $attributes, $weight);
   }
 
   /**

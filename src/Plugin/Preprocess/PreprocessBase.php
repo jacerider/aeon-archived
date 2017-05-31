@@ -63,7 +63,7 @@ class PreprocessBase extends PluginBase implements PreprocessInterface {
   /**
    * Ensures all attributes have been converted to an Attribute object.
    */
-  protected function preprocessAttributes() {
+  public function preprocessAttributes() {
     foreach ($this->variables as $name => $value) {
       if (strpos($name, 'attributes') !== FALSE && is_array($value)) {
         $this->variables[$name] = new Attribute($value);
@@ -139,20 +139,6 @@ class PreprocessBase extends PluginBase implements PreprocessInterface {
     if (!empty($attributes)) {
       $this->variables->setAttributes($attributes);
     }
-  }
-
-  /**
-   * Set the content tag.
-   */
-  protected function setTitleTag($tag = 'div') {
-    $this->variables['title_tag'] = $tag;
-  }
-
-  /**
-   * Set the title attributes.
-   */
-  protected function setTitleAttributes($attributes = []) {
-    $this->variables->setAttributes($attributes, 'title_attributes');
   }
 
   /**

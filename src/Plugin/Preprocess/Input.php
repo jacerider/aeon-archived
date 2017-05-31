@@ -24,18 +24,6 @@ class Input extends PreprocessBase implements PreprocessInterface {
     if ($route = $element->getProperty('autocomplete_route_name')) {
       $variables['autocomplete'] = TRUE;
     }
-
-    // Map the element properties.
-    // $variables->map([
-    //   'attributes' => 'attributes',
-    //   'icon' => 'icon',
-    //   'field_prefix' => 'prefix',
-    //   'field_suffix' => 'suffix',
-    //   'type' => 'type',
-    // ]);
-
-    // Ensure attributes are proper objects.
-    $this->preprocessAttributes();
   }
 
 }

@@ -12,6 +12,7 @@ use Drupal\aeon\Utility\Variables;
  * @AeonPreprocess("node")
  */
 class Node extends PreprocessBase {
+  use PreprocessEntityTrait;
 
   /**
    * {@inheritdoc}
@@ -33,6 +34,20 @@ class Node extends PreprocessBase {
     $this->variables['tag'] = 'a';
     $this->variables['attributes']['href'] = $this->variables['url'];
     $this->variables['attributes']['rel'] = 'bookmark';
+  }
+
+  /**
+   * Set the content tag.
+   */
+  protected function setTitleTag($tag = 'div') {
+    $this->variables['title_tag'] = $tag;
+  }
+
+  /**
+   * Set the title attributes.
+   */
+  protected function setTitleAttributes($attributes = []) {
+    $this->variables->setAttributes($attributes, 'title_attributes');
   }
 
   /**

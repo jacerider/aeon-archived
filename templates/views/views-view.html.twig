@@ -25,12 +25,29 @@
     </header>
   {% endif %}
 
-  {{ exposed }}
+  {% if exposed_tag %}
+    <{{ exposed_tag}}{{ exposed_attributes }}>
+  {% endif %}
+    {{ exposed_before }}
+    {{ exposed }}
+    {{ exposed_after }}
+  {% if exposed_tag %}
+    </{{ exposed_tag}}>
+  {% endif %}
+
   {{ attachment_before }}
 
-  {{ rows }}
-  {{ empty }}
-  {{ pager }}
+  {% if content_tag %}
+    <{{ content_tag}}{{ content_attributes }}>
+  {% endif %}
+    {{ content_before }}
+    {{ rows }}
+    {{ empty }}
+    {{ pager }}
+    {{ content_after }}
+  {% if content_tag %}
+    </{{ content_tag}}>
+  {% endif %}
 
   {{ attachment_after }}
   {{ more }}

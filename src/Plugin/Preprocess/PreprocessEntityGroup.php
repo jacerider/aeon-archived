@@ -55,6 +55,8 @@ class PreprocessEntityGroup {
 
   /**
    * The ID of this instance.
+   *
+   * @var string|int
    */
   protected $id = '';
 
@@ -108,6 +110,11 @@ class PreprocessEntityGroup {
    *   The fieldname to add to the group.
    */
   public function addField($field_name) {
+    if ($field_name == 'label' && isset($this->variables[$field_name])) {
+      $this->variables['title_hide'] = TRUE;
+      $this->variables['content'][$field_name] = $this->variables[$field_name];
+      $this->variables['content'][$field_name]['#tag'] = 'h2';
+    }
     if (isset($this->variables['content'][$field_name])) {
       $this->fields[$field_name] = $this->variables['content'][$field_name];
       unset($this->variables['content'][$field_name]);
@@ -123,9 +130,10 @@ class PreprocessEntityGroup {
    */
   public function addFields(array $field_names) {
     foreach ($field_names as $field_name) {
-      if (isset($this->entity->{$field_name}) && !$this->entity->{$field_name}->isEmpty()) {
-        $this->addField($field_name);
+      if (isset($this->entity->{$field_name}) && $this->entity->{$field_name}->isEmpty()) {
+        continue;
       }
+      $this->addField($field_name);
     }
     return $this;
   }

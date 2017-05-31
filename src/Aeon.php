@@ -295,6 +295,8 @@ class Aeon {
         $class = $preprocess_manager->createInstance($info['aeon preprocess'], ['theme' => $theme]);
         /** @var \Drupal\aeon\Plugin\Preprocess\PreprocessInterface $class */
         $class->preprocess($variables, $hook, $info);
+        // We process all attributes array elements.
+        $class->preprocessAttributes();
       }
     }
   }

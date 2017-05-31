@@ -53,8 +53,6 @@ class FormElement extends PreprocessBase {
         $label->setAttributes($element->getProperty('label_attributes'));
       }
     }
-
-    $this->preprocessAttributes();
   }
 
 }
