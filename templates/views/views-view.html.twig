@@ -35,13 +35,25 @@
     </{{ exposed_tag}}>
   {% endif %}
 
-  {{ attachment_before }}
+  {% if attachment_before_tag %}
+    <{{ attachment_before_tag}}{{ attachment_before_attributes }}>
+  {% endif %}
+    {{ attachment_before }}
+  {% if attachment_before_tag %}
+    </{{ attachment_before_tag}}>
+  {% endif %}
 
   {% if content_tag %}
     <{{ content_tag}}{{ content_attributes }}>
   {% endif %}
     {{ content_before }}
+    {% if rows_tag %}
+      <{{ rows_tag}}{{ rows_attributes }}>
+    {% endif %}
     {{ rows }}
+    {% if rows_tag %}
+      </{{ rows_tag}}>
+    {% endif %}
     {{ empty }}
     {{ pager }}
     {{ content_after }}
@@ -49,7 +61,14 @@
     </{{ content_tag}}>
   {% endif %}
 
-  {{ attachment_after }}
+  {% if attachment_after_tag %}
+    <{{ attachment_after_tag}}{{ attachment_after_attributes }}>
+  {% endif %}
+    {{ attachment_after }}
+  {% if attachment_after_tag %}
+    </{{ attachment_after_tag}}>
+  {% endif %}
+
   {{ more }}
 
   {% if footer %}

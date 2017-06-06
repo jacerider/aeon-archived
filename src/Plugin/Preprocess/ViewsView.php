@@ -48,6 +48,31 @@ class ViewsView extends PreprocessBase {
   }
 
   /**
+   * Set the exposed form above the view content.
+   */
+  protected function setExposedAboveContent() {
+    if (!empty($this->variables['exposed'])) {
+      $this->variables['content_before']['exposed'] = $this->variables['exposed'];
+      $this->variables['exposed'] = [];
+    }
+  }
+
+  /**
+   * Set the content tag.
+   */
+  protected function setRowsTag($tag = 'div', $attributes = []) {
+    $this->variables['rows_tag'] = $tag;
+    $this->setRowsAttributes($attributes);
+  }
+
+  /**
+   * Set the content attributes.
+   */
+  protected function setRowsAttributes($attributes = []) {
+    $this->variables->setAttributes($attributes, 'rows_attributes');
+  }
+
+  /**
    * Set the content tag.
    */
   protected function setExposedTag($tag = 'div', $attributes = []) {
@@ -60,6 +85,36 @@ class ViewsView extends PreprocessBase {
    */
   protected function setExposedAttributes($attributes = []) {
     $this->variables->setAttributes($attributes, 'exposed_attributes');
+  }
+
+  /**
+   * Set the attachment before tag.
+   */
+  protected function setAttachmentBeforeTag($tag = 'div', $attributes = []) {
+    $this->variables['attachment_before_tag'] = $tag;
+    $this->setAttachmentBeforeAttributes($attributes);
+  }
+
+  /**
+   * Set the attachment before attributes.
+   */
+  protected function setAttachmentBeforeAttributes($attributes = []) {
+    $this->variables->setAttributes($attributes, 'attachment_before_attributes');
+  }
+
+  /**
+   * Set the attachment after tag.
+   */
+  protected function setAttachmentAfterTag($tag = 'div', $attributes = []) {
+    $this->variables['attachment_after_tag'] = $tag;
+    $this->setAttachmentBeforeAttributes($attributes);
+  }
+
+  /**
+   * Set the attachment after attributes.
+   */
+  protected function setAttachmentAfterAttributes($attributes = []) {
+    $this->variables->setAttributes($attributes, 'attachment_after_attributes');
   }
 
   /**
