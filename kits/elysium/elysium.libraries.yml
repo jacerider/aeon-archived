@@ -30,26 +30,26 @@ foundation.accordion:
   js:
     assets/js/vendor/foundation.accordion.js: { minified: true }
   dependencies:
-    - tcm/foundation.core
-    - tcm/foundation.util.motion
-    - tcm/foundation.util.keyboard
+    - elysium/foundation.core
+    - elysium/foundation.util.motion
+    - elysium/foundation.util.keyboard
 
 foundation.equalizer:
   version: VERSION
   js:
     assets/js/vendor/foundation.equalizer.js: { minified: true }
   dependencies:
-    - tcm/foundation.core
-    - tcm/foundation.util.timerAndImageLoader
+    - elysium/foundation.core
+    - elysium/foundation.util.timerAndImageLoader
 
 foundation.toggler:
   version: VERSION
   js:
     assets/js/vendor/foundation.toggler.js: { minified: true }
   dependencies:
-    - tcm/foundation.core
-    - tcm/foundation.util.motion
-    - tcm/foundation.util.triggers
+    - elysium/foundation.core
+    - elysium/foundation.util.motion
+    - elysium/foundation.util.triggers
 
 # ------------------------------------------------------------------------------
 # Foundation Utilities
