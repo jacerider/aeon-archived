@@ -5,6 +5,7 @@ namespace Drupal\aeon\Plugin\Preprocess;
 use Drupal\aeon\Utility\Variables;
 use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Render\Element;
 
 /**
  * A trait that provides dialog utilities.
@@ -108,12 +109,12 @@ class PreprocessEntityGroup {
    *
    * @param string $field_name
    *   The fieldname to add to the group.
+   *
+   * @return $this
    */
   public function addField($field_name) {
     if ($field_name == 'label' && isset($this->variables[$field_name])) {
-      $this->variables['title_hide'] = TRUE;
-      $this->variables['content'][$field_name] = $this->variables[$field_name];
-      $this->variables['content'][$field_name]['#tag'] = 'h2';
+      $this->addLabel();
     }
     if (isset($this->variables['content'][$field_name])) {
       $this->fields[$field_name] = $this->variables['content'][$field_name];
@@ -123,10 +124,31 @@ class PreprocessEntityGroup {
   }
 
   /**
+   * Add the entity label to the group.
+   *
+   * @param int $weight
+   *   The weight of the render array.
+   *
+   * @return $this
+   */
+  public function addLabel($weight = 0) {
+    if (isset($this->variables['label']) && !isset($this->variables['content']['label'])) {
+      $this->variables['title_hide'] = TRUE;
+      $this->variables['content']['label'] = $this->variables['label'];
+      $this->variables['content']['label']['#weight'] = $weight;
+      $this->variables['content']['label']['#tag'] = 'h2';
+      $this->variables['content']['label']['#printed'] = FALSE;
+    }
+    return $this;
+  }
+
+  /**
    * Add fields to the output.
    *
    * @param array $field_names
    *   An array of field names.
+   *
+   * @return $this
    */
   public function addFields(array $field_names) {
     foreach ($field_names as $field_name) {
@@ -150,6 +172,26 @@ class PreprocessEntityGroup {
     $subgroup = new PreprocessEntityGroup($this->variables, $attributes, $weight);
     $this->subGroups[] = $subgroup;
     return $subgroup;
+  }
+
+  /**
+   * Add remaining fields.
+   *
+   * @param array $exclude
+   *   An array of field ids to exclude.
+   *
+   * @return $this
+   */
+  public function addRemaining(array $exclude = []) {
+    $field_names = [];
+    foreach (Element::children($this->variables['content']) as $field_id) {
+      $field = $this->variables['content'][$field_id];
+      if (empty($field['#aeon_group']) && !in_array($field_id, $exclude)) {
+        $field_names[] = $field_id;
+      }
+    }
+    $this->addFields($field_names);
+    return $this;
   }
 
   /**

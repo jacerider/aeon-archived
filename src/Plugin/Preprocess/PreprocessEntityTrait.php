@@ -2,8 +2,6 @@
 
 namespace Drupal\aeon\Plugin\Preprocess;
 
-use Drupal\Core\Render\Element;
-
 /**
  * A trait that provides dialog utilities.
  */
@@ -30,14 +28,7 @@ trait PreprocessEntityTrait {
    *   The weight of the render array.
    */
   protected function groupRemaining(array $attributes = [], $weight = 0) {
-    $field_names = [];
-    foreach (Element::children($this->variables['content']) as $field_id) {
-      $field = $this->variables['content'][$field_id];
-      if (empty($field['#aeon_group'])) {
-        $field_names[] = $field_id;
-      }
-    }
-    return $this->addGroup($attributes)->addFields($field_names);
+    return $this->addGroup($attributes, $weight)->addRemaining();
   }
 
 }
