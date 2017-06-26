@@ -23,6 +23,10 @@ class FieldNodeTitle extends PreprocessBase implements PreprocessInterface {
     // Set default tag if not set from element.
     $variables['tag'] = !empty($variables['tag']) ? $variables['tag'] : 'span';
     $variables['attributes']['class'][] = 'title';
+
+    if ($element->getProperty('view_mode') == 'rss') {
+      $variables['items'] = [];
+    }
   }
 
 }

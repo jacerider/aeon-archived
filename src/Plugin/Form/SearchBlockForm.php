@@ -2,7 +2,6 @@
 
 namespace Drupal\aeon\Plugin\Form;
 
-use Drupal\aeon\Annotation\AeonForm;
 use Drupal\aeon\Utility\Element;
 use Drupal\Core\Form\FormStateInterface;
 

@@ -6,6 +6,7 @@ use Drupal\aeon\Utility\Variables;
 use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Cache\CacheableMetadata;
 
 /**
  * A trait that provides dialog utilities.
@@ -245,11 +246,14 @@ class PreprocessEntityGroup {
    */
   public function render($add_to_content = TRUE) {
     $render = [];
+    $cacheable_metadata = new CacheableMetadata();
     foreach ($this->fields as $field_name => $content) {
       $render[$field_name] = $content;
+      $cacheable_metadata = $cacheable_metadata->merge(CacheableMetadata::createFromRenderArray($render[$field_name]));
     }
     foreach ($this->subGroups as $key => $subgroup) {
       $render['aeon_subgroup_' . $key] = $subgroup->render(FALSE);
+      $cacheable_metadata = $cacheable_metadata->merge(CacheableMetadata::createFromRenderArray($render['aeon_subgroup_' . $key]));
     }
     if (!empty($render)) {
       $render += [
@@ -262,6 +266,7 @@ class PreprocessEntityGroup {
       if ($add_to_content) {
         $this->variables['content'][$this->getId()] = $render;
       }
+      $cacheable_metadata->applyTo($render);
       return $render;
     }
   }

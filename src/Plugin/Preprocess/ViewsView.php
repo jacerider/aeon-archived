@@ -130,6 +130,35 @@ class ViewsView extends PreprocessBase {
     $classes = [];
     $classes[] = Html::getClass($id);
     $build = $plugin_block->build();
+    if (empty($build)) {
+      return [];
+    }
+    $build['#attributes']['class'][] = 'block';
+    $build['#attributes']['class'][] = 'facet';
+    $build['#attributes']['class'][] = Html::getClass($id);
+    $attribute = new Attribute($build['#attributes']);
+    $build['#prefix'] = '<div' . $attribute . '><h2>' . $label . '</h2>';
+    $build['#suffix'] = '</div>';
+    return $build;
+  }
+
+  /**
+   * Load the plugin build for a facet summary.
+   */
+  protected function facetSummaryBuild($id, $label = '') {
+    $build = [];
+    $summary = \Drupal::entityManager()->getStorage('facets_summary')->load($id);
+    if (!$summary) {
+      return [];
+    }
+
+    $manager = \Drupal::service('facets_summary.manager');
+    $classes = [];
+    $classes[] = Html::getClass($id);
+    $build = $manager->build($summary);
+    if (!isset($build['#items'])) {
+      return [];
+    }
     $build['#attributes']['class'][] = 'block';
     $build['#attributes']['class'][] = 'facet';
     $build['#attributes']['class'][] = Html::getClass($id);

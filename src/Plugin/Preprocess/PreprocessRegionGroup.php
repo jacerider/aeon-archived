@@ -5,6 +5,7 @@ namespace Drupal\aeon\Plugin\Preprocess;
 use Drupal\aeon\Utility\Variables;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Cache\CacheableMetadata;
 
 /**
  * A trait that provides dialog utilities.
@@ -48,6 +49,8 @@ class PreprocessRegionGroup {
 
   /**
    * The ID of this instance.
+   *
+   * @var string
    */
   protected $id = '';
 
@@ -76,7 +79,6 @@ class PreprocessRegionGroup {
       $this->variables['content'] = [];
       foreach (Element::children($this->element) as $id) {
         $this->variables['content'][$id]['#markup'] = isset($this->element[$id]['#markup']) ? $this->element[$id]['#markup'] : '';
-        $this->variables['content'][$id]['#weight'] = isset($this->element[$id]['#weight']) ? $this->element[$id]['#weight'] : '';
         $this->variables['content'][$id]['#cache'] = isset($this->element[$id]['#cache']) ? $this->element[$id]['#cache'] : '';
       }
     }
@@ -195,11 +197,14 @@ class PreprocessRegionGroup {
    */
   public function render($add_to_content = TRUE) {
     $render = [];
+    $cacheable_metadata = new CacheableMetadata();
     foreach ($this->blocks as $block_name => $content) {
       $render[$block_name] = $content;
+      $cacheable_metadata = $cacheable_metadata->merge(CacheableMetadata::createFromRenderArray($render[$block_name]));
     }
     foreach ($this->subGroups as $key => $subgroup) {
       $render['aeon_subgroup_' . $key] = $subgroup->render(FALSE);
+      $cacheable_metadata = $cacheable_metadata->merge(CacheableMetadata::createFromRenderArray($render['aeon_subgroup_' . $key]));
     }
     if (!empty($render)) {
       $render += [
@@ -212,6 +217,7 @@ class PreprocessRegionGroup {
       if ($add_to_content) {
         $this->variables['content'][$this->getId()] = $render;
       }
+      $cacheable_metadata->applyTo($render);
       return $render;
     }
   }

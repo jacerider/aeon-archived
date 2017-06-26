@@ -14,7 +14,7 @@ regions:
   page_top: 'Page top'
   page_bottom: 'Page bottom'
   breadcrumb: Breadcrumb
-  status: Status Messages
+  status: 'Status messages'
   content: Content
   footer: Footer
   sidebar_first: 'Sidebar first'

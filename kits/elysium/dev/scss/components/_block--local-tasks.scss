@@ -1,13 +1,13 @@
-.block.tabs {
+.block.local.tasks {
 
   .tabs {
-    @include button-group(a);
+    @include button-group();
 
     a {
       @include button();
       margin: 0 1px 1px 0;
 
-      &.active {
+      &.is-active {
         @include button-style(map-get($foundation-palette, secondary), auto, auto);
       }
     }

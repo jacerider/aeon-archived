@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Plugin\Form\SearchForm.
- */
 
 namespace Drupal\aeon\Plugin\Form;
 

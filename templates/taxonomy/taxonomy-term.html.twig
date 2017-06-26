@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Theme override to display a taxonomy term.
+ *
+ * @see template_preprocess_taxonomy_term()
+ */
+#}
+{%
+  set classes = [
+    'term',
+    term.bundle|clean_class,
+  ]
+%}
+<{{ tag }}{{ attributes.setAttribute('id', 'term-' ~ term.id).addClass(classes) }}>
+  {% if content_tag %}
+    <{{ content_tag}}{{ content_attributes }}>
+  {% endif %}
+
+  {% if not page and not title_hide and not title_after %}
+    {{ _self.term_title(name, title_tag, title_attributes, url, title_as_link, title_prefix, title_suffix) }}
+  {% endif %}
+
+  {{ content }}
+
+  {% if not page and not title_hide and title_after %}
+    {{ _self.term_title(name, title_tag, title_attributes, url, title_as_link, title_prefix, title_suffix) }}
+  {% endif %}
+
+  {% if content_tag %}
+    </{{ content_tag}}>
+  {% endif %}
+</{{ tag }}>
+
+{#
+/**
+ * The term title.
+ */
+#}
+{% macro term_title(title, tag, attributes, url, as_link, prefix, suffix) %}
+  {{ prefix }}
+  {% if tag %}
+    <{{ tag }}{{ attributes }}>
+  {% endif %}
+  {% if as_link %}
+    <a href="{{ url }}" rel="bookmark">
+  {% endif %}
+  {{ title }}
+  {% if as_link %}
+    </a>
+  {% endif %}
+  {% if tag %}
+    </{{ tag }}>
+  {% endif %}
+  {{ suffix }}
+{% endmacro %}

@@ -5,24 +5,22 @@ namespace Drupal\aeon\Plugin\Preprocess;
 use Drupal\aeon\Utility\Variables;
 
 /**
- * Pre-processes variables for the "node" theme hook.
+ * Pre-processes variables for the "taxonomy_term" theme hook.
  *
  * @ingroup plugins_preprocess
  *
- * @AeonPreprocess("node")
+ * @AeonPreprocess("taxonomy_term")
  */
-class Node extends PreprocessBase {
+class TaxonomyTerm extends PreprocessBase {
   use PreprocessEntityTrait;
 
   /**
    * {@inheritdoc}
    */
   public function preprocessVariables(Variables $variables) {
-    // Should the node title be linked.
-    $this->linkTitle();
-    // Should the node title be shown.
+    $this->unlinkTitle();
+    $this->setTitleTag('h2');
     $this->showTitle();
-    // Should the node title show up after the content.
     $this->showTitleBefore();
   }
 
@@ -51,28 +49,28 @@ class Node extends PreprocessBase {
   }
 
   /**
-   * Show the node title.
+   * Show the taxonomy term title.
    */
   protected function showTitle() {
-    $this->variables['title_hide'] = FALSE;
+    $this->variables['title_show'] = FALSE;
   }
 
   /**
-   * Hide the node title.
+   * Hide the taxonomy term title.
    */
   protected function hideTitle() {
     $this->variables['title_hide'] = TRUE;
   }
 
   /**
-   * Link node title.
+   * Link taxonomy term title.
    */
   protected function linkTitle() {
     $this->variables['title_as_link'] = TRUE;
   }
 
   /**
-   * Unlink node title.
+   * Unlink taxonomy term title.
    */
   protected function unlinkTitle() {
     $this->variables['title_as_link'] = FALSE;
