@@ -6,6 +6,7 @@
 
 
 $flex: false;
+$prototype: false;
 
 @if $flex {
   $global-flexbox: true !global;
@@ -14,7 +15,8 @@ $flex: false;
 @include foundation-global-styles;
 @if not $flex {
   @include foundation-grid;
-} @else {
+}
+@else {
   @include foundation-flex-grid;
 }
 @include foundation-typography;
@@ -26,13 +28,14 @@ $flex: false;
 // @include foundation-breadcrumbs;
 // @include foundation-button-group;
 // @include foundation-callout;
+// @include foundation-card;
 // @include foundation-close-button;
 // @include foundation-menu;
 // @include foundation-menu-icon;
 // @include foundation-drilldown-menu;
 // @include foundation-dropdown;
 // @include foundation-dropdown-menu;
-@include foundation-flex-video;
+@include foundation-responsive-embed;
 // @include foundation-label;
 // @include foundation-media-object;
 // @include foundation-off-canvas;
@@ -54,4 +57,8 @@ $flex: false;
 
 @if $flex {
   @include foundation-flex-classes;
+}
+
+@if $prototype {
+  @include foundation-prototype-classes;
 }
