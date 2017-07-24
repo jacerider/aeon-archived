@@ -191,7 +191,9 @@ class PreprocessEntityGroup {
         $field_names[] = $field_id;
       }
     }
-    $this->addFields($field_names);
+    if (!empty($field_names)) {
+      $this->addFields($field_names);
+    }
     return $this;
   }
 
@@ -267,8 +269,8 @@ class PreprocessEntityGroup {
         $this->variables['content'][$this->getId()] = $render;
       }
       $cacheable_metadata->applyTo($render);
-      return $render;
     }
+    return $render;
   }
 
 }
