@@ -18,6 +18,6 @@
     "*.php"
   ],
   "dependencies": {
-    "foundation-sites": "^6.3.0"
+    "foundation-sites": "~6.4.0"
   }
 }
