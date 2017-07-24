@@ -6,6 +6,7 @@ use Drupal\aeon\Plugin\PluginBase;
 use Drupal\aeon\Utility\Element;
 use Drupal\aeon\Utility\Variables;
 use Drupal\Core\Template\Attribute;
+use Drupal\views\Views;
 
 /**
  * Base preprocess class used to build the necessary variables for templates.
@@ -157,6 +158,31 @@ class PreprocessBase extends PluginBase implements PreprocessInterface {
    */
   protected function setContentAttributes($attributes = []) {
     $this->variables->setAttributes($attributes, 'content_attributes');
+  }
+
+  /**
+   * Get view renderable as render array.
+   *
+   * This is a substitute for views_embed_view and should be used when cache
+   * information is needed.
+   *
+   * @param string $name
+   *   The name of the view to embed.
+   * @param string $display_id
+   *   The display id to embed. If unsure, use 'default', as it will always be
+   *   valid. But things like 'page' or 'block' should work here.
+   * @param ...
+   *   Any additional parameters will be passed as arguments.
+   */
+  protected function embedView($name, $display_id = 'default') {
+    $args = func_get_args();
+    // Remove $name and $display_id from the arguments.
+    unset($args[0], $args[1]);
+
+    $view = Views::getView($name);
+    $view->setDisplay($display_id);
+    $view->setArguments($args);
+    return $view->buildRenderable();
   }
 
 }
