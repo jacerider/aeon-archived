@@ -21,7 +21,7 @@ class Container extends PreprocessBase {
     // it. We don't want this div so we check for the class and remove it
     // allowing the container.html.twig template to skip the wrapper.
     $variables->removeClass('views-element-container');
-    $variables['show_wrapper'] = !empty($variables->getClasses());
+    $variables['show_wrapper'] = !empty($variables->getAttributes()->getArrayCopy());
   }
 
 }
