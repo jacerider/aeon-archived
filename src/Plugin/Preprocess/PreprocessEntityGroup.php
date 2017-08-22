@@ -7,6 +7,7 @@ use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Url;
 
 /**
  * A trait that provides dialog utilities.
@@ -33,6 +34,13 @@ class PreprocessEntityGroup {
    * @var \Drupal\Core\Entity\EntityInterface
    */
   protected $entity;
+
+  /**
+   * The HTML tag of the group.
+   *
+   * @var string
+   */
+  protected $tag = 'div';
 
   /**
    * The weight of the group.
@@ -118,6 +126,10 @@ class PreprocessEntityGroup {
       $this->addLabel();
     }
     if (isset($this->variables['content'][$field_name])) {
+      // If field is an actual entity field, check if it has a value.
+      if (isset($this->entity->{$field_name}) && $this->entity->{$field_name}->isEmpty()) {
+        return $this;;
+      }
       $this->fields[$field_name] = $this->variables['content'][$field_name];
       unset($this->variables['content'][$field_name]);
     }
@@ -153,9 +165,6 @@ class PreprocessEntityGroup {
    */
   public function addFields(array $field_names) {
     foreach ($field_names as $field_name) {
-      if (isset($this->entity->{$field_name}) && $this->entity->{$field_name}->isEmpty()) {
-        continue;
-      }
       $this->addField($field_name);
     }
     return $this;
@@ -194,6 +203,31 @@ class PreprocessEntityGroup {
     if (!empty($field_names)) {
       $this->addFields($field_names);
     }
+    return $this;
+  }
+
+  /**
+   * Set groups as link given a Link field.
+   *
+   * @var string
+   *   The field name to fetch a URI from.
+   */
+  protected function setAsLink($field_name) {
+    if (isset($this->entity->{$field_name}) && !$this->entity->{$field_name}->isEmpty() && $uri = $this->entity->{$field_name}->uri) {
+      $this->setTag('a');
+      $this->setAttribute('href', Url::fromUri($uri)->toString());
+      $this->setAttribute('rel', 'bookmark');
+    }
+  }
+
+  /**
+   * Set the HTML tag of the group.
+   *
+   * @param string $tag
+   *   The group weight as a numeric value.
+   */
+  public function setTag($tag) {
+    $this->tag = $tag;
     return $this;
   }
 
@@ -261,6 +295,7 @@ class PreprocessEntityGroup {
       $render += [
         '#type' => 'container',
         '#aeon_group' => TRUE,
+        '#tag' => $this->tag,
         '#attributes' => $this->attributes->toArray(),
         '#weight' => $this->weight,
       ];

@@ -13,11 +13,11 @@
   ]
 %}
 {% if show_wrapper %}
-  <div{{ attributes.addClass(classes) }}>
+  <{{ tag }}{{ attributes.addClass(classes) }}>
 {% endif %}
 
   {{ children }}
 
 {% if show_wrapper %}
-  </div>
+  </{{ tag }}>
 {% endif %}
