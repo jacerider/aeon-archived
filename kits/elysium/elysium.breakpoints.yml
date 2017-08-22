@@ -1,6 +1,6 @@
 elysium.small:
   label: small
-  mediaQuery: ''
+  mediaQuery: 'all'
   weight: 0
   multipliers:
     - 1x
