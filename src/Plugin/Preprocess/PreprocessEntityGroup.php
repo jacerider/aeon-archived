@@ -211,13 +211,16 @@ class PreprocessEntityGroup {
    *
    * @var string
    *   The field name to fetch a URI from.
+   *
+   * @return $this
    */
-  protected function setAsLink($field_name) {
+  public function setAsLink($field_name) {
     if (isset($this->entity->{$field_name}) && !$this->entity->{$field_name}->isEmpty() && $uri = $this->entity->{$field_name}->uri) {
       $this->setTag('a');
       $this->setAttribute('href', Url::fromUri($uri)->toString());
       $this->setAttribute('rel', 'bookmark');
     }
+    return $this;
   }
 
   /**
@@ -225,6 +228,8 @@ class PreprocessEntityGroup {
    *
    * @param string $tag
    *   The group weight as a numeric value.
+   *
+   * @return $this
    */
   public function setTag($tag) {
     $this->tag = $tag;
