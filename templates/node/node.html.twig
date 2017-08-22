@@ -16,7 +16,9 @@
  ]
 %}
 
+{% if tag %}
 <{{ tag }} id="node-{{ node.id }}"{{ attributes.addClass(classes) }}>
+{% endif %}
   {% if content_tag %}
     <{{ content_tag}}{{ content_attributes }}>
   {% endif %}
@@ -50,7 +52,9 @@
   {% if content_tag %}
     </{{ content_tag}}>
   {% endif %}
+{% if tag %}
 </{{ tag }}>
+{% endif %}
 
 {#
 /**

@@ -14,6 +14,12 @@
 %}
 {% if content %}
   <{{ tag }}{{ attributes.addClass(classes) }}>
+    {% if content_tag %}
+      <{{ content_tag}}{{ content_attributes }}>
+    {% endif %}
     {{ content }}
+    {% if content_tag %}
+      </{{ content_tag}}>
+    {% endif %}
   </{{ tag }}>
 {% endif %}

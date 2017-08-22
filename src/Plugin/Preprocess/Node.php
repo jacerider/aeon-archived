@@ -18,6 +18,9 @@ class Node extends PreprocessBase {
    * {@inheritdoc}
    */
   public function preprocessVariables(Variables $variables) {
+    // Default variables.
+    $this->variables['title_prefix'] = '';
+    $this->variables['title_suffix'] = '';
     // Should the node title be linked.
     $this->linkTitle();
     // Should the node title be shown.
