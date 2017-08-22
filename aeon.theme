@@ -106,6 +106,16 @@ function aeon_theme() {
  */
 function aeon_theme_registry_alter(&$data, &$context1 = NULL, &$context2 = NULL) {
   Aeon::alter(__FUNCTION__, $data, $context1, $context2);
+
+  // Make sure aeon preprocess functions run last.
+  foreach ($data as &$registry) {
+    if (isset($registry['preprocess functions'])) {
+      if(($key = array_search('aeon_preprocess', $registry['preprocess functions'])) !== false) {
+        unset($registry['preprocess functions'][$key]);
+        $registry['preprocess functions'][] = 'aeon_preprocess';
+      }
+    }
+  }
 }
 
 /**
