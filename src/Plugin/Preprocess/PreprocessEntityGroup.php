@@ -36,6 +36,13 @@ class PreprocessEntityGroup {
   protected $entity;
 
   /**
+   * The property that holds the renderable content.
+   *
+   * @var string
+   */
+  protected $propertyName = 'content';
+
+  /**
    * The HTML tag of the group.
    *
    * @var string
@@ -96,10 +103,22 @@ class PreprocessEntityGroup {
   }
 
   /**
+   * Set the property that holds the renderable content.
+   *
+   * @return $this
+   */
+  public function setPropertyName($property_name) {
+    $this->propertyName = $property_name;
+    return $this;
+  }
+
+  /**
    * The ID to use as the render array identifier.
    *
    * @param string $identifier
    *   The identifier to set as the id.
+   *
+   * @return $this
    */
   public function setId($identifier) {
     $this->id = Html::cleanCssIdentifier($identifier);
@@ -125,32 +144,13 @@ class PreprocessEntityGroup {
     if ($field_name == 'label' && isset($this->variables[$field_name])) {
       $this->addLabel();
     }
-    if (isset($this->variables['content'][$field_name])) {
+    if (isset($this->variables[$this->propertyName][$field_name])) {
       // If field is an actual entity field, check if it has a value.
       if (isset($this->entity->{$field_name}) && $this->entity->{$field_name}->isEmpty()) {
-        return $this;;
+        return $this;
       }
-      $this->fields[$field_name] = $this->variables['content'][$field_name];
-      unset($this->variables['content'][$field_name]);
-    }
-    return $this;
-  }
-
-  /**
-   * Add the entity label to the group.
-   *
-   * @param int $weight
-   *   The weight of the render array.
-   *
-   * @return $this
-   */
-  public function addLabel($weight = 0) {
-    if (isset($this->variables['label']) && !isset($this->variables['content']['label'])) {
-      $this->variables['title_hide'] = TRUE;
-      $this->variables['content']['label'] = $this->variables['label'];
-      $this->variables['content']['label']['#weight'] = $weight;
-      $this->variables['content']['label']['#tag'] = 'h2';
-      $this->variables['content']['label']['#printed'] = FALSE;
+      $this->fields[$field_name] = $this->variables[$this->propertyName][$field_name];
+      unset($this->variables[$this->propertyName][$field_name]);
     }
     return $this;
   }
@@ -171,6 +171,25 @@ class PreprocessEntityGroup {
   }
 
   /**
+   * Add the entity label to the group.
+   *
+   * @param int $weight
+   *   The weight of the render array.
+   *
+   * @return $this
+   */
+  public function addLabel($weight = 0) {
+    if (isset($this->variables['label']) && !isset($this->variables[$this->propertyName]['label'])) {
+      $this->variables['title_hide'] = TRUE;
+      $this->variables[$this->propertyName]['label'] = $this->variables['label'];
+      $this->variables[$this->propertyName]['label']['#weight'] = $weight;
+      $this->variables[$this->propertyName]['label']['#tag'] = 'h2';
+      $this->variables[$this->propertyName]['label']['#printed'] = FALSE;
+    }
+    return $this;
+  }
+
+  /**
    * Add a subgroup to the group.
    *
    * @param array $attributes
@@ -180,6 +199,7 @@ class PreprocessEntityGroup {
    */
   public function addSubGroup(array $attributes = [], $weight = 0) {
     $subgroup = new PreprocessEntityGroup($this->variables, $attributes, $weight);
+    $subgroup->setPropertyName($this->propertyName);
     $this->subGroups[] = $subgroup;
     return $subgroup;
   }
@@ -194,8 +214,8 @@ class PreprocessEntityGroup {
    */
   public function addRemaining(array $exclude = []) {
     $field_names = [];
-    foreach (Element::children($this->variables['content']) as $field_id) {
-      $field = $this->variables['content'][$field_id];
+    foreach (Element::children($this->variables[$this->propertyName]) as $field_id) {
+      $field = $this->variables[$this->propertyName][$field_id];
       if (empty($field['#aeon_group']) && !in_array($field_id, $exclude)) {
         $field_names[] = $field_id;
       }
@@ -306,7 +326,7 @@ class PreprocessEntityGroup {
       ];
       $render['#attributes']['class'][] = 'group';
       if ($add_to_content) {
-        $this->variables['content'][$this->getId()] = $render;
+        $this->variables[$this->propertyName][$this->getId()] = $render;
       }
       $cacheable_metadata->applyTo($render);
     }
