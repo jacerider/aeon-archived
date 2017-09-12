@@ -16,6 +16,15 @@ class CommerceProduct extends PreprocessBase {
   use PreprocessEntityTrait;
 
   /**
+   * Set element as link to title.
+   */
+  protected function setAsLink() {
+    $this->variables['tag'] = 'a';
+    $this->variables['attributes']['href'] = $this->variables['product_url']->toString();
+    $this->variables['attributes']['rel'] = 'bookmark';
+  }
+
+  /**
    * Create a new field group.
    *
    * @param array $attributes
@@ -27,5 +36,5 @@ class CommerceProduct extends PreprocessBase {
     $group = new PreprocessEntityGroup($this->variables, $attributes, $weight);
     return $group->setPropertyName('product');
   }
-  
+
 }
