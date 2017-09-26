@@ -146,7 +146,7 @@ class PreprocessEntityGroup {
     }
     if (isset($this->variables[$this->propertyName][$field_name])) {
       // If field is an actual entity field, check if it has a value.
-      if (isset($this->entity->{$field_name}) && $this->entity->{$field_name}->isEmpty()) {
+      if (isset($this->entity->{$field_name}) && $this->entity->{$field_name}->isEmpty() && empty($this->variables[$this->propertyName][$field_name]['#aeon_force'])) {
         return $this;
       }
       $this->fields[$field_name] = $this->variables[$this->propertyName][$field_name];
@@ -183,7 +183,7 @@ class PreprocessEntityGroup {
       $this->variables['title_hide'] = TRUE;
       $this->variables[$this->propertyName]['label'] = $this->variables['label'];
       $this->variables[$this->propertyName]['label']['#weight'] = $weight;
-      $this->variables[$this->propertyName]['label']['#tag'] = 'h2';
+      $this->variables[$this->propertyName]['label']['#tag'] = $this->variables['title_tag'];
       $this->variables[$this->propertyName]['label']['#printed'] = FALSE;
     }
     return $this;

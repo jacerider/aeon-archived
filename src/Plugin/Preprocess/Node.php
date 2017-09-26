@@ -21,6 +21,7 @@ class Node extends PreprocessBase {
     // Default variables.
     $this->variables['title_prefix'] = '';
     $this->variables['title_suffix'] = '';
+    $this->setTitleTag('h2');
     // Should the node title be linked.
     $this->linkTitle();
     // Should the node title be shown.
