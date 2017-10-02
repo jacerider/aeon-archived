@@ -63,12 +63,12 @@ class ProcessManager extends PluginManager {
     }
 
     // Add "form-inline" class.
-    if ($e->hasClass('container-inline')) {
-      $e->replaceClass('container-inline', 'form-inline');
-    }
-    if ($e->isType(['color', 'date', 'number', 'range', 'tel', 'weight'])) {
-      $e->addClass('form-inline', 'wrapper_attributes');
-    }
+    // if ($e->hasClass('container-inline')) {
+    //   $e->replaceClass('container-inline', 'form-inline');
+    // }
+    // if ($e->isType(['color', 'date', 'number', 'range', 'tel', 'weight'])) {
+    //   $e->addClass('form-inline', 'wrapper_attributes');
+    // }
 
     // Process input groups.
     if ($e->getProperty('input') && ($e->getProperty('input_group') || $e->getProperty('input_group_button'))) {
