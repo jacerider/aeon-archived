@@ -15,8 +15,7 @@ $prototype: false;
 @include foundation-global-styles;
 @if not $flex {
   @include foundation-grid;
-}
-@else {
+} @else {
   @include foundation-flex-grid;
 }
 @include foundation-typography;
