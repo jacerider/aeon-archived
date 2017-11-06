@@ -23,18 +23,19 @@ class Region extends PreprocessBase {
     // Alter based on region id.
     switch ($region) {
       case 'header':
-        $variables['tag'] = 'header';
+        $this->setTag('header');
         $variables->setAttribute('role', 'banner');
+        $this->setContentTag('div', ['class' => ['header-inner']]);
         break;
 
       case 'footer':
-        $variables['tag'] = 'footer';
+        $this->setTag('footer');
         $variables->setAttribute('role', 'contentinfo');
         break;
 
       case 'sidebar_first':
       case 'sidebar_second':
-        $variables['tag'] = 'aside';
+        $this->setTag('aside');
         $variables->setAttribute('role', 'complementary');
         break;
     }
