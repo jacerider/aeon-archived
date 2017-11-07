@@ -203,7 +203,6 @@ class PreprocessRegionGroup {
     if (empty($this->blocks)) {
       return $render;
     }
-    ksm($this->blocks);
     foreach ($this->blocks as $block_name => $content) {
       $render[$block_name] = $content;
       $cacheable_metadata = $cacheable_metadata->merge(CacheableMetadata::createFromRenderArray($render[$block_name]));
