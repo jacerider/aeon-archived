@@ -20,6 +20,14 @@ class Field extends PreprocessBase {
     $element = $variables['element'];
     $is_multiple = $element['#is_multiple'];
     $formatter = $element['#formatter'];
+
+    // Allow properties to be provided with the element.
+    foreach (['tag'] as $key) {
+      if (isset($element['#' . $key])) {
+        $variables[$key] = $element['#' . $key];
+      }
+    }
+
     if ($is_multiple && $formatter == 'entity_reference_label') {
       // Entity reference label multi-value fields should be wrapped in a
       // span tag.
