@@ -113,8 +113,10 @@ class PreprocessRegionGroup {
    */
   public function addBlock($block_name) {
     if (isset($this->variables['content'][$block_name])) {
-      $this->blocks[$block_name] = $this->variables['content'][$block_name];
-      unset($this->variables['content'][$block_name]);
+      if (!empty($this->variables['content'][$block_name]['#markup'])) {
+        $this->blocks[$block_name] = $this->variables['content'][$block_name];
+        unset($this->variables['content'][$block_name]);
+      }
     }
     return $this;
   }
@@ -198,6 +200,10 @@ class PreprocessRegionGroup {
   public function render($add_to_content = TRUE) {
     $render = [];
     $cacheable_metadata = new CacheableMetadata();
+    if (empty($this->blocks)) {
+      return $render;
+    }
+    ksm($this->blocks);
     foreach ($this->blocks as $block_name => $content) {
       $render[$block_name] = $content;
       $cacheable_metadata = $cacheable_metadata->merge(CacheableMetadata::createFromRenderArray($render[$block_name]));
