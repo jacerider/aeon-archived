@@ -20,6 +20,20 @@ trait PreprocessEntityTrait {
   }
 
   /**
+   * Group fields.
+   *
+   * @param array $field_names
+   *   An array of field names.
+   * @param array $attributes
+   *   An array of attributes.
+   * @param int $weight
+   *   The weight of the render array.
+   */
+  protected function groupFields(array $field_names, array $attributes = [], $weight = 0) {
+    return $this->addGroup($attributes, $weight)->addFields($field_names);
+  }
+
+  /**
    * Group any fields not grouped into their own group.
    *
    * @param array $attributes

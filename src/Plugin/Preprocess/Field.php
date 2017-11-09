@@ -3,6 +3,7 @@
 namespace Drupal\aeon\Plugin\Preprocess;
 
 use Drupal\aeon\Utility\Variables;
+use Drupal\Component\Utility\NestedArray;
 
 /**
  * Pre-processes variables for the "field" theme hook.
@@ -22,9 +23,15 @@ class Field extends PreprocessBase {
     $formatter = $element['#formatter'];
 
     // Allow properties to be provided with the element.
-    foreach (['tag'] as $key) {
+    foreach (['tag', 'attributes'] as $key) {
       if (isset($element['#' . $key])) {
-        $variables[$key] = $element['#' . $key];
+        if (is_array($element['#' . $key])) {
+          $variables[$key] = !empty($variables[$key]) ? $variables[$key] : [];
+          $variables[$key] = NestedArray::mergeDeep($variables[$key], $element['#' . $key]);
+        }
+        else {
+          $variables[$key] = $element['#' . $key];
+        }
       }
     }
 
