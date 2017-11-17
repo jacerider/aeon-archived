@@ -99,6 +99,7 @@ class PreprocessEntityGroup {
     $this->attributes = new Attribute($attributes);
     $this->entity = $this->variables->element['#' . $this->variables->element['#entity_type']];
     $this->weight = $weight;
+    $this->setId(self::$count);
     self::$count++;
   }
 
@@ -121,7 +122,7 @@ class PreprocessEntityGroup {
    * @return $this
    */
   public function setId($identifier) {
-    $this->id = Html::cleanCssIdentifier($identifier);
+    $this->id = $identifier;
     return $this;
   }
 
@@ -129,7 +130,7 @@ class PreprocessEntityGroup {
    * Get the ID of this isntance.
    */
   public function getId() {
-    return $this->id ? $this->id : 'aeon_group_' . self::$count;
+    return 'aeon_group_' . $this->id;
   }
 
   /**
