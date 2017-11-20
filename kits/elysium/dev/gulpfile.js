@@ -11,13 +11,13 @@ var browserSync = require('browser-sync').create();
 var fs = require('fs');
 var extend = require('extend');
 var config = require('./config/config.json');
+var exec = require('child_process').exec;
 
 // Include plugins.
 var sass = require('gulp-sass');
 var sassLint = require('gulp-sass-lint');
 var imagemin = require('gulp-imagemin');
 var pngcrush = require('imagemin-pngcrush');
-var shell = require('gulp-shell');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
 var autoprefix = require('gulp-autoprefixer');
@@ -81,7 +81,8 @@ gulp.task('js', function () {
   return gulp.src(config.js.src)
     .pipe(plumber())
     .pipe(eslint({
-      configFile: 'config/.eslintrc'
+      configFile: 'config/.eslintrc',
+      useEslintrc: false
     }))
     .pipe(eslint.format())
     .pipe(uglify())
@@ -126,7 +127,7 @@ gulp.task('images', function () {
 
 // Calculate breakpoints.
 gulp.task('breakpoints', function () {
-  gulp.src('./../elysium.breakpoints.yml')
+  gulp.src('./../radia.breakpoints.yml')
     .pipe(breakpoints.ymlToScss())
     .pipe(rename('_breakpoints.scss'))
     .pipe(gulp.dest('scss/base'))
@@ -137,6 +138,7 @@ gulp.task('watch', function () {
   gulp.watch(config.css.src, ['css']);
   gulp.watch(config.js.src, ['js']);
   gulp.watch(config.templates.src, ['templates']);
+  gulp.watch(config.drush.src, ['drush']);
 });
 
 // Static Server + Watch.
@@ -152,9 +154,13 @@ gulp.task('serve', ['breakpoints', 'css', 'js', 'watch'], function () {
 });
 
 // Run drush to clear the theme registry.
-gulp.task('drush', shell.task([
-  'drush cache-clear theme-registry'
-]));
+gulp.task('drush', function () {
+  exec('drush cr', function (err, stdout, stderr) {
+    if(config.browserSync.enabled) {
+      browserSync.reload();
+    }
+  });
+});
 
 // Post install task.
 gulp.task('postinstall', ['jsVendor']);
