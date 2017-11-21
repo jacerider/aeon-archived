@@ -13,6 +13,9 @@
   ]
 %}
 <{{ tag }}{{ attributes.addClass(classes) }}>
+  {% if content_tag %}
+    <{{ content_tag}}{{ content_attributes }}>
+  {% endif %}
   {{ title_prefix }}
   {% if label %}
     <h2{{ title_attributes }}>{{ label }}</h2>
@@ -21,4 +24,7 @@
   {% block content %}
     {{ content }}
   {% endblock %}
+  {% if content_tag %}
+    </{{ content_tag}}>
+  {% endif %}
 </{{ tag }}>
