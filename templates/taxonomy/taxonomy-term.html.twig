@@ -10,6 +10,7 @@
   set classes = [
     'term',
     term.bundle|clean_class,
+    view_mode|clean_class
   ]
 %}
 <{{ tag }}{{ attributes.setAttribute('id', 'term-' ~ term.id).addClass(classes) }}>
