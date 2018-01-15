@@ -35,13 +35,13 @@ class ViewsView extends PreprocessBase {
       $variables['title'] = $view_array['#title'];
     }
 
-    if ($view->ajaxEnabled()) {
+    if ($view->ajaxEnabled() || !empty($variables->getClasses())) {
       $variables->addClass('js-view-dom-id-' . $variables['dom_id']);
       $variables->addClass('view-' . Html::getClass($variables['id']));
       $variables->addClass('view-id-' . $variables['id']);
       $variables->addClass('view-display-id-' . $variables['display_id']);
     }
-    if (empty($variables->getClasses())) {
+    else {
       $variables->removeAttribute('class');
     }
 
