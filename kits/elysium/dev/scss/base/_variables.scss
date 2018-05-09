@@ -5,13 +5,16 @@
 $global-width: rem-calc(1200);
 $grid-row-width: $global-width;
 
-$foundation-palette: (
-  primary: #2199e8,
-  secondary: #777,
-  success: #86c13d,
-  warning: #f1ba2e,
-  alert: #e54040,
+$colors: (
+  theme-black: #333,
+  theme-white: #fff,
+  theme-primary: #2199e8,
+  theme-secondary: #3d3f41,
+  theme-success: #86c13d,
+  theme-warning: #f1ba2e,
+  theme-alert: #e54040,
 );
+
 @include add-foundation-colors;
 
 // Base

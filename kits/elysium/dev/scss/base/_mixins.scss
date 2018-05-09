@@ -1,3 +1,32 @@
 ////////////////////////////////////////////////////////////////////////////////
 // MIXINS
 // -----------------------------------------------------------------------------
+
+/// Transfers the colors in the `$colors`map into variables, such as `$primary-color` and `$secondary-color`. Call this mixin below the Global section of your settings file to properly migrate your codebase.
+@mixin add-foundation-colors() {
+  @if map-has-key($colors, theme-primary) {
+    $primary-color: color(theme-primary) !global;
+  } @else {
+    $primary-color: #1779ba !global;
+  }
+  @if map-has-key($colors, theme-secondary) {
+    $secondary-color: color(theme-secondary) !global;
+  } @else {
+    $secondary-color: #767676 !global;
+  }
+  @if map-has-key($colors, theme-success) {
+    $success-color: color(theme-success) !global;
+  } @else {
+    $success-color: #86c13d !global;
+  }
+  @if map-has-key($colors, theme-warning) {
+    $warning-color: color(theme-warning) !global;
+  } @else {
+    $warning-color: #f1ba2e !global;
+  }
+  @if map-has-key($colors, theme-alert) {
+    $alert-color: color(theme-alert) !global;
+  } @else {
+    $alert-color: #e54040 !global;
+  }
+}

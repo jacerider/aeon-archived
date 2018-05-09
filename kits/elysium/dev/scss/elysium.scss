@@ -1,7 +1,6 @@
 // Make sure the charset is set appropriately
 @charset 'UTF-8';
 
-
 ////////////////////////////////////////////////////////////////////////////////
 // Vendor
 // -----------------------------------------------------------------------------
@@ -12,10 +11,12 @@
 @import 'foundation';
 @import 'aeon';
 @import 'base/breakpoints';
+@import 'base/mixins';
+@import 'base/functions';
+@import 'base/placeholders';
 @import 'base/variables';
 @import 'base/foundation-components';
 // @include foundation-everything;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // Base
@@ -23,12 +24,8 @@
 // The utils/ folder gathers all Sass tools and helpers we’ll use across the
 // project. Got a function? A mixin? Put it in there.
 
-@import 'base/mixins';
-@import 'base/functions';
-@import 'base/placeholders';
 @import 'base/typography';
 @import 'base/table';
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // REGIONS
@@ -40,7 +37,6 @@
 
 @import 'regions/*.scss';
 
-
 ////////////////////////////////////////////////////////////////////////////////
 // COMPONENT
 // -----------------------------------------------------------------------------
@@ -50,4 +46,4 @@
 // or anything along those lines. There are usually a lot of files in
 // components/ since your site should be mostly composed of tiny modules.
 
-@import 'components/*.scss';
+@import 'components/**/*.scss';
