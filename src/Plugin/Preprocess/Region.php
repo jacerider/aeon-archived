@@ -50,7 +50,7 @@ class Region extends PreprocessBase {
    *   The weight of the render array.
    */
   protected function addGroup(array $attributes = [], $weight = 0) {
-    return new PreprocessRegionGroup($this->variables, $attributes);
+    return new PreprocessRegionGroup($this->variables, $attributes, $weight);
   }
 
   /**

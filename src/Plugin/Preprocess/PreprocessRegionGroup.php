@@ -200,7 +200,7 @@ class PreprocessRegionGroup {
   public function render($add_to_content = TRUE) {
     $render = [];
     $cacheable_metadata = new CacheableMetadata();
-    if (empty($this->blocks)) {
+    if (empty($this->blocks) && empty($this->subGroups)) {
       return $render;
     }
     foreach ($this->blocks as $block_name => $content) {
