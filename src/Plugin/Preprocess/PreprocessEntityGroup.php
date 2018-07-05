@@ -235,12 +235,18 @@ class PreprocessEntityGroup {
    *
    * @return $this
    */
-  public function setAsLink($field_name) {
-    if (isset($this->entity->{$field_name}) && !$this->entity->{$field_name}->isEmpty() && $uri = $this->entity->{$field_name}->uri) {
-      $this->setTag('a');
-      $this->setAttribute('href', Url::fromUri($uri)->toString());
-      $this->setAttribute('rel', 'bookmark');
+  public function setAsLink($field_name = NULL) {
+    if ($field_name) {
+      if (isset($this->entity->{$field_name}) && !$this->entity->{$field_name}->isEmpty() && $uri = $this->entity->{$field_name}->uri) {
+        $this->setAttribute('href', Url::fromUri($uri)->toString());
+        $this->setAttribute('rel', 'bookmark');
+      }
     }
+    else {
+      $this->setAttribute('href', $this->variables['url']);
+    }
+    $this->setTag('a');
+    $this->setAttribute('rel', 'bookmark');
     return $this;
   }
 
