@@ -1,0 +1,39 @@
+{#
+/**
+ * @file exo_component.html.twig
+ * Default theme implementation to present Component data.
+ *
+ * This template is used when viewing Component pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_exo_component()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+set classes = [
+  'component',
+  exo_component.bundle|clean_class,
+  view_mode|clean_class,
+]
+%}
+{% if tag %}
+  <{{ tag }}{{ attributes.addClass(classes) }}>
+{% endif %}
+  {% if content_tag %}
+    <{{ content_tag}}{{ content_attributes }}>
+  {% endif %}
+
+  {{ content }}
+
+  {% if content_tag %}
+    </{{ content_tag}}>
+  {% endif %}
+{% if tag %}
+  </{{ tag }}>
+{% endif %}
