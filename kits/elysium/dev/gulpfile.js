@@ -127,7 +127,7 @@ gulp.task('images', function () {
 
 // Calculate breakpoints.
 gulp.task('breakpoints', function () {
-  gulp.src('./../radia.breakpoints.yml')
+  gulp.src('./../elysium.breakpoints.yml')
     .pipe(breakpoints.ymlToScss())
     .pipe(rename('_breakpoints.scss'))
     .pipe(gulp.dest('scss/base'))
