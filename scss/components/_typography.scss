@@ -1,0 +1,19 @@
+
+// Base typography styles (tags only)
+@import 'typography/base';
+
+// // Typography helper classes (classes only)
+@import 'typography/helpers';
+
+// // Text alignment classes
+@import 'typography/alignment';
+
+// // Print styles
+@import 'typography/print';
+
+@mixin aeon-typography {
+  @include aeon-typography-base;
+  @include aeon-typography-helpers;
+  @include aeon-text-alignment;
+  @include aeon-print-styles;
+}
