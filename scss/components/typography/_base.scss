@@ -113,7 +113,7 @@ $anchor-color: color(theme-primary) !default;
 
 /// Default color for links on hover.
 /// @type Color
-$anchor-color-hover: scale-color($anchor-color, $lightness: -14%) !default;
+$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 
 /// Default text deocration for links.
 /// @type String
