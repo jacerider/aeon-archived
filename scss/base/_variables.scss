@@ -3,9 +3,27 @@ $colors: (
   theme-black: #333,
   theme-white: #fff,
   theme-gray: #ccc,
+  theme-primary: #333,
+  theme-secondary: #fff,
 );
 
 $font-family: Ubuntu;
 $font-type: sans-serif;
 
 $font: $font-family, $font-type;
+$global-weight-normal: normal;
+$global-speed: 350ms;
+$global-radius: 3px;
+$global-font-size: 100%;
+$global-lineheight: 1.5;
+$global-menu-padding: 0.7rem 1rem !default;
+$menu-items-padding: $global-menu-padding !default;
+$body-antialiased: true;
+$global-margin: 1rem;
+$global-padding: 1rem;
+$global-position: 1rem;
+$global-weight-normal: normal;
+$global-weight-bold: bold;
+$global-width: rem-calc(1100);
+$grid-row-width: $global-width;
+$grid-container: $global-width;
