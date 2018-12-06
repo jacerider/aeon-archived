@@ -1,0 +1,40 @@
+.messages {
+  padding: $global-padding;
+  color: color(theme-white);
+  background: linear-gradient(smart-scale(color(theme-success), 20%), color(theme-success));
+  text-shadow: 0 0 4px smart-scale(color(theme-success), 30%);
+
+  .message {
+    max-width: $global-width;
+    margin: 0 auto;
+  }
+
+  a {
+    font-weight: bold;
+    color: color(theme-white);
+    text-decoration: underline;
+  }
+
+  &.warning {
+    color: foreground(color(theme-warning));
+    background: linear-gradient(smart-scale(color(theme-warning), 20%), color(theme-warning));
+    text-shadow: 0 0 4px smart-scale(color(theme-warning), 30%);
+  }
+
+  &.error {
+    color: foreground(color(theme-alert));
+    background: linear-gradient(smart-scale(color(theme-alert), 20%), color(theme-alert));
+    text-shadow: 0 0 4px smart-scale(color(theme-alert), 30%);
+  }
+
+  &.info {
+    color: foreground(color(theme-primary));
+    background: linear-gradient(smart-scale(color(theme-primary), 20%), color(theme-primary));
+    text-shadow: 0 0 4px smart-scale(color(theme-primary), 30%);
+  }
+
+  &.small {
+    padding: $global-padding / 2;
+    font-size: rem-calc(14);
+  }
+}

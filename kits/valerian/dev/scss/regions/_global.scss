@@ -1,0 +1,12 @@
+@include aeon-global-styles;
+@include aeon-typography;
+
+body,
+.exo-content {
+  background: $body-background;
+}
+
+.section.main {
+  @include clearfix;
+  background: color(theme-white);
+}

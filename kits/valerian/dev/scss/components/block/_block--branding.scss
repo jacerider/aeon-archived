@@ -1,0 +1,12 @@
+.block.branding {
+  padding: $global-padding 0;
+
+  .site-logo {
+    display: inline-block;
+    max-width: rem-calc(100);
+  }
+
+  .site-name {
+    @include visually-hidden();
+  }
+}

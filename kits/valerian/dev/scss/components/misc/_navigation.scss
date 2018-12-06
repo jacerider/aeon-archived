@@ -1,0 +1,9 @@
+.navigation .menu {
+  @include menu-base;
+
+  // Active state
+  .active > a {
+    color: $menu-item-color-active;
+    background: $menu-item-background-active;
+  }
+}

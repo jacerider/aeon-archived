@@ -1,0 +1,48 @@
+{
+  "name": "aeon_kit",
+  "description": "AEON_KIT_DESCRIPTION",
+  "bowerDir": "./bower_components",
+  "browserSync": {
+    "enabled" : true,
+    "proxy" : "http://localhost",
+    "port" : 3000,
+    "openAutomatically" : false,
+    "notify" : false
+  },
+  "css": {
+    "dest": "../assets/css",
+    "src": [
+      "scss/**/*.scss"
+    ],
+    "includePaths": [
+      "./bower_components/foundation-sites/scss",
+      "../../aeon/scss"
+    ]
+  },
+  "js": {
+    "dest": "../assets/js",
+    "src": [
+      "js/**/*.js"
+    ],
+    "vendorDest": "../assets/js/vendor",
+    "vendorPaths": [
+      "./bower_components/foundation-sites/js/*.js"
+    ]
+  },
+  "templates": {
+    "src": [
+      "../templates/**/*.twig"
+    ]
+  },
+  "drush": {
+    "src": [
+      "../src/Plugin/Preprocess/*.php"
+    ]
+  },
+  "images": {
+    "src": [
+      "../assets/images/**/*"
+    ],
+    "dest": "../assets/images/"
+  }
+}

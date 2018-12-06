@@ -1,0 +1,44 @@
+.page.login {
+  margin: $global-margin;
+
+  @include breakpoint(large) {
+    margin: $global-margin * 3;
+  }
+
+  .main {
+    max-width: rem-calc(520);
+    margin: 0 auto;
+    background: color(theme-white);
+    padding: $global-padding;
+    float: none;
+    border-radius: $global-radius;
+
+    @include breakpoint(large) {
+      padding: $global-padding * 2;
+    }
+
+    > .content {
+      float: none;
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .site-logo {
+    display: block;
+    margin: 0 auto $global-margin;
+  }
+
+  .page-title {
+    text-align: center;
+  }
+
+  .form-actions {
+    text-align: center;
+  }
+
+  form .button {
+    margin: 0;
+    width: 100%;
+  }
+}

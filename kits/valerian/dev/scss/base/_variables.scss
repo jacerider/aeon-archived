@@ -1,0 +1,38 @@
+////////////////////////////////////////////////////////////////////////////////
+// VARIABLES
+// -----------------------------------------------------------------------------
+
+$global-width: rem-calc(1200);
+$grid-row-width: $global-width;
+
+$colors: (
+  theme-black: #333,
+  theme-white: #fff,
+  theme-primary: #2199e8,
+  theme-secondary: #3d3f41,
+  theme-success: #86c13d,
+  theme-warning: #f1ba2e,
+  theme-alert: #e54040,
+);
+
+// Base
+// ----------
+$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$header-font-family: $body-font-family;
+$body-background: color(theme-white);
+$body-font-color: color(theme-black);
+$anchor-color: color(theme-primary);
+$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+
+// Button
+// ----------
+$button-background: color(theme-primary);
+$button-background-hover: scale-color($button-background, $lightness: -15%);
+
+// Menu
+// ----------
+$menu-item-background-active: color(theme-primary);
+
+// Breadcrumb
+// ----------
+$breadcrumbs-item-color: color(theme-primary);

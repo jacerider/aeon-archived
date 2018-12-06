@@ -1,0 +1,24 @@
+////////////////////////////////////////////////////////////////////////////////
+// TABLES
+// -----------------------------------------------------------------------------
+
+.responsive-enabled {
+
+  .priority-low {
+
+    @include breakpoint(medium down) {
+      display: none;
+    }
+  }
+
+  .priority-medium {
+
+    @include breakpoint(small only) {
+      display: none;
+    }
+  }
+}
+
+.tableresponsive-toggle {
+  @include component-button;
+}
