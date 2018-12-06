@@ -1,6 +1,6 @@
 {
-  "name": "elysium",
-  "description": "ELYSIUM_DESCRIPTION",
+  "name": "aeon_kit",
+  "description": "AEON_KIT_DESCRIPTION",
   "bowerDir": "./bower_components",
   "browserSync": {
     "enabled" : true,

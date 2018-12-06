@@ -4,11 +4,11 @@ dependencies:
   module:
     - system
   theme:
-    - elysium
+    - aeon_kit
 _core:
   default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
-id: elysium_messages
-theme: elysium
+id: aeon_kit_messages
+theme: aeon_kit
 region: status
 weight: -5
 provider: null

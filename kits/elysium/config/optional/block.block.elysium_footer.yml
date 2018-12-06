@@ -6,11 +6,11 @@ dependencies:
   module:
     - system
   theme:
-    - elysium
+    - aeon_kit
 _core:
   default_config_hash: kkISXE1LT2FJEoYnqCrCpeFB-2pmGmMxMklVk7rQcfg
-id: elysium_footer
-theme: elysium
+id: aeon_kit_footer
+theme: aeon_kit
 region: footer
 weight: -5
 provider: null

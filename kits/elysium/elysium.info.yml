@@ -2,8 +2,8 @@ core: 8.x
 type: theme
 base theme: aeon
 
-name: ELYSIUM_NAME
-description: ELYSIUM_DESCRIPTION
+name: AEON_KIT_NAME
+description: AEON_KIT_DESCRIPTION
 package: 'Aeon'
 screenshot: screenshot.png
 version: VERSION
@@ -21,4 +21,4 @@ regions:
   sidebar_second: 'Sidebar second'
 
 libraries:
-  - elysium/base
+  - aeon_kit/base

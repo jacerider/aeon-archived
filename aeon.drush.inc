@@ -105,9 +105,9 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
 
   // Alter the contents of the .info file based on the command options.
   $alterations = array(
-    'ELYSIUM_NAME' => $name,
-    'ELYSIUM_DESCRIPTION' => $description,
-    'elysium' => $machine_name,
+    'AEON_KIT_NAME' => $name,
+    'AEON_KIT_DESCRIPTION' => $description,
+    'aeon_kit' => $machine_name,
     'hidden: true' => '',
   );
 

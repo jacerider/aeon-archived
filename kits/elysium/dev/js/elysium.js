@@ -1,13 +1,13 @@
 /**
  * @file
- * Global ELYSIUM_NAME javascript.
+ * Global AEON_KIT_NAME javascript.
  */
 
 (function ($, document) {
 
   'use strict';
 
-  Drupal.behaviors.elysium = {
+  Drupal.behaviors.aeon_kit = {
     attach: function (context) {
     }
   };

@@ -6,11 +6,11 @@ dependencies:
   module:
     - system
   theme:
-    - elysium
+    - aeon_kit
 _core:
   default_config_hash: rx9IrdDv7Ldc4kpalZAxdhIPZfYIeOMh1N-qKoQZwHo
-id: elysium_main_menu
-theme: elysium
+id: aeon_kit_main_menu
+theme: aeon_kit
 region: header
 weight: -4
 provider: null

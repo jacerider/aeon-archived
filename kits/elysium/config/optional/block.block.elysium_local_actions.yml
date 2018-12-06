@@ -2,11 +2,11 @@ langcode: en
 status: true
 dependencies:
   theme:
-    - elysium
+    - aeon_kit
 _core:
   default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
-id: elysium_local_actions
-theme: elysium
+id: aeon_kit_local_actions
+theme: aeon_kit
 region: content
 weight: -4
 provider: null

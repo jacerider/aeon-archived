@@ -2,9 +2,9 @@ base:
   version: VERSION
   css:
     theme:
-      assets/css/elysium.css: {}
+      assets/css/aeon_kit.css: {}
   js:
-    assets/js/elysium.js: { minified: true }
+    assets/js/aeon_kit.js: { minified: true }
   dependencies:
     - core/jquery
     - core/jquery.once
@@ -30,26 +30,26 @@ foundation.accordion:
   js:
     assets/js/vendor/foundation.accordion.js: { minified: true }
   dependencies:
-    - elysium/foundation.core
-    - elysium/foundation.util.motion
-    - elysium/foundation.util.keyboard
+    - aeon_kit/foundation.core
+    - aeon_kit/foundation.util.motion
+    - aeon_kit/foundation.util.keyboard
 
 foundation.equalizer:
   version: VERSION
   js:
     assets/js/vendor/foundation.equalizer.js: { minified: true }
   dependencies:
-    - elysium/foundation.core
-    - elysium/foundation.util.timerAndImageLoader
+    - aeon_kit/foundation.core
+    - aeon_kit/foundation.util.timerAndImageLoader
 
 foundation.toggler:
   version: VERSION
   js:
     assets/js/vendor/foundation.toggler.js: { minified: true }
   dependencies:
-    - elysium/foundation.core
-    - elysium/foundation.util.motion
-    - elysium/foundation.util.triggers
+    - aeon_kit/foundation.core
+    - aeon_kit/foundation.util.motion
+    - aeon_kit/foundation.util.triggers
 
 # ------------------------------------------------------------------------------
 # Foundation Utilities

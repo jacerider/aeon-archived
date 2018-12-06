@@ -4,11 +4,11 @@ dependencies:
   module:
     - system
   theme:
-    - elysium
+    - aeon_kit
 _core:
   default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
-id: elysium_breadcrumbs
-theme: elysium
+id: aeon_kit_breadcrumbs
+theme: aeon_kit
 region: breadcrumb
 weight: -5
 provider: null

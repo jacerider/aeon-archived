@@ -1,5 +1,5 @@
 # Schema for the theme setting configuration file of the Aeon base theme.
 
-elysium.settings:
+aeon_kit.settings:
   type: theme_settings
-  label: 'ELYSIUM_NAME settings'
+  label: 'AEON_KIT_NAME settings'
