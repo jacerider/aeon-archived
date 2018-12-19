@@ -27,6 +27,8 @@
     {{ _self.node_title(label, title_tag, title_attributes, url, title_as_link, title_prefix, title_suffix) }}
   {% endif %}
 
+  {{ contextual_links }}
+
   {% if display_submitted %}
   <div class="posted">
     {% if user_picture %}

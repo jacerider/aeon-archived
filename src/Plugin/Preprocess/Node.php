@@ -19,8 +19,13 @@ class Node extends PreprocessBase {
    */
   public function preprocessVariables(Variables $variables) {
     // Default variables.
-    $this->variables['title_prefix'] = '';
-    $this->variables['title_suffix'] = '';
+    $this->variables['title_prefix'] = isset($this->variables['title_prefix']) ? $this->variables['title_prefix'] : '';
+    $this->variables['title_suffix'] = isset($this->variables['title_suffix']) ? $this->variables['title_suffix'] : '';
+    $this->variables['contextual_links'] = '';
+    if (!empty($this->variables['title_suffix']['contextual_links'])) {
+      $this->variables['contextual_links'] = $this->variables['title_suffix']['contextual_links'];
+      unset($this->variables['title_suffix']['contextual_links']);
+    }
     $this->setTitleTag('h2');
     // Should the node title be linked.
     $this->linkTitle();
