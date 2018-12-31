@@ -1,0 +1,40 @@
+body {
+
+  &.maintenance-page {
+    margin: $global-margin;
+    overflow: hidden;
+
+    @include breakpoint(large) {
+      margin: $global-margin * 3;
+    }
+
+    &,
+    .ux-content {
+      background: $primary-color;
+    }
+
+    .page.section {
+
+      > .inner {
+        max-width: rem-calc(520);
+        margin: 0 auto;
+        background: $white;
+        padding: $global-padding;
+        border-radius: $global-radius;
+
+        @include breakpoint(large) {
+          padding: $global-padding * 2;
+        }
+
+        .name-and-slogan {
+          text-align: center;
+        }
+      }
+    }
+
+    .site-logo {
+      display: block;
+      margin: 0 auto ($global-margin * 2);
+    }
+  }
+}
