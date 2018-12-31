@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Aeon theme implementation to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ *
+ * @see template_preprocess_maintenance_page()
+ */
+ #}
+<div id="page-wrapper">
+  <div id="page" class="page section">
+    <div class="inner">
+      <header id="header" role="banner">
+        <div class="section clearfix">
+          <img class="site-logo" src="{{ logo }}" />
+        </div>
+      </header>
+      <div id="main-wrapper">
+        <div id="main" class="clearfix">
+          <main id="content" role="main">
+            <section class="section">
+              <a id="main-content"></a>
+              {% if title %}
+                <h1 class="title" id="page-title">{{ title }}</h1>
+              {% endif %}
+              {{ page.content }}
+              {{ page.highlighted }}
+            </section>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
