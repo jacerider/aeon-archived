@@ -29,12 +29,12 @@ body {
         .name-and-slogan {
           text-align: center;
         }
-      }
-    }
 
-    .site-logo {
-      display: block;
-      margin: 0 auto ($global-margin * 2);
+        .site-logo {
+          display: block;
+          margin: 0 auto ($global-margin * 2);
+        }
+      }
     }
   }
 }
