@@ -8,13 +8,13 @@
 
 @import 'util/normalize';
 @import 'util/unit';
-@import 'util/functions';
-@import 'util/mixins';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Base
 // -----------------------------------------------------------------------------
 
+@import 'base/functions';
+@import 'base/mixins';
 @import 'base/variables';
 @import 'base/visibility';
 
@@ -26,3 +26,4 @@
 @import 'components/menu';
 @import 'components/pagination';
 @import 'components/tables';
+@import 'components/maintenance';
