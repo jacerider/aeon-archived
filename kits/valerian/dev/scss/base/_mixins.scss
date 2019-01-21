@@ -107,7 +107,6 @@
   @extend %button;
   background: transparent;
   color: color(theme-primary);
-  border: 2px solid transparent;
   box-shadow: none;
 
   &:visited,
@@ -119,7 +118,6 @@
   &:hover {
     background: transparent;
     color: color(theme-secondary);
-    border: 2px solid transparent;
   }
 
   @content;
