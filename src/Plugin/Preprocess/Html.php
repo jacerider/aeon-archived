@@ -17,13 +17,14 @@ class Html extends PreprocessBase {
    * {@inheritdoc}
    */
   public function preprocessVariables(Variables $variables) {
-    $path = \Drupal::service('path.current')->getPath();
-    if (in_array($path, [
-      '/user/login',
-      '/user/register',
-      '/user/password',
-    ])) {
-      $variables->addClass('auth');
+    $route_name = \Drupal::routeMatch()->getRouteName();
+    switch ($route_name) {
+      case 'user.login':
+      case 'user.register':
+      case 'user.pass':
+      case 'user.reset.form':
+        $suggestions[] = 'page__user__auth';
+        break;
     }
   }
 
