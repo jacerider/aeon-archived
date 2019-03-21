@@ -183,6 +183,9 @@ class PreprocessBase extends PluginBase implements PreprocessInterface {
     $view->setDisplay($display_id);
     $view->setArguments($args);
     $render = $view->buildRenderable();
+    if (!empty($args)) {
+      $render['#cache']['keys'][] = implode('_', $args);
+    }
     $this->variables->addCacheTags($render['#cache']['tags']);
     $this->variables->addCacheContexts($render['#cache']['contexts']);
     $this->variables->mergeCacheMaxAge($render['#cache']['max-age']);
