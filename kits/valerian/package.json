@@ -3,7 +3,7 @@
   "description": "AEON_KIT_DESCRIPTION",
   "private": true,
   "scripts": {
-    "postinstall": "bower install; find node_modules/ -name '*.info' -type f -delete; gulp postinstall"
+    "postinstall": "find node_modules/ -name '*.info' -type f -delete"
   },
   "dependencies": {},
   "devDependencies": {

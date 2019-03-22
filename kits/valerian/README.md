@@ -7,13 +7,10 @@ Make sure you have Node and npm installed.
 You can read a guide on how to install node here: https://docs.npmjs.com/getting-started/installing-node
 
 #### Step 2
-Install bower: `npm install -g bower`.
+Go to the `root` folder of AEON_KIT_NAME theme and run the following commands: `npm install`.
 
 #### Step 3
-Go to the `dev` folder of AEON_KIT_NAME theme and run the following commands: `npm install`.
-
-#### Step 4
-Update `browserSync.proxy` in **dev/config/config.local.json**.
+Update `browserSync.proxy` in **/config/dev/config.local.json**.
 
 #### Step 5
 Run the following command to compile Sass and watch for changes: `gulp`.

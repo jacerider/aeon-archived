@@ -10,7 +10,7 @@ var gutil = require('gulp-util');
 var browserSync = require('browser-sync').create();
 var fs = require('fs');
 var extend = require('extend');
-var config = require('./config/config.json');
+var config = require('./config/dev/config.json');
 var execSync = require('child_process').execSync;
 
 // Include plugins.
@@ -31,8 +31,8 @@ var eslint = require('gulp-eslint');
 
 // If config.js exists, load that config for overriding certain values below.
 function loadConfig() {
-  if (fs.existsSync('./config/config.local.json')) {
-    config = extend(true, config, require('./config/config.local'));
+  if (fs.existsSync('./config/dev/config.local.json')) {
+    config = extend(true, config, require('./config/dev/config.local'));
   }
   return config;
 }
@@ -75,7 +75,7 @@ gulp.task('css', function () {
     .on('finish', function () {
       gulp.src(config.css.src)
         .pipe(sassLint({
-            configFile: 'config/.sass-lint.yml'
+            configFile: 'config/dev/.sass-lint.yml'
           }))
         .pipe(sassLint.format());
     })
@@ -91,7 +91,7 @@ gulp.task('js', function () {
   return gulp.src(config.js.src)
     .pipe(plumber())
     .pipe(eslint({
-      configFile: 'config/.eslintrc',
+      configFile: 'config/dev/.eslintrc',
       useEslintrc: false
     }))
     .pipe(eslint.format())
@@ -105,14 +105,14 @@ gulp.task('js', function () {
 });
 
 // Vendor javascript.
-gulp.task('jsVendor', function () {
-  return gulp.src(config.js.vendorPaths)
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest(config.js.vendorDest));
-});
+// gulp.task('jsVendor', function () {
+//   return gulp.src(config.js.vendorPaths)
+//     .pipe(babel({
+//       presets: ['es2015']
+//     }))
+//     .pipe(uglify())
+//     .pipe(gulp.dest(config.js.vendorDest));
+// });
 
 // Vendor javascript.
 gulp.task('templates', function () {
@@ -173,7 +173,7 @@ gulp.task('drush', function () {
 });
 
 // Post install task.
-gulp.task('postinstall', ['jsVendor']);
+// gulp.task('postinstall', ['jsVendor']);
 
 // Default Task.
 gulp.task('default', ['serve']);

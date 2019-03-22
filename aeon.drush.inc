@@ -119,15 +119,30 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
   }
 
   // Rename files.
-  $files_to_rename = array(
-    '{{kit}}.info.yml',
-    '{{kit}}.libraries.yml',
-    '{{kit}}.breakpoints.yml',
-    '{{kit}}.theme',
-    'dev/scss/{{kit}}.scss',
-    'dev/js/{{kit}}.js',
-    'config/schema/{{kit}}.schema.yml',
-  );
+  if ($kit == 'valerian') {
+    $files_to_rename = array(
+      '{{kit}}.info.yml',
+      '{{kit}}.libraries.yml',
+      '{{kit}}.breakpoints.yml',
+      '{{kit}}.theme',
+      'scss/{{kit}}.scss',
+      'js/{{kit}}.js',
+      'config/schema/{{kit}}.schema.yml',
+    );
+  }
+  // Default settings for Elysium Kit.
+  else {
+    $files_to_rename = array(
+      '{{kit}}.info.yml',
+      '{{kit}}.libraries.yml',
+      '{{kit}}.breakpoints.yml',
+      '{{kit}}.theme',
+      'dev/scss/{{kit}}.scss',
+      'dev/js/{{kit}}.js',
+      'config/schema/{{kit}}.schema.yml',
+    );
+  }
+  
   foreach ($files_to_rename as $file_to_rename_path) {
     $file_original_path = $subtheme_path . '/' . str_replace('{{kit}}', $kit, $file_to_rename_path);
     $file_new_path = $subtheme_path . '/' . str_replace('{{kit}}', $machine_name, $file_to_rename_path);
@@ -174,22 +189,42 @@ function aeon_file_str_replace($file_path, $find, $replace) {
 }
 
 /**
- * Returns an array of files to make string replacements.
+ * Returns an array of files to make string replacements. Based on kit chosen.
  */
-function aeon_get_files_to_make_replacements($kit = 'elysium') {
-  return array(
-    'config/install/' . $kit . '.settings.yml',
-    'config/schema/' . $kit . '.schema.yml',
-    'dev/scss/' . $kit . '.scss',
-    'dev/js/' . $kit . '.js',
-    'dev/bower.json',
-    'dev/gulpfile.js',
-    'dev/package.json',
-    'dev/config/config.json',
-    $kit . '.info.yml',
-    $kit . '.libraries.yml',
-    $kit . '.breakpoints.yml',
-    $kit . '.theme',
-    'README.md',
-  );
+function aeon_get_files_to_make_replacements($kit) {
+
+  if ($kit == 'valerian') {
+    return array(
+      'config/install/' . $kit . '.settings.yml',
+      'config/schema/' . $kit . '.schema.yml',
+      'scss/' . $kit . '.scss',
+      'js/' . $kit . '.js',
+      'gulpfile.js',
+      'package.json',
+      'config/dev/config.json',
+      $kit . '.info.yml',
+      $kit . '.libraries.yml',
+      $kit . '.breakpoints.yml',
+      $kit . '.theme',
+      'README.md',
+    );
+  }
+  // Default settings for Elysium Kit.
+  else {
+    return array(
+      'config/install/' . $kit . '.settings.yml',
+      'config/schema/' . $kit . '.schema.yml',
+      'dev/scss/' . $kit . '.scss',
+      'dev/js/' . $kit . '.js',
+      'dev/bower.json',
+      'dev/gulpfile.js',
+      'dev/package.json',
+      'dev/config/config.json',
+      $kit . '.info.yml',
+      $kit . '.libraries.yml',
+      $kit . '.breakpoints.yml',
+      $kit . '.theme',
+      'README.md',
+    );
+  }
 }
