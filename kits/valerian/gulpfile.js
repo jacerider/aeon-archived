@@ -28,6 +28,7 @@ var breakpoints = require('aeon-breakpoints');
 var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
 var eslint = require('gulp-eslint');
+var gulpStylelint = require('gulp-stylelint');
 
 // If config.js exists, load that config for overriding certain values below.
 function loadConfig() {
@@ -72,18 +73,47 @@ gulp.task('css', function () {
     .pipe(autoprefix('last 2 versions', '> 1%', 'ie 9', 'ie 10'))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(config.css.dest))
-    .on('finish', function () {
-      gulp.src(config.css.src)
-        .pipe(sassLint({
-            configFile: 'config/dev/.sass-lint.yml'
-          }))
-        .pipe(sassLint.format());
+    .on('finish', function lintCssTask() {
+      return gulp
+        .src(config.css.src)
+        .pipe(gulpStylelint({
+          failAfterError: false,
+          // reportOutputDir: 'reports/lint',
+          reporters: [
+            // { formatter: 'verbose', console: true },
+            { formatter: 'string', console: true },
+            // { formatter: 'json', save: 'report.json' },
+          ],
+          debug: true
+        }));
     })
+    // .on('finish', function () {
+    //   gulp.src(config.css.src)
+    //     .pipe(sassLint({
+    //         configFile: 'config/dev/.sass-lint.yml'
+    //       }))
+    //     .pipe(sassLint.format());
+    // })
     .pipe(config.browserSync.enabled ? browserSync.reload({
       stream: true,
       // once: true,
       match: '**/*.css'
     }) : gutil.noop());
+});
+
+// Stylelint.
+gulp.task('lint-css', function lintCssTask() {
+  return gulp
+    .src(config.css.src)
+    .pipe(gulpStylelint({
+      failAfterError: true,
+      // reportOutputDir: 'reports/lint',
+      reporters: [
+        { formatter: 'verbose', console: true },
+        { formatter: 'json', save: 'report.json' },
+      ],
+      debug: true
+    }));
 });
 
 // Javascript.
