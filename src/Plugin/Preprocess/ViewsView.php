@@ -19,34 +19,31 @@ class ViewsView extends PreprocessBase {
    * {@inheritdoc}
    */
   public function preprocessVariables(Variables $variables) {
-    // $view = $variables['view'];
-    // $view_array = $variables['view_array'];
+    $view = $variables['view'];
+    $view_array = $variables['view_array'];
 
-    // ksm($variables);
+    $variables['title_tag'] = 'div';
+    $variables['exposed_tag'] = '';
+    $variables['exposed_attributes'] = [];
+    $variables['content_before'] = [];
+    $variables['content_after'] = [];
+    $variables['exposed_before'] = [];
+    $variables['exposed_after'] = [];
 
-    // $variables['title_tag'] = 'div';
-    // $variables['exposed_tag'] = '';
-    // $variables['exposed_attributes'] = [];
-    // $variables['content_before'] = [];
-    // $variables['content_after'] = [];
-    // $variables['exposed_before'] = [];
-    // $variables['exposed_after'] = [];
+    if (isset($view_array['#title']) && $view_array['#display_id'] == 'default') {
+      // Allow title insertion even for 'default' views.
+      $variables['title'] = $view_array['#title'];
+    }
 
-    // if (isset($view_array['#title']) && $view_array['#display_id'] == 'default') {
-    //   // Allow title insertion even for 'default' views.
-    //   $variables['title'] = $view_array['#title'];
-    // }
-
-    // if ($view->ajaxEnabled() || !empty($variables->getClasses())) {
-    //   $variables->addClass('js-view-dom-id-' . $variables['dom_id']);
-    //   $variables->addClass('view-' . Html::getClass($variables['id']));
-    //   $variables->addClass('view-id-' . $variables['id']);
-    //   $variables->addClass('view-display-id-' . $variables['display_id']);
-    // }
-    // else {
-    //   $variables->removeAttribute('class');
-    // }
-
+    if ($view->ajaxEnabled() || !empty($variables->getClasses())) {
+      $variables->addClass('js-view-dom-id-' . $variables['dom_id']);
+      $variables->addClass('view-' . Html::getClass($variables['id']));
+      $variables->addClass('view-id-' . $variables['id']);
+      $variables->addClass('view-display-id-' . $variables['display_id']);
+    }
+    else {
+      $variables->removeAttribute('class');
+    }
   }
 
   /**
