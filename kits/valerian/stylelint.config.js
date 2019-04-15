@@ -5,10 +5,10 @@ module.exports = {
     "stylelint-scss",
   ],
   "rules": {
-    "at-rule-blacklist" : [
+    "at-rule-blacklist": [
       "debug",
     ],
-    "at-rule-no-unknown": [ true, {
+    "at-rule-no-unknown": [true, {
       "ignoreAtRules": [
         "extends",
         "ignores",
@@ -52,7 +52,7 @@ module.exports = {
     ],
     "block-no-empty": true,
     "color-no-hex": true,
-    "color-named": [ "never", {
+    "color-named": ["never", {
       "message": "Avoid using color literals."
     }],
     "declaration-block-trailing-semicolon": "always",
@@ -65,32 +65,32 @@ module.exports = {
       //   ],
       // }
     ],
-    "declaration-no-important": [ true, {
+    "declaration-no-important": [true, {
       "message": "There's an !important tag. Is that supposed to be there?"
     }],
     "declaration-property-value-blacklist": [{
       '/^border/': ['none']
     }, { severity: 'warning' }],
     "function-parentheses-space-inside": "never-single-line",
-    "function-url-quotes": [ "always",
+    "function-url-quotes": ["always",
       {
         "message": "URLs should be wrapped in quotes",
         "severity": 'warning',
-        }
+      }
     ],
-    "indentation": [ 2,
+    "indentation": [2,
       {
         "severity": 'warning',
       }
     ],
-    "length-zero-no-unit": [ true, {
+    "length-zero-no-unit": [true, {
       "message": "A length set to 0 does not need a unit."
     }],
-    "max-nesting-depth": 5,
+    "max-nesting-depth": 8,
     "no-descending-specificity": null,
-    "no-missing-end-of-source-newline": true,    
+    "no-missing-end-of-source-newline": true,
     "number-leading-zero": "always",
-    "property-no-vendor-prefix": [ true,
+    "property-no-vendor-prefix": [true,
       {
         "severity": 'warning',
       }
@@ -103,12 +103,12 @@ module.exports = {
         ]
       }
     ],
-    "selector-class-pattern": /^([a-zA-Z0-9_]+-?)+$/,
+    "selector-class-pattern": /^([a-zA-Z0-9_-]+-?)+$/,
     "selector-id-pattern": /^([a-zA-Z0-9_]+-?)+$/,
-    "selector-max-id": [ 0, {
+    "selector-max-id": [0, {
       "message": "There's an ID being used. Is that supposed to be there?"
     }],
-    "selector-no-qualifying-type": [ true,
+    "selector-no-qualifying-type": [true,
       {
         "ignore": [
           "attribute",
@@ -116,13 +116,13 @@ module.exports = {
         ]
       }
     ],
-    "shorthand-property-no-redundant-values": [ true,
+    "shorthand-property-no-redundant-values": [true,
       {
         "severity": 'warning',
       }
     ],
     "selector-pseudo-element-colon-notation": "single",
-    "string-quotes": [ "single", {
+    "string-quotes": ["single", {
       "message": "Single quotes should be used."
     }],
     "unit-whitelist": [
@@ -132,6 +132,9 @@ module.exports = {
       "rem",
       "s",
       "ms",
+      "deg",
+      "vw",
+      "vh",
     ],
     "order/order": [
       {
@@ -151,10 +154,11 @@ module.exports = {
     "scss/at-function-pattern": /^[a-z\-]+$/,
     "scss/at-mixin-pattern": /^[a-z\-]+$/,
     "scss/at-mixin-argumentless-call-parentheses": "never",
-    "scss/operator-no-newline-before": true,
-    "scss/operator-no-newline-after": true,
-    "scss/operator-no-unspaced": true,
+    // "scss/operator-no-newline-before": true,
+    // "scss/operator-no-newline-after": true,
+    // "scss/operator-no-unspaced": true,
     "scss/percent-placeholder-pattern": /^([a-z0-9]+-?)+$/,
+
     // "at-rule-no-unknown": true,
     // "color-no-invalid-hex": true,
     // "comment-no-empty": true,
