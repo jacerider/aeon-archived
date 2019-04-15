@@ -5,6 +5,7 @@
 $global-width: rem-calc(1200);
 $grid-row-width: $global-width;
 
+/* stylelint-disable color-no-hex */
 $colors: (
   theme-black: #333,
   theme-white: #fff,

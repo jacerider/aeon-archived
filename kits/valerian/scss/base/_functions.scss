@@ -16,12 +16,14 @@
     @each $function, $value in $adjust {
       @if function-exists($function) {
         $color: call($function, $color, $value...);
-      } @else {
+      }
+      @else {
         @warn '#{$function} is not a valid color function.';
       }
     }
     @return $color;
-  } @else {
+  }
+  @else {
     @if type-of($color) != color {
       // $color is not in $color and $color is not a color
       @error 'Invalid color.';

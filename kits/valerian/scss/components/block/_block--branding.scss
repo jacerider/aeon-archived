@@ -7,6 +7,6 @@
   }
 
   .site-name {
-    @include visually-hidden();
+    @include visually-hidden;
   }
 }
