@@ -2,7 +2,7 @@
 
 namespace Drupal\aeon;
 
-use Drupal\Core\Theme\ThemeSettings;
+use Drupal\Core\Theme\ThemeSettings as CoreThemeSettings;
 use Drupal\Component\Utility\DiffArray;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Config\Config;
@@ -123,6 +123,7 @@ class ThemeSettings extends Config {
         return isset($original_data[$key]) ? $original_data[$key] : NULL;
       }
       else {
+        $key_exists = FALSE;
         $value = NestedArray::getValue($original_data, $parts, $key_exists);
         return $key_exists ? $value : NULL;
       }
@@ -141,7 +142,7 @@ class ThemeSettings extends Config {
    *   A array diff of overridden config theme settings.
    */
   public function getThemeConfig(Theme $theme, $active_theme = FALSE) {
-    $config = new ThemeSettings($theme->getName());
+    $config = new CoreThemeSettings($theme->getName());
 
     // Retrieve configured theme-specific settings, if any.
     try {
