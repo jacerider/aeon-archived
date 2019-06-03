@@ -18,6 +18,16 @@ class Page extends PreprocessBase {
    */
   public function preprocessVariables(Variables $variables) {
 
+    $route_name = $this->getRouteMatch()->getRouteName();
+    switch ($route_name) {
+      case 'user.login':
+      case 'user.register':
+      case 'user.pass':
+      case 'user.reset.form':
+        $variables->addClass('login');
+        break;
+    }
+
     $variables['logo'] = [
       '#theme' => 'image',
       '#uri' => $variables['base_path'] . $variables['directory'] . '/logo.svg',

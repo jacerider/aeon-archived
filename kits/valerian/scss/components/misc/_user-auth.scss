@@ -1,44 +1,64 @@
+
 .page.login {
-  margin: $global-margin;
+  padding: $global-padding;
+  position: relative;
 
   @include breakpoint(large) {
-    margin: $global-margin * 3;
+    padding: $global-padding * 3;
   }
 
   .main {
-    max-width: rem-calc(520);
+    max-width: rem-calc(600);
     margin: 0 auto;
-    background: color(theme-white);
+    border: 10px solid color(theme-white);
+    border-radius: $global-radius;
     padding: $global-padding;
     float: none;
-    border-radius: $global-radius;
 
     @include breakpoint(large) {
       padding: $global-padding * 2;
     }
 
     > .content {
-      float: none;
       width: 100%;
-      padding: 0;
+
+      .block.local.tasks {
+        margin-bottom: $global-margin;
+      }
+
+      .user-login-form,
+      .user-pass {
+        @include flex;
+        @include exo-flex-direction(column);
+        padding: 0 ($global-padding);
+
+        .exo-form-element {
+          margin-top: $global-margin;
+          margin-bottom: $global-margin / 2;
+        }
+      }
     }
   }
 
   .site-logo {
     display: block;
-    margin: 0 auto $global-margin;
+    margin: 0 auto ($global-margin * 2);
+    max-width: rem-calc(150);
   }
 
-  .page-title {
+  .page.title {
     text-align: center;
+    margin: $global-margin auto;
   }
 
   .form-actions {
-    text-align: center;
-  }
-
-  form .button {
-    margin: 0;
+    display: block;
     width: 100%;
+    margin-top: $global-margin;
+
+    .button {
+      @include component-button;
+      width: 100%;
+    }
   }
 }
