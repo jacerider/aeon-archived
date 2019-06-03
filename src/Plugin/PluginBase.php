@@ -2,7 +2,7 @@
 
 namespace Drupal\aeon\Plugin;
 
-use Drupal\Core\Plugin\PluginBase;
+use Drupal\Core\Plugin\PluginBase as CorePluginBase;
 use Drupal\aeon\Aeon;
 
 /**
@@ -10,7 +10,7 @@ use Drupal\aeon\Aeon;
  *
  * @ingroup utility
  */
-class PluginBase extends PluginBase {
+class PluginBase extends CorePluginBase {
 
   /**
    * The currently set theme object.

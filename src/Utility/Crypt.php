@@ -1,15 +1,15 @@
 <?php
 
-use Drupal\Component\Utility\Crypt;
-
 namespace Drupal\aeon\Utility;
+
+use Drupal\Component\Utility\Crypt as BaseCrypt;
 
 /**
  * Extends \Drupal\Component\Utility\Crypt.
  *
  * @ingroup utility
  */
-class Crypt extends Crypt {
+class Crypt extends BaseCrypt {
 
   /**
    * Generates a unique hash name.

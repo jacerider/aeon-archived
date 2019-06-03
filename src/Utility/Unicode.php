@@ -2,7 +2,7 @@
 
 namespace Drupal\aeon\Utility;
 
-use Drupal\Component\Utility\Unicode;
+use Drupal\Component\Utility\Unicode as BaseUnicode;
 use Drupal\aeon\Aeon;
 use Drupal\Component\Utility\Xss;
 
@@ -11,7 +11,7 @@ use Drupal\Component\Utility\Xss;
  *
  * @ingroup utility
  */
-class Unicode extends Unicode {
+class Unicode extends BaseUnicode {
 
   /**
    * Extracts the hook name from a function name.
