@@ -202,6 +202,8 @@ function aeon_get_files_to_make_replacements($kit) {
       'gulpfile.js',
       'package.json',
       'config/dev/config.json',
+      'src/Plugin/Preprocess/Node/NodeBase.php',
+      'src/Plugin/Preprocess/Node/NodeSystem.php',
       $kit . '.info.yml',
       $kit . '.libraries.yml',
       $kit . '.breakpoints.yml',
