@@ -1,11 +1,8 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Plugin\PluginBase.
- */
 
 namespace Drupal\aeon\Plugin;
 
+use Drupal\Core\Plugin\PluginBase;
 use Drupal\aeon\Aeon;
 
 /**
@@ -13,7 +10,7 @@ use Drupal\aeon\Aeon;
  *
  * @ingroup utility
  */
-class PluginBase extends \Drupal\Core\Plugin\PluginBase {
+class PluginBase extends PluginBase {
 
   /**
    * The currently set theme object.

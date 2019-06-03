@@ -118,7 +118,7 @@ class Schemas extends SettingBase {
    * Processes an update in a batch operation.
    *
    * @param string $theme_name
-   *  The machine name of the theme this update is being applied to.
+   *   The machine name of the theme this update is being applied to.
    * @param string $update_id
    *   The combined identifier of the update being applied, e.g.
    *   provider:schema.
@@ -164,7 +164,7 @@ class Schemas extends SettingBase {
 
       $context['results']['success'][] = t('<strong>[@theme][@schema] @label</strong>', $variables);
     }
-      // Capture any errors.
+    // Capture any errors.
     catch (\Exception $e) {
       $variables['@message'] = $e->getMessage();
       $context['results']['errors'][] = t('<strong>[@theme][@schema] @label</strong> - @message', $variables);
@@ -172,7 +172,7 @@ class Schemas extends SettingBase {
   }
 
   /**
-   * Batch 'finished' callback
+   * Batch 'finished' callback.
    *
    * @param bool $success
    *   A boolean indicating whether the batch has completed successfully.

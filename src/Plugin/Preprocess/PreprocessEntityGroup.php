@@ -4,7 +4,6 @@ namespace Drupal\aeon\Plugin\Preprocess;
 
 use Drupal\aeon\Utility\Variables;
 use Drupal\Core\Template\Attribute;
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Url;

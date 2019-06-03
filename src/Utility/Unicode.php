@@ -1,11 +1,8 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Utility\Unicode.
- */
 
 namespace Drupal\aeon\Utility;
 
+use Drupal\Component\Utility\Unicode;
 use Drupal\aeon\Aeon;
 use Drupal\Component\Utility\Xss;
 
@@ -14,7 +11,7 @@ use Drupal\Component\Utility\Xss;
  *
  * @ingroup utility
  */
-class Unicode extends \Drupal\Component\Utility\Unicode {
+class Unicode extends Unicode {
 
   /**
    * Extracts the hook name from a function name.
@@ -70,10 +67,10 @@ class Unicode extends \Drupal\Component\Utility\Unicode {
    *
    * @param string $string
    *   The string of text to check "simple" criteria on.
-   * @param int|FALSE $length
+   * @param int|false $length
    *   The length of characters used to determine whether or not $string is
    *   considered "simple". Set explicitly to FALSE to disable this criteria.
-   * @param array|FALSE $allowed_tags
+   * @param array|false $allowed_tags
    *   An array of allowed tag elements. Set explicitly to FALSE to disable this
    *   criteria.
    * @param bool $html

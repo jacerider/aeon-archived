@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Plugin\ProcessManager.
- */
 
 namespace Drupal\aeon\Plugin;
 
@@ -68,8 +64,7 @@ class ProcessManager extends PluginManager {
     // }
     // if ($e->isType(['color', 'date', 'number', 'range', 'tel', 'weight'])) {
     //   $e->addClass('form-inline', 'wrapper_attributes');
-    // }
-
+    // }.
     // Process input groups.
     if ($e->getProperty('input') && ($e->getProperty('input_group') || $e->getProperty('input_group_button'))) {
       static::processInputGroups($e, $form_state, $complete_form);
@@ -96,7 +91,7 @@ class ProcessManager extends PluginManager {
       // Use an icon for autocomplete "throbber".
       // $icon = Aeon::glyphicon('refresh');
       // $element->appendProperty('field_suffix', Element::create($icon)->addClass(['ajax-progress', 'ajax-progress-throbber']));
-      // $element->setProperty('input_group', TRUE);
+      // $element->setProperty('input_group', TRUE);.
     }
   }
 
@@ -157,7 +152,7 @@ class ProcessManager extends PluginManager {
    * @param \Drupal\aeon\Utility\Element $element
    *   The element to iterate over.
    *
-   * @return \Drupal\aeon\Utility\Element|FALSE
+   * @return \Drupal\aeon\Utility\Element|false
    *   The first button element or FALSE if no button could be found.
    */
   protected static function &findButton(Element $element) {

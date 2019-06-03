@@ -3,7 +3,6 @@
 namespace Drupal\aeon\Plugin\Preprocess;
 
 use Drupal\aeon\Utility\Variables;
-use Drupal\node\NodeInterface;
 
 /**
  * Pre-processes variables for the "commerce_product" theme hook.

@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Plugin\PreprocessManager.
- */
 
 namespace Drupal\aeon\Plugin;
 

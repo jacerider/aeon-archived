@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Plugin\AlterManager.
- */
 
 namespace Drupal\aeon\Plugin;
 

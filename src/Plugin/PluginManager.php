@@ -77,7 +77,7 @@ class PluginManager extends DefaultPluginManager {
   /**
    * {@inheritdoc}
    */
-  public function createInstance($plugin_id, array $configuration = array()) {
+  public function createInstance($plugin_id, array $configuration = []) {
     if (!isset($configuration['theme'])) {
       $configuration['theme'] = $this->theme;
     }

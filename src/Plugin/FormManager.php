@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Plugin\FormManager.
- */
 
 namespace Drupal\aeon\Plugin;
 

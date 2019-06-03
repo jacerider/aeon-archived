@@ -34,4 +34,5 @@ class DefaultCommand extends Command {
 
     $io->info($this->trans('commands.aeon.default.messages.success'));
   }
+
 }

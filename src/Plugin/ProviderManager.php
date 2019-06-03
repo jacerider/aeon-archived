@@ -2,7 +2,6 @@
 
 namespace Drupal\aeon\Plugin;
 
-use Drupal\aeon\Plugin\Provider\ProviderInterface;
 use Drupal\aeon\Theme;
 
 /**
@@ -34,7 +33,7 @@ class ProviderManager extends PluginManager {
    */
   public function processDefinition(&$definition, $plugin_id) {
     parent::processDefinition($definition, $plugin_id);
-    /** @var ProviderInterface $provider */
+    /** @var \Drupal\aeon\Plugin\Provider\ProviderInterface $provider */
     $provider = new $definition['class'](['theme' => $this->theme], $plugin_id, $definition);
     $provider->processDefinition($definition, $plugin_id);
   }

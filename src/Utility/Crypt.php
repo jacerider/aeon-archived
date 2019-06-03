@@ -1,8 +1,6 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Utility\Crypt.
- */
+
+use Drupal\Component\Utility\Crypt;
 
 namespace Drupal\aeon\Utility;
 
@@ -11,7 +9,7 @@ namespace Drupal\aeon\Utility;
  *
  * @ingroup utility
  */
-class Crypt extends \Drupal\Component\Utility\Crypt {
+class Crypt extends Crypt {
 
   /**
    * Generates a unique hash name.
@@ -34,4 +32,5 @@ class Crypt extends \Drupal\Component\Utility\Crypt {
     $hash .= self::hashBase64(serialize($args));
     return $hash;
   }
+
 }

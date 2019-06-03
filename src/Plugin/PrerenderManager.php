@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Plugin\PrerenderManager.
- */
 
 namespace Drupal\aeon\Plugin;
 

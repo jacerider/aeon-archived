@@ -71,7 +71,7 @@ class SystemThemeSettings extends FormBase implements FormInterface {
       'general' => t('General'),
       // 'components' => t('Components'),
       // 'javascript' => t('JavaScript'),
-      // 'advanced' => t('Advanced'),
+      // 'advanced' => t('Advanced'),.
     ];
     foreach ($groups as $group => $title) {
       $form[$group] = [

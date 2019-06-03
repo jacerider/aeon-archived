@@ -331,7 +331,7 @@ class Theme {
       $storage = self::getStorage();
       $value = $storage->get($name);
       if (!isset($value)) {
-        $value  = is_array($default) ? new StorageItem($default, $storage) : $default;
+        $value = is_array($default) ? new StorageItem($default, $storage) : $default;
         $storage->set($name, $value);
       }
       $cache[$name] = $value;

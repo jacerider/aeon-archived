@@ -89,4 +89,3 @@ foundation.util.triggers:
   version: VERSION
   js:
     assets/js/vendor/foundation.util.triggers.js: { minified: true }
-

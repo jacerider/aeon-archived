@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\aeon\Plugin\UpdateManager.
- */
 
 namespace Drupal\aeon\Plugin;
 
