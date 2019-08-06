@@ -15,6 +15,14 @@ class CommerceProduct extends PreprocessBase {
   use PreprocessEntityTrait;
 
   /**
+   * {@inheritdoc}
+   */
+  protected function preprocessVariables(Variables $variables) {
+    $variables['view_mode'] = $variables['elements']['#view_mode'];
+    $variables['product_type'] = $variables['product_entity']->bundle();
+  }
+
+  /**
    * Set element as link to title.
    */
   protected function setAsLink() {

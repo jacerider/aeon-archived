@@ -19,6 +19,13 @@
  * @ingroup themeable
  */
 #}
-<{{ tag }}{{ attributes }}>
+{%
+ set classes = [
+   'product',
+   product_type|clean_class,
+   view_mode|clean_class
+ ]
+%}
+<{{ tag }} id="product-{{ product_entity.id }}"{{ attributes.addClass(classes) }}>
   {{- product|without('variation_attributes') -}}
 </{{ tag }}>
