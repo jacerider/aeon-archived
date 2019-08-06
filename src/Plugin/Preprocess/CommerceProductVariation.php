@@ -5,7 +5,7 @@ namespace Drupal\aeon\Plugin\Preprocess;
 use Drupal\aeon\Utility\Variables;
 
 /**
- * Pre-processes variables for the "commerce_product" theme hook.
+ * Pre-processes variables for the "commerce_product_variation" theme hook.
  *
  * @ingroup plugins_preprocess
  *
