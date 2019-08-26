@@ -22,4 +22,17 @@ class CommerceProductAttributeValue extends PreprocessBase {
     $variables['product_attribute_value_type'] = $variables['product_attribute_value_entity']->bundle();
   }
 
+  /**
+   * Create a new field group.
+   *
+   * @param array $attributes
+   *   The attributes to add to the group wrapper.
+   * @param int $weight
+   *   The weight of the render array.
+   */
+  protected function addGroup(array $attributes = [], $weight = 0) {
+    $group = new PreprocessEntityGroup($this->variables, $attributes, $weight);
+    return $group->setPropertyName('product_attribute_value');
+  }
+
 }
