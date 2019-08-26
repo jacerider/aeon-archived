@@ -34,6 +34,9 @@ class Field extends PreprocessBase {
         }
       }
     }
+    if (!empty($variables['attributes'])) {
+      $variables['content_attributes'] = NestedArray::mergeDeep($variables['content_attributes'], $variables['attributes']);
+    }
 
     if ($is_multiple && $formatter == 'entity_reference_label') {
       // Entity reference label multi-value fields should be wrapped in a
