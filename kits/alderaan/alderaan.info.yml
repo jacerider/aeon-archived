@@ -1,0 +1,26 @@
+core: 8.x
+type: theme
+base theme: aeon
+
+name: AEON_KIT_NAME
+description: Admin theme based on Aeon
+package: 'Aeon'
+screenshot: screenshot.png
+version: VERSION
+hidden: false
+
+regions:
+  header: 'Header'
+  pre_content: 'Pre-content'
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  sidebar_first: 'First sidebar'
+regions_hidden:
+  - sidebar_first
+
+libraries:
+  - aeon_kit/base

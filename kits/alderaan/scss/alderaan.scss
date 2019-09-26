@@ -1,0 +1,13 @@
+// Make sure the charset is set appropriately
+@charset 'UTF-8';
+
+////////////////////////////////////////////////////////////////////////////////
+// Vendor
+// -----------------------------------------------------------------------------
+// Here we load vendor utilities. Base Aeon styling is included by default.
+// eXo is included here by default.
+
+// Include Exo Awesomeness.
+@import 'exo-common';
+
+@import 'aeon';

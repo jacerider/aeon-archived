@@ -1,5 +1,5 @@
 
-@mixin -aeon-table-stripe($stripe: $table-stripe) {
+@mixin -aeon-table-stripe($stripe: $table-stripe, $table-striped-background: $table-striped-background) {
   tr {
     // If stripe is set to even, darken the even rows.
     @if $stripe == even {
@@ -26,7 +26,7 @@
   }
 }
 
-@mixin -aeon-table-children-styles($stripe: $table-stripe, $is-striped: $table-is-striped) {
+@mixin -aeon-table-children-styles($stripe: $table-stripe, $is-striped: $table-is-striped, $table-border: $table-border, $table-background: $table-background, $table-padding: $table-padding, $global-weight-bold: $global-weight-bold, $table-head-background: $table-head-background, $table-head-font-color: $table-head-font-color, $table-foot-background: $table-foot-background, $table-foot-font-color: $table-foot-font-color, $table-striped-background: $table-striped-background) {
   thead,
   tbody,
   tfoot {
