@@ -13,7 +13,9 @@
     view_mode|clean_class
   ]
 %}
+{% if tag %}
 <{{ tag }}{{ attributes.setAttribute('id', 'term-' ~ term.id).addClass(classes) }}>
+{% endif %}
   {% if content_tag %}
     <{{ content_tag}}{{ content_attributes }}>
   {% endif %}
@@ -31,7 +33,9 @@
   {% if content_tag %}
     </{{ content_tag}}>
   {% endif %}
+{% if tag %}
 </{{ tag }}>
+{% endif %}
 
 {#
 /**
