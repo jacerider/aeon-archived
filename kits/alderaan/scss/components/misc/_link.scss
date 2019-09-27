@@ -1,0 +1,13 @@
+
+button {
+
+  &.link {
+    color: color(theme-primary);
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    font-size: $global-font-size;
+  }
+}
