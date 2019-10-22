@@ -1,0 +1,177 @@
+
+.system-status-report__requirements-group {
+  padding-top: $global-padding * 1.5;
+}
+
+.system-status-report__entry {
+  overflow: auto;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid color(theme-offset);
+  border-radius: 0;
+  background-color: transparent;
+
+  &.color-error {
+    background: alpha(theme-alert, 0.05);
+  }
+
+  &.color-warning {
+    background: alpha(theme-warning, 0.09);
+  }
+
+  &.color-checked {
+    background: alpha(theme-success, 0.09);
+  }
+}
+
+.system-status-report__entry:last-of-type {
+  border-bottom: 1px solid color(theme-offset);
+}
+
+.system-status-report__entry--error {
+  background-color: transparent;
+}
+
+.system-status-report__entry--warning {
+  background-color: transparent;
+}
+
+.system-status-report__status-title {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: $global-padding $global-padding $global-padding ($global-padding * 3);
+  font-weight: bold;
+
+  .color-error & {
+    color: color(theme-alert) !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  .color-warning & {
+    color: darken(color(theme-warning), 15%) !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.system-status-report__status-title .details-title {
+  text-transform: none;
+  color: inherit;
+  padding-left: $global-padding * 3;
+}
+
+.collapse-processed > .system-status-report__status-title:before {
+  float: right;
+}
+
+.system-status-report__status-title::-webkit-details-marker {
+  float: right;
+}
+
+.system-status-report summary:first-child ~ * {
+  display: none;
+}
+
+.system-status-report details[open] > *,
+.system-status-report details > summary:first-child {
+  display: block;
+  color: inherit;
+}
+
+.system-status-report__status-title .details-title:before,
+.details .system-status-report__status-icon:before {
+  position: absolute;
+  top: $global-padding;
+  left: $global-padding / 2;
+  display: inline-block;
+  width: rem-calc(16);
+  height: rem-calc(16);
+  margin-right: $global-margin;
+  content: '';
+  vertical-align: top;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+}
+
+.system-status-report__status-icon--error .details-title:before,
+.details .system-status-report__status-icon--error:before {
+  background-image: url('../../../../core/themes/stable/images/core/icons/e32700/error.svg');
+}
+
+.system-status-report__status-icon--warning .details-title:before,
+.details .system-status-report__status-icon--warning:before {
+  background-image: url('../../../../core/themes/stable/images/core/icons/e29700/warning.svg');
+}
+
+.system-status-report__entry__value {
+  box-sizing: border-box;
+  padding: 0 $global-padding $global-padding ($global-padding * 3);
+
+  dt {
+    margin-bottom: $global-margin / 2;
+  }
+
+  dd {
+    margin-bottom: $global-margin;
+  }
+
+  .description {
+    margin-top: $global-margin / 2;
+    line-height: 1.25;
+
+    ul {
+      list-style-type: disc;
+      margin-left: $global-margin * 1.5;
+
+      li {
+        list-style-type: disc;
+        list-style-image: initial;
+        margin: 0 0 ($global-margin / 2) ($global-margin);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 48em) {
+
+  .system-status-report {
+    word-wrap: break-word;
+  }
+}
+
+@media screen and (min-width: 48em) {
+
+  .system-status-report__entry:after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+
+  .system-status-report__status-title {
+    float: left;
+    width: 18rem;
+    cursor: default;
+  }
+
+  .system-status-report__status-title:hover,
+  .system-status-report__status-title:focus {
+    text-decoration: none;
+  }
+
+  html.js .system-status-report__status-title::-webkit-details-marker {
+    display: none;
+  }
+
+  .collapse-processed > .system-status-report__status-title:before {
+    position: relative;
+    top: 3px;
+  }
+
+  .system-status-report__entry__value {
+    display: block;
+    float: right;
+    width: calc(100% - 23em);
+    padding-top: 1em;
+    padding-left: 0;
+  }
+}

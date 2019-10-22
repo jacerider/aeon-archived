@@ -1,0 +1,32 @@
+
+// .node-page-edit-form {
+//   @include exo-grid;
+
+//   > .exo-form-element.exo-form-element-first {
+//     @include exo-cell;
+
+//     @include breakpoint(medium) {
+//       @include exo-cell(9);
+//     }
+//   }
+
+//   > .exo-form-element.exo-form-container-entity-meta {
+//     @include exo-cell;
+
+//     @include breakpoint(medium) {
+//       @include exo-cell(3);
+//     }
+
+//     .field-input {
+
+//       > .vertical-tabs {
+//         flex-direction: column;
+//       }
+//     }
+//   }
+
+//   .entity-content-form-footer,
+//   .exo-form-element.exo-form-element-type-actions {
+//     @include exo-cell;
+//   }
+// }

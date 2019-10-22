@@ -19,7 +19,7 @@ $body-font-family: Ubuntu, sans-serif;
 $header-font-family: Ubuntu, sans-serif;
 $body-background: color(theme-black);
 $body-font-color: color(theme-white);
-$anchor-color: color(theme-primary);
+$anchor-color: color(theme-alert);
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 
 $header-sizes: (
@@ -66,9 +66,9 @@ $table-is-striped: true;
 $table-border: color(theme-primary);
 $table-background: color(theme-white);
 $table-padding: $global-padding;
-$table-head-background: alpha(theme-black, 0.7);
-$table-head-font-color: color(theme-white);
+$table-head-background: darken(color(theme-offset), 10%);
+$table-head-font-color: color(theme-black);
 $table-foot-background: $table-head-background;
 $table-foot-font-color: $table-head-font-color;
-$table-striped-background: alpha(theme-black, 0.15);
+$table-striped-background: color(theme-offset);
 $show-header-for-stacked: false;
