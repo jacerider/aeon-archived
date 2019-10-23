@@ -9,9 +9,9 @@
   box-sizing: border-box;
   width: 100%;
   white-space: nowrap;
-  border: 1px solid #e6e4df;
+  border: 1px solid darken(color(theme-offset), 10%);
   border-radius: 3px;
-  background: #fcfcfa;
+  background: color(theme-offset);
 }
 
 .system-status-counter__status-icon {
@@ -19,10 +19,10 @@
   width: 60px;
   height: 60px;
   vertical-align: middle;
-  border-right: 1px solid #e6e4df;
+  border-right: 1px solid darken(color(theme-offset), 10%);
   border-left: 0;
-  background-color: #faf9f5;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+  background-color: darken(color(theme-offset), 2%);
+  box-shadow: 0 1px 1px alpha(theme-black, 0.1) inset;
 }
 
 .system-status-counter__status-icon:before {

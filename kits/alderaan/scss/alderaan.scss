@@ -17,9 +17,10 @@
 // -----------------------------------------------------------------------------
 // The base/ folder gathers all base styling to be used across the project.
 
-// @import 'base/typography';
+@import 'base/typography';
 // @import 'base/table';
 @import 'base/mixins';
+@import 'exo-theme';
 @import 'base/variables';
 
 ////////////////////////////////////////////////////////////////////////////////

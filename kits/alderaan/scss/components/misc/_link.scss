@@ -11,3 +11,12 @@ button {
     font-size: $global-font-size;
   }
 }
+
+a {
+  color: color(theme-primary);
+  transition: color $global-speed;
+
+  &:hover {
+    color: color(theme-secondary);
+  }
+}
