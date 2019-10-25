@@ -14,7 +14,7 @@
       "scss/**/*.scss"
     ],
     "includePaths": [
-      "../../scss"
+      "../scss"
     ]
   },
   "js": {
