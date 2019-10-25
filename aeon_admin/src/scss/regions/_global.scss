@@ -1,0 +1,27 @@
+// @include aeon-global-styles;
+// @include aeon-typography;
+
+body,
+.exo-content {
+  background: color(theme-white);
+  margin: 0;
+  padding: 0;
+}
+
+.section.main {
+
+  .is-admin & {
+    @include clearfix;
+    // @include spacing($position: left right);
+    @include spacing($type: padding, $position: bottom);
+    background: color(theme-white);
+    display: block;
+
+    > .region.content {
+
+      > * {
+        @include spacing($type: padding, $position: left right);
+      }
+    }
+  }
+}

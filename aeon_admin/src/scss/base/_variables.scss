@@ -2,19 +2,73 @@
 // VARIABLES
 // -----------------------------------------------------------------------------
 
-$global-width: 100%;
+$global-width: rem-calc(1100);
 $grid-row-width: $global-width;
-$foundation-palette: (
-  primary: #2199e8,
-  secondary: #777,
-  success: #86c13d,
-  warning: #f1ba2e,
-  alert: #e54040,
-);
-$body-background: $white;
-$body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$grid-container: $global-width;
+$grid-container-wide: rem-calc(1150);
 
-body {
-  // display: none;
-}
+/* stylelint-disable color-no-hex */
+$theme-colors: (
+  theme-poop: brown,
+);
+$colors: map-merge($global-colors, map-merge($colors, $theme-colors));
+
+// Base
+// ----------
+$body-font-family: Ubuntu, sans-serif;
+$header-font-family: Ubuntu, sans-serif;
+$body-background: color(theme-black);
+$body-font-color: color(theme-white);
+$anchor-color: color(theme-alert);
+$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+
+$header-sizes: (
+  small: (
+    'h1': 24,
+    'h2': 20,
+    'h3': 19,
+    'h4': 18,
+    'h5': 17,
+    'h6': 16,
+  ),
+  medium: (
+    'h1': 26,
+    'h2': 24,
+    'h3': 22,
+    'h4': 20,
+    'h5': 18,
+    'h6': 16,
+  ),
+);
+
+// Button
+// ----------
+$button-background: color(theme-primary);
+$button-background-hover: scale-color($button-background, $lightness: -15%);
+$global-radius: 5px;
+
+// Menu
+// ----------
+$menu-item-background-active: color(theme-primary);
+
+// Breadcrumb
+// ----------
+$breadcrumbs-item-color: color(theme-primary);
+
+// Animations and Transitions
+// -- -- -- --
+$global-speed: 400ms;
+
+// Tables
+// --------
+$table-stripe: even;
+$table-is-striped: true;
+$table-border: color(theme-primary);
+$table-background: color(theme-white);
+$table-padding: $global-padding;
+$table-head-background: darken(color(theme-offset), 10%);
+$table-head-font-color: color(theme-black);
+$table-foot-background: $table-head-background;
+$table-foot-font-color: $table-head-font-color;
+$table-striped-background: color(theme-offset);
+$show-header-for-stacked: false;

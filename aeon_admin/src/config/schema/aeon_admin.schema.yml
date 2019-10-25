@@ -1,0 +1,5 @@
+# Schema for the theme setting configuration file of the Aeon base theme.
+
+ash_admin.settings:
+  type: theme_settings
+  label: 'Aeon Admin settings'

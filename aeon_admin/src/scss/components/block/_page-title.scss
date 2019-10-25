@@ -1,0 +1,10 @@
+
+.block.page.title {
+  background: color(theme-base);
+  margin-bottom: $global-margin * 2;
+  padding: ($global-padding / 2) ($global-padding * 3);
+
+  h1 {
+    color: color(theme-offset);
+  }
+}

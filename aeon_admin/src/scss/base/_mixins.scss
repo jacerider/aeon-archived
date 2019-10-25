@@ -1,3 +1,94 @@
 ////////////////////////////////////////////////////////////////////////////////
 // MIXINS
 // -----------------------------------------------------------------------------
+
+/// Transfers the colors in the `$colors`map into variables, such as `$primary-color` and `$secondary-color`. Call this mixin below the Global section of your settings file to properly migrate your codebase.
+@mixin add-foundation-colors() {
+  @if map-has-key($colors, theme-primary) {
+    $primary-color: color(theme-primary) !global;
+  }
+  @else {
+    $primary-color: #1779ba !global; /* stylelint-disable-line color-no-hex */
+  }
+  @if map-has-key($colors, theme-secondary) {
+    $secondary-color: color(theme-secondary) !global;
+  }
+  @else {
+    $secondary-color: #767676 !global; /* stylelint-disable-line color-no-hex */
+  }
+  @if map-has-key($colors, theme-success) {
+    $success-color: color(theme-success) !global;
+  }
+  @else {
+    $success-color: #86c13d !global; /* stylelint-disable-line color-no-hex */
+  }
+  @if map-has-key($colors, theme-warning) {
+    $warning-color: color(theme-warning) !global;
+  }
+  @else {
+    $warning-color: #f1ba2e !global; /* stylelint-disable-line color-no-hex */
+  }
+  @if map-has-key($colors, theme-alert) {
+    $alert-color: color(theme-alert) !global;
+  }
+  @else {
+    $alert-color: #e54040 !global; /* stylelint-disable-line color-no-hex */
+  }
+}
+
+// Root level component spacing
+// ----------
+/// @param {Keyword} $type [margin] - Type of spacing to output. Accepts either margin or padding.
+// @param {List} $position [bottom top] - The position to apply spacing to. Accepts `top`, `bottom`, `left`, `right` in any combination.
+@mixin spacing(
+  $position: top bottom,
+  $multiplier: 1,
+  $type: margin
+) {
+
+  @if ($type == 'margin') {
+    $margin: $global-margin;
+
+    // Loop through each gutter position
+    @each $value in $position {
+      #{$type}-#{$value}: ($margin * 2) * $multiplier;
+
+      @include breakpoint(medium) {
+        #{$type}-#{$value}: ($margin * 3) * $multiplier;
+      }
+
+      @include breakpoint(large) {
+        #{$type}-#{$value}: ($margin * 3.5) * $multiplier;
+      }
+    }
+  }
+
+  @if ($type == 'padding') {
+    $padding: $global-padding;
+
+    // Loop through each gutter position
+    @each $value in $position {
+      #{$type}-#{$value}: ($padding * 2) * $multiplier;
+
+      @include breakpoint(medium) {
+        #{$type}-#{$value}: ($padding * 3) * $multiplier;
+      }
+
+      @include breakpoint(large) {
+        #{$type}-#{$value}: ($padding * 3.5) * $multiplier;
+      }
+    }
+  }
+}
+
+@mixin component-container() {
+  max-width: rem-calc(900);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin component-inset-container() {
+  max-width: rem-calc(700);
+  margin-left: auto;
+  margin-right: auto;
+}

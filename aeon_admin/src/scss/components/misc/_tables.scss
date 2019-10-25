@@ -1,0 +1,189 @@
+
+table {
+  @include table;
+  @include spacing($multiplier: 0.5);
+
+  @include breakpoint(medium down) {
+    @include table-stack($header: true);
+  }
+
+  tr {
+
+    &.region-title {
+
+      td {
+        padding: ($global-padding / 2) $global-padding;
+      }
+    }
+
+    &.drag {
+      // this is needed to override table stripe
+      background-color: alpha(theme-warning, 0.5) !important; /* stylelint-disable-line declaration-no-important */
+    }
+
+    &.drag-previous {
+      background-color: alpha(theme-success, 0.5);
+    }
+  }
+}
+
+a.tabledrag-handle {
+
+  .handle {
+    font-size: rem-calc(32);
+    margin-top: $global-margin / -4;
+  }
+}
+
+// table {
+//   width: 100%;
+//   margin: 0 0 $global-margin;
+
+//   caption {
+//     text-align: left;
+//   }
+
+//   .caption {
+//     margin-bottom: $global-margin;
+//   }
+
+//   thead {
+
+//     th {
+//       text-transform: uppercase;
+//       color: color(theme-base);
+//       border: solid color(theme-base);
+//       border-width: 1px 0;
+//       background: color(theme-offset);
+//     }
+
+//     > tr {
+//       border-bottom: 1px solid color(theme-offset);
+//     }
+//   }
+
+//   tbody {
+
+//     tr {
+
+//       &:hover,
+//       &:focus {
+//         background: color(theme-secondary);
+//       }
+
+//       &.color-warning {
+
+//         &:hover,
+//         &:focus {
+//           background: color(theme-base);
+//         }
+//       }
+
+//       &.color-error {
+
+//         &:hover,
+//         &:focus {
+//           background: color(theme-base);
+//         }
+//       }
+
+//       &.even,
+//       &:nth-of-type(even) {
+//         background-color: darken(color(theme-white), 5%);
+//       }
+//     }
+//   }
+
+//   th {
+//     padding: ($global-padding / 2) $global-padding;
+//     text-align: left;
+
+//     /* Force browsers to calculate the width of a 'select all' <th> element. */
+//     &.select-all {
+//       width: 1px;
+//     }
+
+//     > a {
+//       position: relative;
+//       display: block;
+
+//       /* 1. Must match negative bottom padding of the parent <th> */
+//       &:after {
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         bottom: -10px; /* 1. */
+//         left: 0;
+//         display: block;
+//         content: '';
+//         transition: all $global-speed;
+//         border-bottom: 2px solid transparent;
+//       }
+//     }
+
+//     &.is-active {
+
+//       > a {
+//         color: color(theme-primary);
+
+//         &:after {
+//           border-bottom-color: color(theme-primary);
+//         }
+//       }
+
+//       img {
+//         position: absolute;
+//         top: 50%;
+//         right: 0;
+//       }
+//     }
+
+//     > a:hover,
+//     > a:focus,
+//     &.is-active > a:hover,
+//     &.is-active > a:focus {
+//       text-decoration: none;
+//       color: color(theme-secondary);
+
+//       &:after {
+//         border-bottom-color: color(theme-secondary);
+//       }
+//     }
+//   }
+
+//   td,
+//   th {
+//     vertical-align: middle;
+//   }
+
+//   tr {
+//     padding: ($global-padding / 10) ($global-padding / 2);
+//     border-bottom: 1px solid color(theme-offset);
+//   }
+
+//   td {
+//     padding: 10px 12px;
+//     text-align: left;
+
+//     .item-list {
+
+//       ul {
+//         margin: 0;
+//       }
+//     }
+
+//     &.is-active {
+//       background: none;
+//     }
+//   }
+
+//   &.no-highlight {
+
+//     tr.selected {
+
+//       td {
+//         background: transparent;
+//       }
+//     }
+//   }
+// }
