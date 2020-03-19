@@ -1,0 +1,41 @@
+/**
+ * Entity meta settings.
+ */
+.entity-meta {
+
+  .entity-meta__header {
+    padding: $global-padding ($global-padding * 1.5);
+
+    .form-item {
+      margin: ($global-margin / 4) 0;
+    }
+
+    .entity-meta__last-saved {
+      font-style: italic;
+    }
+  }
+
+  .entity-meta__title {
+    margin: ($global-margin / 4) 0;
+    font-size: rem-calc(18);
+    font-weight: bold;
+  }
+
+  .ash-admin-details {
+    margin: 0;
+    border-top: 1px solid color(theme-offset);
+
+    > .ash-admin-details__wrapper {
+      padding-top: 0;
+    }
+
+    > summary {
+      padding: $global-padding ($global-padding * 1.25);
+      text-shadow: 0 1px 0 color(theme-white);
+    }
+
+    .summary {
+      display: none;
+    }
+  }
+}

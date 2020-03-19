@@ -86,7 +86,7 @@ function drush_aeon($name = NULL, $machine_name = NULL) {
   $kit = (drush_get_option('kit')) ? drush_trim_path(drush_get_option('kit')) : 'elysium';
 
   drush_aeon_create($name, $machine_name, $description, $subtheme_path, $kit);
-  drush_aeon_admin_create($name, $machine_name, $description, $subtheme_path, $kit);
+  // drush_aeon_admin_create($name, $machine_name, $description, $subtheme_path, $kit);
 }
 
 /**
@@ -127,6 +127,16 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
       '{{kit}}.theme',
       'scss/{{kit}}.scss',
       'js/{{kit}}.js',
+      'config/schema/{{kit}}.schema.yml',
+    );
+  }
+  else if ($kit == 'alderaan') {
+    $files_to_rename = array(
+      '{{kit}}.info.yml',
+      '{{kit}}.libraries.yml',
+      '{{kit}}.breakpoints.yml',
+      '{{kit}}.theme',
+      'scss/{{kit}}.scss',
       'config/schema/{{kit}}.schema.yml',
     );
   }
@@ -171,12 +181,12 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
 /**
  * Create admin theme.
  */
-function drush_aeon_admin_create($name, $machine_name, $description, $subtheme_path, $kit) {
-  $name .= ' Admin';
-  $machine_name .= '_admin';
-  $kit .= '_admin';
-  // drush_aeon_create($name, $machine_name, $description, $subtheme_path, $kit);
-}
+// function drush_aeon_admin_create($name, $machine_name, $description, $subtheme_path, $kit) {
+//   $name .= ' Admin';
+//   $machine_name .= '_admin';
+//   $kit .= '_admin';
+//   // drush_aeon_create($name, $machine_name, $description, $subtheme_path, $kit);
+// }
 
 /**
  * Replace strings in a file.
@@ -204,6 +214,21 @@ function aeon_get_files_to_make_replacements($kit) {
       'config/dev/config.json',
       'src/Plugin/Preprocess/Node/NodeBase.php',
       'src/Plugin/Preprocess/Node/NodeSystem.php',
+      $kit . '.info.yml',
+      $kit . '.libraries.yml',
+      $kit . '.breakpoints.yml',
+      $kit . '.theme',
+      'README.md',
+    );
+  }
+  else if ($kit == 'alderaan') {
+    return array(
+      'config/install/' . $kit . '.settings.yml',
+      'config/schema/' . $kit . '.schema.yml',
+      'scss/' . $kit . '.scss',
+      'gulpfile.js',
+      'package.json',
+      'config/dev/config.json',
       $kit . '.info.yml',
       $kit . '.libraries.yml',
       $kit . '.breakpoints.yml',

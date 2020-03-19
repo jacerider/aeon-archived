@@ -1,0 +1,18 @@
+// @include aeon-global-styles;
+// @include aeon-typography;
+
+body,
+.exo-content {
+  background: color(theme-white);
+  margin: 0;
+  padding: 0;
+}
+
+.section.main {
+  @include clearfix;
+  background: color(theme-white);
+  display: block;
+  padding-left: $global-padding * 3;
+  padding-right: $global-padding * 3;
+  margin-bottom: $global-margin * 3;
+}

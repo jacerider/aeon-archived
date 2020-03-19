@@ -1,6 +1,0 @@
-{
-  "browserSync": {
-    "enabled" : true,
-    "proxy" : "http://juxt.dev"
-  }
-}

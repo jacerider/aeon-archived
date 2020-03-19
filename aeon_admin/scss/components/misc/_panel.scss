@@ -1,0 +1,14 @@
+
+.panel {
+  margin: 0 0 ($global-margin * 1.5);
+  padding: $global-padding;
+  border: 1px solid darken(color(theme-offset), 15%);
+  background: lighten(color(theme-offset), 2%);
+}
+
+.panel__title {
+  margin: 0;
+  padding-bottom: $global-padding;
+  text-transform: uppercase;
+  font-size: rem-calc(12);
+}

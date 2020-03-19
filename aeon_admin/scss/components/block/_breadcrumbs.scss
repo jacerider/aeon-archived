@@ -1,0 +1,30 @@
+
+.breadcrumb {
+  padding-bottom: $global-padding / 2;
+
+  .block.breadcrumbs {
+    padding: ($global-padding * 0.75) 0 $global-padding;
+    line-height: $global-padding;
+
+    ol {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      /* IE8 does not support :not() and :last-child. */
+      &:before {
+        content: ' \BB ';
+      }
+
+      &:first-child:before {
+        content: none;
+      }
+    }
+  }
+}

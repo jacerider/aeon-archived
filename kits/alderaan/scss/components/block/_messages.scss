@@ -1,0 +1,27 @@
+
+.messages {
+  margin: $global-margin 0;
+  padding: $global-padding ($global-padding * 2);
+  background-repeat: no-repeat;
+  background-size: $global-padding * 1.25;
+  background-position: left center;
+
+  &.error,
+  &.messages--error {
+    background-image: url('../icons/error.svg');
+  }
+
+  &.status,
+  &.messages--status {
+    background-image: url('../icons/check.svg');
+  }
+
+  &.warning,
+  &.messages--warning {
+    background-image: url('../icons/warning.svg');
+  }
+
+  .message {
+    line-height: 1.5;
+  }
+}

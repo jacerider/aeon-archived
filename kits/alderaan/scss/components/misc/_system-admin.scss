@@ -1,0 +1,395 @@
+
+.layout-container {
+  margin: 0 ($global-margin * 1.5);
+}
+
+.layout-container:after {
+  display: table;
+  clear: both;
+  content: '';
+}
+
+@media screen and (min-width: 38em) {
+
+  .layout-container {
+    margin: 0 ($global-margin * 2.5);
+  }
+
+  .layout-column {
+    float: left;
+    box-sizing: border-box;
+
+    + .layout-column {
+      padding-left: $global-padding;
+    }
+  }
+
+  .layout-column--half {
+    width: 50%;
+  }
+
+  .layout-column--quarter {
+    width: 25%;
+  }
+
+  .layout-column--three-quarter {
+    width: 75%;
+  }
+}
+
+/**
+ * Panel.
+ * Used to visually group items together.
+ */
+.panel {
+  padding: 5px 5px 15px;
+}
+
+.panel__description {
+  margin: 0 0 rem-calc(3);
+  padding: 2px 0 3px;
+}
+
+/**
+ * System compact link: to toggle the display of description text.
+ */
+.compact-link {
+  margin: 0 0 ($global-margin / 2) 0;
+}
+
+/**
+ * Quick inline admin links.
+ */
+small {
+
+  .admin-link:before {
+    content: ' [';
+  }
+
+  .admin-link:after {
+    content: ']';
+  }
+}
+
+/**
+ * Modules page.
+ */
+.system-modules {
+
+  thead {
+
+    > tr {
+      border: 0;
+    }
+  }
+
+  div.incompatible {
+    font-weight: bold;
+  }
+
+  details {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: color(theme-offset);
+    line-height: 20px;
+
+    &[open] {
+      overflow: visible;
+      height: auto;
+      white-space: normal;
+
+      summary .text {
+        text-transform: none;
+        hyphens: auto;
+      }
+    }
+  }
+
+  td {
+    vertical-align: top;
+    padding-left: 0;
+
+    &.checkbox {
+      width: 4%;
+      min-width: 25px;
+    }
+
+    &.module {
+      width: 25%;
+    }
+
+    details {
+      height: rem-calc(20);
+      margin: 0;
+      border: 0;
+
+      summary {
+        padding: 0;
+        cursor: default;
+        text-transform: none;
+        font-weight: normal;
+      }
+
+      a {
+        color: color(theme-base);
+        border: 0;
+      }
+    }
+  }
+}
+
+.system-modules label,
+.system-modules-uninstall label {
+  color: color(theme-base);
+  font-size: 1.15em;
+}
+
+@media screen and (max-width: 40em) {
+
+  .system-modules td.name {
+    width: 20%;
+  }
+
+  .system-modules td.description {
+    width: 40%;
+  }
+}
+
+.system-modules .requirements {
+  max-width: rem-calc(490);
+  padding: ($global-padding / 2) 0;
+}
+
+.system-modules .links {
+  overflow: hidden; /* prevents collapse */
+}
+
+.system-modules .checkbox {
+  margin: 0 ($global-margin / 2);
+}
+
+.system-modules .checkbox .form-item {
+  margin-bottom: 0;
+}
+
+.admin-requirements,
+.admin-required {
+  color: color(theme-gray);
+  font-size: 0.9em;
+}
+
+.admin-enabled {
+  color: color(theme-success);
+}
+
+.admin-missing {
+  color: color(theme-alert);
+}
+
+.module-link {
+  display: block;
+  float: left;
+  margin-top: $global-margin / 4;
+  padding: ($global-padding / 4) ($global-padding * 1.5);
+  white-space: nowrap;
+}
+
+.module-link-help {
+  background: url('../../images/core/icons/787878/questionmark-disc.svg') 0 50% no-repeat;
+}
+
+.module-link-permissions {
+  background: url('../../images/core/icons/787878/key.svg') 0 50% no-repeat;
+}
+
+.module-link-configure {
+  background: url('../../images/core/icons/787878/cog.svg') 0 50% no-repeat;
+}
+
+/* Status report. */
+.system-status-report__status-title {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: ($global-padding) ($global-padding / 2) ($global-padding) ($global-padding * 2.5);
+  vertical-align: top;
+  background-color: transparent;
+  font-weight: normal;
+}
+
+.system-status-report__status-icon:before {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-repeat: no-repeat;
+}
+
+.system-status-report__status-icon--error:before {
+  background-image: url('../../images/core/icons/e32700/error.svg');
+}
+
+.system-status-report__status-icon--warning:before {
+  background-image: url('../../images/core/icons/e29700/warning.svg');
+}
+
+.system-status-report__entry__value {
+  padding: $global-padding ($global-padding / 2);
+}
+
+/**
+ * Appearance page.
+ */
+.theme-info__header {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+.theme-default .theme-info__header {
+  font-weight: bold;
+}
+
+.theme-info__description {
+  margin-top: 0;
+}
+
+.system-themes-list {
+  margin-bottom: $global-margin * 1.5;
+}
+
+.system-themes-list-uninstalled {
+  padding-top: $global-padding * 1.5;
+  border-top: 1px solid color(theme-gray);
+}
+
+.system-themes-list__header {
+  margin: 0;
+}
+
+.theme-selector {
+  padding-top: $global-padding * 1.5;
+}
+
+.theme-selector .screenshot,
+.theme-selector .no-screenshot {
+  max-width: 100%;
+  height: auto;
+  padding: $global-padding / 5;
+  text-align: center;
+  vertical-align: bottom;
+  border: 1px solid color(theme-gray);
+}
+
+.theme-default .screenshot {
+  border: 1px solid color(theme-offset);
+}
+
+.system-themes-list-uninstalled .screenshot,
+.system-themes-list-uninstalled .no-screenshot {
+  max-width: rem-calc(190);
+  height: auto;
+}
+
+/**
+ * Theme display without vertical toolbar.
+ */
+@media screen and (min-width: 45em) {
+
+  body:not(.toolbar-vertical) .system-themes-list-installed .screenshot,
+  body:not(.toolbar-vertical) .system-themes-list-installed .no-screenshot {
+    float: left;
+    width: rem-calc(290);
+    margin: 0 ($global-margin * 1.5) 0 0;
+  }
+
+  body:not(.toolbar-vertical) .system-themes-list-installed .system-themes-list__header {
+    margin-top: 0;
+  }
+
+  body:not(.toolbar-vertical) .system-themes-list-uninstalled .theme-selector {
+    float: left;
+    box-sizing: border-box;
+    width: 31.25%;
+    padding: ($global-padding * 1.5) ($global-padding * 1.5) ($global-padding * 1.5) 0;
+  }
+
+  body:not(.toolbar-vertical) .system-themes-list-uninstalled .theme-info {
+    min-height: rem-calc(175);
+  }
+}
+
+/**
+ * Theme display with vertical toolbar.
+ */
+@media screen and (min-width: 60em) {
+
+  .toolbar-vertical .system-themes-list-installed .screenshot,
+  .toolbar-vertical .system-themes-list-installed .no-screenshot {
+    float: left;
+    width: rem-calc(290);
+    margin: 0 ($global-margin * 1.5) 0 0;
+  }
+
+  .toolbar-vertical .system-themes-list-installed .theme-info__header {
+    margin-top: 0;
+  }
+
+  .toolbar-vertical .system-themes-list-uninstalled .theme-selector {
+    float: left;
+    box-sizing: border-box;
+    width: 31.25%;
+    padding: ($global-padding * 1.5) ($global-padding * 1.5) ($global-padding * 1.5) 0;
+  }
+
+  .toolbar-vertical .system-themes-list-uninstalled .theme-info {
+    min-height: rem-calc(175);
+  }
+}
+
+.system-themes-list-installed .theme-info {
+  max-width: rem-calc(940);
+}
+
+.theme-selector .incompatible {
+  margin-top: $global-margin;
+  font-weight: bold;
+}
+
+.theme-selector .operations {
+  margin: $global-margin 0 0 0;
+  padding: 0;
+}
+
+.theme-selector .operations li {
+  float: left;
+  margin: 0;
+  padding: 0 ($global-padding * 0.75);
+  list-style-type: none;
+  border-right: 1px solid color(theme-gray);
+}
+
+.theme-selector .operations li:last-child {
+  padding: 0 0 0 ($global-padding * 0.75);
+  border-right: 0;
+}
+
+.theme-selector .operations li:first-child {
+  padding: 0 ($global-padding * 0.75) 0 0;
+}
+
+.system-themes-admin-form {
+  clear: left;
+}
+
+.cron-description__run-cron {
+  display: block;
+}
+
+.system-cron-settings__link {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

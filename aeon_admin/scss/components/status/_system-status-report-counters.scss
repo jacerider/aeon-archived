@@ -1,0 +1,21 @@
+
+.system-status-report-counters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .system-status-report-counters__item {
+    width: 100%;
+    margin: ($global-margin / 2) 0 $global-margin;
+    padding: 0;
+    text-align: left;
+
+    &.system-status-report-counters__item--half-width {
+      width: 49%;
+    }
+
+    &.system-status-report-counters__item--third-width {
+      width: 32%;
+    }
+  }
+}

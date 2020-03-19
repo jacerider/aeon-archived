@@ -1,0 +1,33 @@
+/**
+ * @file
+ * Styles for link buttons and action links.
+ */
+
+.action-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    margin: 0 0.3em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    .button-action {
+      display: inline-block;
+      padding: 0.2em 0.5em 0.3em;
+      text-decoration: none;
+      line-height: 160%;
+
+      &:before {
+        margin-left: $global-padding / -10;
+        padding-right: $global-padding / 5;
+        content: '+';
+        font-weight: 900;
+      }
+    }
+  }
+}

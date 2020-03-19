@@ -1,0 +1,43 @@
+{
+  "name": "aeon_kit",
+  "description": "AEON_KIT_DESCRIPTION",
+  "browserSync": {
+    "enabled" : true,
+    "proxy" : "http://localhost",
+    "port" : 3000,
+    "openAutomatically" : false,
+    "notify" : false
+  },
+  "css": {
+    "dest": "assets/css",
+    "src": [
+      "scss/**/*.scss"
+    ],
+    "includePaths": [
+      "../aeon/scss"
+    ]
+  },
+  "js": {
+    "dest": "assets/js",
+    "src": [
+      "js/**/*.js"
+    ],
+    "vendorDest": "assets/js/vendor"
+  },
+  "templates": {
+    "src": [
+      "templates/**/*.twig"
+    ]
+  },
+  "drush": {
+    "src": [
+      "src/Plugin/Preprocess/*.php"
+    ]
+  },
+  "images": {
+    "src": [
+      "assets/images/**/*"
+    ],
+    "dest": "assets/images/"
+  }
+}
