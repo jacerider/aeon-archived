@@ -9,24 +9,24 @@
  * Implements hook_drush_command().
  */
 function aeon_drush_command() {
-  $items = array();
+  $items = [];
 
-  $items['aeon'] = array(
+  $items['aeon'] = [
     'description' => 'Create a Aeon subtheme.',
-    'arguments' => array(
+    'arguments' => [
       'name'         => 'The name of your subtheme.',
-    ),
-    'options' => array(
+    ],
+    'options' => [
       'machine_name' => 'The machine-readable name of your subtheme. This will be auto-generated from the human-readable name if ommited.',
       'description' => 'The description of your subtheme',
       'path' => 'The destination of your subtheme. Defaults to "all" (themes).',
       'kit' => 'The name or url of the starter kit to use. Defaults to "elysium".',
-    ),
-    'examples' => array(
+    ],
+    'examples' => [
       'drush aeon "Elysium"' => 'Creates a Aeon subtheme called "Elysium", using the default options.',
       'drush aeon "Elysium" --machine_name=elysium' => 'Creates a Aeon subtheme called "Elysium" with a specific machine name.',
-    ),
-  );
+    ],
+  ];
 
   return $items;
 }
@@ -65,12 +65,12 @@ function drush_aeon($name = NULL, $machine_name = NULL) {
     $machine_name = $name;
   }
   $machine_name = str_replace(' ', '_', strtolower($machine_name));
-  $search = array(
+  $search = [
     // Remove characters not valid in function names.
     '/[^a-z0-9_]/',
     // Functions must begin with an alpha character.
     '/^[^a-z]+/',
-  );
+  ];
   $machine_name = preg_replace($search, '', $machine_name);
 
   // Description of subtheme.
@@ -86,7 +86,7 @@ function drush_aeon($name = NULL, $machine_name = NULL) {
   $kit = (drush_get_option('kit')) ? drush_trim_path(drush_get_option('kit')) : 'elysium';
 
   drush_aeon_create($name, $machine_name, $description, $subtheme_path, $kit);
-  // drush_aeon_admin_create($name, $machine_name, $description, $subtheme_path, $kit);
+  // drush_aeon_admin_create($name, $machine_name, $description, $subtheme_path, $kit);.
 }
 
 /**
@@ -99,17 +99,17 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
   $kit_path = drush_normalize_path(drush_get_context('DRUSH_DRUPAL_ROOT') . '/' . drupal_get_path('theme', 'aeon') . '/kits/' . $kit);
 
   if (!is_dir(dirname($subtheme_path))) {
-    drush_die(dt('The directory "!directory" was not found.', array('!directory' => dirname($subtheme_path))));
+    drush_die(dt('The directory "!directory" was not found.', ['!directory' => dirname($subtheme_path)]));
   }
   drush_op('drush_copy_dir', $kit_path, $subtheme_path);
 
   // Alter the contents of the .info file based on the command options.
-  $alterations = array(
+  $alterations = [
     'AEON_KIT_NAME' => $name,
     'AEON_KIT_DESCRIPTION' => $description,
     'aeon_kit' => $machine_name,
     'hidden: true' => '',
-  );
+  ];
 
   // Replace all occurrences of '{{machine_name}}' with the machine name of our
   // sub theme.
@@ -120,7 +120,7 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
 
   // Rename files.
   if ($kit == 'valerian') {
-    $files_to_rename = array(
+    $files_to_rename = [
       '{{kit}}.info.yml',
       '{{kit}}.libraries.yml',
       '{{kit}}.breakpoints.yml',
@@ -128,21 +128,21 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
       'scss/{{kit}}.scss',
       'js/{{kit}}.js',
       'config/schema/{{kit}}.schema.yml',
-    );
+    ];
   }
-  else if ($kit == 'alderaan') {
-    $files_to_rename = array(
+  elseif ($kit == 'alderaan') {
+    $files_to_rename = [
       '{{kit}}.info.yml',
       '{{kit}}.libraries.yml',
       '{{kit}}.breakpoints.yml',
       '{{kit}}.theme',
       'scss/{{kit}}.scss',
       'config/schema/{{kit}}.schema.yml',
-    );
+    ];
   }
   // Default settings for Elysium Kit.
   else {
-    $files_to_rename = array(
+    $files_to_rename = [
       '{{kit}}.info.yml',
       '{{kit}}.libraries.yml',
       '{{kit}}.breakpoints.yml',
@@ -150,9 +150,9 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
       'dev/scss/{{kit}}.scss',
       'dev/js/{{kit}}.js',
       'config/schema/{{kit}}.schema.yml',
-    );
+    ];
   }
-  
+
   foreach ($files_to_rename as $file_to_rename_path) {
     $file_original_path = $subtheme_path . '/' . str_replace('{{kit}}', $kit, $file_to_rename_path);
     $file_new_path = $subtheme_path . '/' . str_replace('{{kit}}', $machine_name, $file_to_rename_path);
@@ -170,23 +170,23 @@ function drush_aeon_create($name, $machine_name, $description, $subtheme_path, $
   // Notify user of the newly created theme.
   $message = 'Successfully created the Aeon subtheme "!name" created in: !path using the "!kit" kit';
 
-  $message = dt($message . '.', array(
+  $message = dt($message . '.', [
     '!name' => $name,
     '!path' => $subtheme_path,
     '!kit' => $kit,
-  ));
+  ]);
   drush_print($message);
 }
 
 /**
  * Create admin theme.
  */
-// function drush_aeon_admin_create($name, $machine_name, $description, $subtheme_path, $kit) {
+// Function drush_aeon_admin_create($name, $machine_name, $description, $subtheme_path, $kit) {
 //   $name .= ' Admin';
 //   $machine_name .= '_admin';
 //   $kit .= '_admin';
 //   // drush_aeon_create($name, $machine_name, $description, $subtheme_path, $kit);
-// }
+// }.
 
 /**
  * Replace strings in a file.
@@ -204,7 +204,7 @@ function aeon_file_str_replace($file_path, $find, $replace) {
 function aeon_get_files_to_make_replacements($kit) {
 
   if ($kit == 'valerian') {
-    return array(
+    return [
       'config/install/' . $kit . '.settings.yml',
       'config/schema/' . $kit . '.schema.yml',
       'scss/' . $kit . '.scss',
@@ -219,10 +219,10 @@ function aeon_get_files_to_make_replacements($kit) {
       $kit . '.breakpoints.yml',
       $kit . '.theme',
       'README.md',
-    );
+    ];
   }
-  else if ($kit == 'alderaan') {
-    return array(
+  elseif ($kit == 'alderaan') {
+    return [
       'config/install/' . $kit . '.settings.yml',
       'config/schema/' . $kit . '.schema.yml',
       'scss/' . $kit . '.scss',
@@ -234,11 +234,11 @@ function aeon_get_files_to_make_replacements($kit) {
       $kit . '.breakpoints.yml',
       $kit . '.theme',
       'README.md',
-    );
+    ];
   }
   // Default settings for Elysium Kit.
   else {
-    return array(
+    return [
       'config/install/' . $kit . '.settings.yml',
       'config/schema/' . $kit . '.schema.yml',
       'dev/scss/' . $kit . '.scss',
@@ -252,6 +252,6 @@ function aeon_get_files_to_make_replacements($kit) {
       $kit . '.breakpoints.yml',
       $kit . '.theme',
       'README.md',
-    );
+    ];
   }
 }

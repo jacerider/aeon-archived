@@ -1,0 +1,7 @@
+services:
+  aeon.subtheme.command:
+    class: 'Drush\Commands\aeon\SubThemeCommands'
+    arguments: ['@file_system']
+    tags:
+      -
+        name: drush.command
