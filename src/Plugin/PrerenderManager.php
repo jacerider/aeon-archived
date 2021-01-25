@@ -1,16 +1,21 @@
 <?php
+/**
+ * @file
+ * Contains \Drupal\aeon\Plugin\PrerenderManager.
+ */
 
 namespace Drupal\aeon\Plugin;
 
 use Drupal\aeon\Theme;
 use Drupal\aeon\Utility\Element;
+use Drupal\Core\Security\TrustedCallbackInterface;
 
 /**
  * Manages discovery and instantiation of Aeon pre-render callbacks.
  *
  * @ingroup plugins_prerender
  */
-class PrerenderManager extends PluginManager {
+class PrerenderManager extends PluginManager implements TrustedCallbackInterface {
 
   /**
    * Constructs a new \Drupal\aeon\Plugin\PrerenderManager object.
@@ -47,6 +52,13 @@ class PrerenderManager extends PluginManager {
     $e->smartDescription();
 
     return $element;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public static function trustedCallbacks() {
+    return ['preRender'];
   }
 
 }

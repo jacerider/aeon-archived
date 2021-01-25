@@ -2,8 +2,8 @@
 
 namespace Drupal\aeon\Utility;
 
-use Drupal\Component\Utility\Unicode as BaseUnicode;
 use Drupal\aeon\Aeon;
+use Drupal\Component\Utility\Unicode as UtilityUnicode;
 use Drupal\Component\Utility\Xss;
 
 /**
@@ -11,7 +11,7 @@ use Drupal\Component\Utility\Xss;
  *
  * @ingroup utility
  */
-class Unicode extends BaseUnicode {
+class Unicode extends UtilityUnicode {
 
   /**
    * Extracts the hook name from a function name.
@@ -54,9 +54,9 @@ class Unicode extends BaseUnicode {
       $callback = implode('::', $callback);
     }
     if ($callback[0] === '\\') {
-      $callback = self::substr($callback, 1);
+      $callback = mb_substr($callback, 1);
     }
-    if ($array && self::strpos($callback, '::') !== FALSE) {
+    if ($array && mb_strpos($callback, '::') !== FALSE) {
       $callback = explode('::', $callback);
     }
     return $callback;
@@ -67,10 +67,10 @@ class Unicode extends BaseUnicode {
    *
    * @param string $string
    *   The string of text to check "simple" criteria on.
-   * @param int|false $length
+   * @param int|FALSE $length
    *   The length of characters used to determine whether or not $string is
    *   considered "simple". Set explicitly to FALSE to disable this criteria.
-   * @param array|false $allowed_tags
+   * @param array|FALSE $allowed_tags
    *   An array of allowed tag elements. Set explicitly to FALSE to disable this
    *   criteria.
    * @param bool $html

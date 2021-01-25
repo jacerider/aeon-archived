@@ -4,7 +4,7 @@ name: Aeon
 description: Responsive base theme for Drupal.
 package: 'Aeon'
 screenshot: screenshot.png
-core: 8.x
+core_version_requirement: ^8.8 || ^9
 version: VERSION
 
 stylesheets-remove:
