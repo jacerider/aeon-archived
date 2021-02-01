@@ -3,13 +3,14 @@
 namespace Drupal\aeon\Plugin\Prerender;
 
 use Drupal\aeon\Utility\Element;
+use Drupal\Core\Security\TrustedCallbackInterface;
 
 /**
  * Defines the interface for an object oriented preprocess plugin.
  *
  * @ingroup plugins_prerender
  */
-class PrerenderBase implements PrerenderInterface {
+class PrerenderBase implements PrerenderInterface, TrustedCallbackInterface {
 
   /**
    * {@inheritdoc}
@@ -26,5 +27,12 @@ class PrerenderBase implements PrerenderInterface {
    *   The element object.
    */
   public static function preRenderElement(Element $element) {}
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function trustedCallbacks() {
+    return ['preRender'];
+  }
 
 }
