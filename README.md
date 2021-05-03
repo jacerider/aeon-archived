@@ -18,7 +18,7 @@ drush config-set system.theme default aeon -y
 
 ```bash
 drush cc drush
-drush --include=web/themes/aeon aeon "SUBTHEME_NAME"
+drush aeon "SUBTHEME_NAME"
 ```
 
 * Set default theme:

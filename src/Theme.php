@@ -278,7 +278,9 @@ class Theme {
     $hash = Crypt::generateHash($mask, $path, $options);
 
     if (!$files->has($hash)) {
-      $files->set($hash, file_scan_directory($path, $mask, $options));
+      /** @var \Drupal\Core\File\FileSystemInterface $file_system */
+      $file_system = \Drupal::service('file_system');
+      $files->set($hash, $file_system->scanDirectory($path, $mask, $options));
     }
     return $files->get($hash, []);
   }
@@ -331,7 +333,7 @@ class Theme {
       $storage = self::getStorage();
       $value = $storage->get($name);
       if (!isset($value)) {
-        $value = is_array($default) ? new StorageItem($default, $storage) : $default;
+        $value  = is_array($default) ? new StorageItem($default, $storage) : $default;
         $storage->set($name, $value);
       }
       $cache[$name] = $value;

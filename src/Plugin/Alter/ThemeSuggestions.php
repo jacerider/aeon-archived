@@ -3,7 +3,6 @@
 namespace Drupal\aeon\Plugin\Alter;
 
 use Drupal\aeon\Plugin\PluginBase;
-use Drupal\aeon\Utility\Unicode;
 use Drupal\aeon\Utility\Variables;
 use Drupal\Core\Entity\EntityInterface;
 
@@ -24,22 +23,21 @@ class ThemeSuggestions extends PluginBase implements AlterInterface {
 
     switch ($hook) {
       case 'page':
-        $route_name = \Drupal::routeMatch()->getRouteName();
-        switch ($route_name) {
-          case 'user.login':
-          case 'user.register':
-          case 'user.pass':
-          case 'user.reset.form':
-            $suggestions[] = 'page__user__auth';
-            break;
+        $path = \Drupal::service('path.current')->getPath();
+        if (in_array($path, [
+          '/user/login',
+          '/user/register',
+          '/user/password',
+        ])) {
+          $suggestions[] = 'page__user__auth';
         }
         break;
 
       case 'links':
-        if (Unicode::strpos($variables['theme_hook_original'], 'links__dropbutton') !== FALSE) {
+        if (mb_strpos($variables['theme_hook_original'], 'links__dropbutton') !== FALSE) {
           // Handle dropbutton "subtypes".
           // @see \Drupal\aeon\Plugin\Prerender\Dropbutton::preRenderElement()
-          if ($suggestion = Unicode::substr($variables['theme_hook_original'], 17)) {
+          if ($suggestion = mb_substr($variables['theme_hook_original'], 17)) {
             $suggestions[] = 'aeon_dropdown' . $suggestion;
           }
           $suggestions[] = 'aeon_dropdown';
