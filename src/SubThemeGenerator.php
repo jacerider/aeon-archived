@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace Drupal\aeon;
 
-use RuntimeException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
@@ -291,7 +290,7 @@ class SubThemeGenerator {
   protected function fileGetContents(string $fileName): string {
     $content = file_get_contents($fileName);
     if ($content === FALSE) {
-      throw new RuntimeException("Could not read file '$fileName'", 1);
+      throw new \RuntimeException("Could not read file '$fileName'", 1);
     }
 
     return $content;

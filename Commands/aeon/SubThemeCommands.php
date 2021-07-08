@@ -9,8 +9,6 @@ use Consolidation\AnnotatedCommand\CommandError;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\aeon\SubThemeGenerator;
 use Drush\Commands\DrushCommands;
-use Exception;
-use FilesystemIterator;
 use Robo\Contract\BuilderAwareInterface;
 use Robo\State\Data as RoboStateData;
 use Robo\TaskAccessor;
@@ -129,7 +127,7 @@ class SubThemeCommands extends DrushCommands implements BuilderAwareInterface {
           $this->fs->mkdir($packDir);
           $this->fs->copy($kitUrl, $data['packPath']);
         }
-        catch (Exception $e) {
+        catch (\Exception $e) {
           $logger->error($e->getMessage());
 
           return 1;
@@ -158,7 +156,7 @@ class SubThemeCommands extends DrushCommands implements BuilderAwareInterface {
           $extractorInstance = $extractorManager->getInstance(['filepath' => $data['packPath']]);
           $extractorInstance->extract($data['srcDir']);
         }
-        catch (Exception $e) {
+        catch (\Exception $e) {
           $this->logger()->error($e->getMessage());
 
           return 1;
@@ -186,7 +184,7 @@ class SubThemeCommands extends DrushCommands implements BuilderAwareInterface {
       try {
         $this->fs->mirror($data['srcDir'], $dstDir);
       }
-      catch (Exception $e) {
+      catch (\Exception $e) {
         $this->logger()->error($e->getMessage());
 
         return 1;
@@ -464,7 +462,7 @@ class SubThemeCommands extends DrushCommands implements BuilderAwareInterface {
    *   TRUE if directory is empty.
    */
   protected function isDirEmpty(string $dir): bool {
-    return !(new FilesystemIterator($dir))->valid();
+    return !(new \FilesystemIterator($dir))->valid();
   }
 
   /**
