@@ -24,6 +24,24 @@
     ],
     "vendorDest": "assets/js/vendor"
   },
+  "components": {
+    "css": {
+      "dest": "./components",
+      "src": [
+        "components/*/src/styles/*.scss"
+      ],
+      "includePaths": [
+        "../aeon/scss",
+        "./scss/base"
+      ]
+    },
+    "js": {
+      "dest": "./components",
+      "src": [
+        "components/*/src/scripts/*.js"
+      ]
+    }
+  },
   "templates": {
     "src": [
       "templates/**/*.twig"
