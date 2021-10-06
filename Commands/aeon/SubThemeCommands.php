@@ -14,8 +14,8 @@ use Robo\State\Data as RoboStateData;
 use Robo\TaskAccessor;
 use Symfony\Component\Filesystem\Filesystem;
 
-use Robo\Task\Archive\loadTasks as ArchiveTaskLoader;
-use Robo\Task\Filesystem\loadTasks as FilesystemTaskLoader;
+use Robo\Task\Archive\Tasks as ArchiveTaskLoader;
+use Robo\Task\Filesystem\Tasks as FilesystemTaskLoader;
 use Symfony\Component\Finder\Finder;
 
 /**
