@@ -13,7 +13,7 @@ drush config-set system.theme default aeon -y
 ```
 
 * Create a sub-theme:
-    * **NOTE**: The default sub-theme will be based on Foundation. To include eXo and remove Foundation, create a sub-theme with the Valerian kit using: `drush aeon "SUBTHEME NAME" --kit=valerian`
+    * **NOTE**: The default sub-theme will be based on Foundation. To include eXo and remove Foundation, create a sub-theme with the Valerian kit using: `drush --include=web/themes/aeon aeon "SUBTHEME NAME" --kit=valerian`
     * **NOTE**: If you intend on using the Valerian Kit and you cloned the repo, checkout the proper branch otherwise it will fail to load.
 
 ```bash
