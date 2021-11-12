@@ -15,7 +15,6 @@
 
  // Include plugins.
  var sass = require('gulp-sass');
- var sassLint = require('gulp-sass-lint');
  var imagemin = require('gulp-imagemin');
  var pngcrush = require('imagemin-pngcrush');
  var plumber = require('gulp-plumber');
