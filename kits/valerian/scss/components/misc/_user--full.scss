@@ -2,7 +2,7 @@
 .user.full {
   @include exo-grid-container;
   @include exo-grid;
-  @include spacing($type: padding, $position: bottom);
+  @include component-spacing($type: padding, $position: bottom);
 
   > * {
     @include exo-cell;

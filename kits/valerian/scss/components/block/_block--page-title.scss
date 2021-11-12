@@ -2,7 +2,7 @@
 .block.page.title {
   @include exo-grid-container;
   @include exo-grid;
-  @include spacing;
+  @include component-spacing;
 
   h1 {
     @include exo-cell;

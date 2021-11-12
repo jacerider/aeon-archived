@@ -6,7 +6,8 @@ $global-width: rem-calc(1200);
 $grid-row-width: $global-width;
 
 /* stylelint-disable color-no-hex */
-$colors: (
+$exo-colors: $colors;
+$theme-colors: (
   theme-black: #333,
   theme-white: #fff,
   theme-primary: #2199e8,
@@ -15,11 +16,14 @@ $colors: (
   theme-warning: #f1ba2e,
   theme-alert: #e54040,
 );
+$colors: map-merge($global-colors, map-merge($exo-colors, $theme-colors));
 
 // Base
 // ----------
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
-$header-font-family: $body-font-family;
+$sans: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$serif: 'Times New Roman', Times, serif;
+$body-font-family: $sans;
+$header-font-family: $sans;
 $body-background: color(theme-white);
 $body-font-color: color(theme-black);
 $anchor-color: color(theme-primary);

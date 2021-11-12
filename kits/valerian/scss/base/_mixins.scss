@@ -40,7 +40,7 @@
 // ----------
 /// @param {Keyword} $type [margin] - Type of spacing to output. Accepts either margin or padding.
 // @param {List} $position [bottom top] - The position to apply spacing to. Accepts `top`, `bottom`, `left`, `right` in any combination.
-@mixin spacing(
+@mixin component-spacing(
   $position: top bottom,
   $multiplier: 1,
   $type: margin
