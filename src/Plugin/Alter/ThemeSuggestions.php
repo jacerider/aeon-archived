@@ -23,13 +23,14 @@ class ThemeSuggestions extends PluginBase implements AlterInterface {
 
     switch ($hook) {
       case 'page':
-        $path = \Drupal::service('path.current')->getPath();
-        if (in_array($path, [
-          '/user/login',
-          '/user/register',
-          '/user/password',
-        ])) {
-          $suggestions[] = 'page__user__auth';
+        $route_name = \Drupal::routeMatch()->getRouteName();
+        switch ($route_name) {
+          case 'user.login':
+          case 'user.register':
+          case 'user.pass':
+          case 'user.reset.form':
+            $suggestions[] = 'page__user__auth';
+            break;
         }
         break;
 
